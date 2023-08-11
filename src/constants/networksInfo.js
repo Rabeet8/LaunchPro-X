@@ -5,8 +5,8 @@ export const networks = {
     chainId: 1,
     explorer: "https://etherscan.io",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
+    // ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     fromBlock: 16669000,
     baseCurrency: {
       decimals: 18,
@@ -19,13 +19,31 @@ export const networks = {
       symbol: "WETH"
     }
   },
+  11155111: {
+    name: "Sepolia",
+    rpc: 'https://sepolia.infura.io/v3/',
+    chainId: 11155111,
+    explorer: "https://sepolia.etherscan.io",
+    color: "#627EEA",
+    fromBlock: 0,
+    baseCurrency: {
+      decimals: 18,
+      name: "SepoliaETH",
+      symbol: "SepoliaETH"
+    },
+    wrappedToken: {
+      address: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
+      name: "Wrapped Etherer",
+      symbol: "WETH"
+    }
+  },
   5: {
     name: "Görli",
     rpc: "https://rpc.ankr.com/eth_goerli",
     chainId: 5,
     explorer: "https://goerli.etherscan.io",
     color: "#f6c343",
-    storage: "0x171a664f12672a61E4e948BC7Fd38eB34b64a15b",
+    storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD",
     multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     fromBlock: 8385000,
@@ -47,7 +65,7 @@ export const networks = {
     explorer: "https://bscscan.com",
     color: "#CC9B00",
     storage: "0xa7472f384339D37EfE505a1A71619212495A973A",
-    multicall: "0x41263cBA59EB80dC200F3E2544eda4ed6A90E76C",
+    // multicall: "0x41263cBA59EB80dC200F3E2544eda4ed6A90E76C",
     fromBlock: 25825000,
     baseCurrency: {
       decimals: 18,
@@ -66,7 +84,7 @@ export const networks = {
     chainId: 97,
     explorer: "https://testnet.bscscan.com/",
     color: "#CC9B00",
-    multicall: "0x6e5BB1a5Ad6F68A8D7D6A5e47750eC15773d6042",
+    // multicall: "0x6e5BB1a5Ad6F68A8D7D6A5e47750eC15773d6042",
     fromBlock: 27113000,
     baseCurrency: {
       decimals: 18,
@@ -95,6 +113,14 @@ export const chainRouter = {
       name: "Uniswap",
       FACTORY: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
       WETH: "0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6",
+      ROUTER: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+    },
+  ],
+  11155111: [
+    {
+      name: "Uniswap",
+      FACTORY: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+      WETH: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
       ROUTER: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
     },
   ],

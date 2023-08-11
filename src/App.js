@@ -61,36 +61,39 @@ function App() {
             <s.LoaderWrapper>
               <Loader size="2.8rem" />
             </s.LoaderWrapper>
-            ) : !isAppConfigured ? (
-              <Manage />
-            ) : (
-              <>
-                <Navigation />
-                <s.Container ai="center">
-                  <s.Container w="85%" style={{ minHeight: 600 }}>
+            // ) : !isAppConfigured ? (
+            //   <Manage />
+            // ) : (
+          ) : false ? (
+            <Manage />
+          ) : (
+            <>
+              <Navigation />
+              <s.Container ai="center">
+                <s.Container w="85%" style={{ minHeight: 600 }}>
 
-                    <Outlet />
-                    <Routes>
-                      <Route path="/" element={<Launchpad />} />
-                      <Route path="/launchpad" element={<Launchpad />} />
-                      <Route
-                        path="/home"
-                        element={<Home />}
-                      />
-                      <Route path="/manage" element={<Manage />} />
-                      <Route path="/launchpad/:idoAddress" element={<LaunchpadInfo />} />
-                      <Route path="/publish" element={<Publish />} />
-                      <Route path="/lock" element={<LockToken />} />
-                      <Route path="/account" element={<Account />} />
-                      { isLockerEnabled && <Route path="/locker" element={<Locker />} /> }
-                      { isLockerEnabled && <Route path="/locker/:lockerAddress" element={<LockerInfo /> } /> }
-                    </Routes>
-                    <s.SpacerLarge />
-                  </s.Container>
-                  <Footer />
+                  <Outlet />
+                  <Routes>
+                    <Route path="/" element={<Launchpad />} />
+                    <Route path="/launchpad" element={<Launchpad />} />
+                    <Route
+                      path="/home"
+                      element={<Home />}
+                    />
+                    <Route path="/manage" element={<Manage />} />
+                    <Route path="/launchpad/:idoAddress" element={<LaunchpadInfo />} />
+                    <Route path="/publish" element={<Publish />} />
+                    <Route path="/lock" element={<LockToken />} />
+                    <Route path="/account" element={<Account />} />
+                    {isLockerEnabled && <Route path="/locker" element={<Locker />} />}
+                    {isLockerEnabled && <Route path="/locker/:lockerAddress" element={<LockerInfo />} />}
+                  </Routes>
+                  <s.SpacerLarge />
                 </s.Container>
-              </>
-            )
+                <Footer />
+              </s.Container>
+            </>
+          )
         }
       </s.Screen>
     </Web3ReactManager>
