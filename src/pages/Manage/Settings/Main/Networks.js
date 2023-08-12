@@ -40,8 +40,7 @@ export default function Networks() {
   const [webSocketRPC, setWebSocketRPC] = useState(networks?.[chainId || 0]?.webSocketRPC || '');
   const [canSaveNetworksSettings, setCanSaveNetworksSettings] = useState(false);
 
-  // const isStorageNetwork = chainId === STORAGE_NETWORK_ID;
-  const isStorageNetwork = false;
+  const isStorageNetwork = chainId === STORAGE_NETWORK_ID;
   const canChangeNetwork = (connector instanceof InjectedConnector);
 
   useEffect(() => {
@@ -78,8 +77,8 @@ export default function Networks() {
           },
         },
         onReceipt: () => {
-          triggerDomainData();
-        },
+            triggerDomainData();
+          },
         onHash: (hash) => {
           console.log('saveNetworksData hash: ', hash);
         },
@@ -139,27 +138,21 @@ export default function Networks() {
       <s.SpacerSmall />
 
       {
-        // isStorageNetwork ? (
-        //   <s.button
-        //     onClick={saveNetworksData}
-        //     disabled={!canSaveNetworksSettings}
-        //   >
-        //     { isLoading ? <Loader /> : 'Save Networks Settings' }
-        //   </s.button>
-        // ) : (
-        //   <s.button
-        //     onClick={switchToStorage}
-        //     disabled={!canChangeNetwork}
-        //   >
-        //     { isLoading ? <Loader /> : `Switch to ${STORAGE_NETWORK_NAME}` }
-        //   </s.button>
-        // )
-        <s.button
-          onClick={switchToStorage}
-          disabled={!canChangeNetwork}
-        >
-          {isLoading ? <Loader /> : `Switch to ${STORAGE_NETWORK_NAME}`}
-        </s.button>
+        isStorageNetwork ? (
+          <s.button
+            onClick={saveNetworksData}
+            disabled={!canSaveNetworksSettings}
+          >
+            { isLoading ? <Loader /> : 'Save Networks Settings' }
+          </s.button>
+        ) : (
+          <s.button
+            onClick={switchToStorage}
+            disabled={!canChangeNetwork}
+          >
+            { isLoading ? <Loader /> : `Switch to ${STORAGE_NETWORK_NAME}` }
+          </s.button>
+        )
 
       }
 

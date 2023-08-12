@@ -6,7 +6,7 @@ export const getContractInstance = (web3, address, abi) => {
 }
 
 const deployContract = async (params) => {
-  const { abi, byteCode, library, onDeploy = () => { }, onHash = () => { }, deployArguments } = params;
+  const { abi, byteCode, library, onDeploy = () => {}, onHash = () => {}, deployArguments } = params;
 
   let contract;
   let accounts;
@@ -86,8 +86,6 @@ export const deployLaunchpadContracts = async ({
     });
 
     if (typeof onSuccessfulDeploy === 'function') {
-      console.log(IDOFactory.options.address)
-      console.log(LockerFactory.options.address)
       onSuccessfulDeploy({
         chainId,
         FeeTokenAddress,
@@ -101,20 +99,11 @@ export const deployLaunchpadContracts = async ({
   }
 }
 
-const addresses = {
-  5: {
-    FeeTokenAddress: 0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B,
-    IDOFactoryAddress: 0xBdf917b7f06F5436E2981E26A34069B2224964Ac,
-    TokenLockerFactoryAddress: 0xaA4076B21D863dEA2f7862879650dD54061cFe01
-  }
-}
-
-export const getDeployedLaunchpadContracts = () => JSON.parse(localStorage.getItem(addresses)) || null;
+export const getDeployedLaunchpadContracts = () => JSON.parse(localStorage.getItem("deployedLaunchpadContracts")) || null;
 
 export const setDeployedLaunchpadContracts = ({ chainId, FeeTokenAddress, IDOFactoryAddress, TokenLockerFactoryAddress }) => {
 
   const deployedLaunchpadContracts = getDeployedLaunchpadContracts();
-  console.log(deployedLaunchpadContracts)
 
   localStorage.setItem("deployedLaunchpadContracts", JSON.stringify({
     ...deployedLaunchpadContracts,
