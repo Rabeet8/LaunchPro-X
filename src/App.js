@@ -61,9 +61,12 @@ function App() {
             <s.LoaderWrapper>
               <Loader size="2.8rem" />
             </s.LoaderWrapper>
-            ) : !isAppConfigured ? (
-              <Manage />
-            ) : (
+            // ) : !isAppConfigured ? (
+            //   <Manage />
+            // ) : (
+          ) : false ? (
+            <Manage />
+          ) : (
               <>
                 <Navigation />
                 <s.Container ai="center">
