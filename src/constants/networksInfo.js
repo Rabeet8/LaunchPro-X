@@ -40,6 +40,26 @@ export const networks = {
       symbol: "WETH"
     }
   },
+  84531: {
+    name: "Base Testnet",
+    rpc: 'https://base-goerli.blockscout.com',
+    chainId: 84531,
+    explorer: "https://goerli.base.org",
+    color: "#627EEA",
+    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
+    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    fromBlock: 0,
+    baseCurrency: {
+      decimals: 18,
+      name: "ETH",
+      symbol: "ETH"
+    },
+    wrappedToken: {
+      address: "0x4200000000000000000000000000000000000006",
+      name: "Wrapped Etherer",
+      symbol: "WETH"
+    }
+  },
   59144: {
     name: "Linea",
     rpc: 'https://rpc.linea.build',
@@ -47,7 +67,7 @@ export const networks = {
     explorer: "https://lineascan.build",
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e", 
+    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -60,15 +80,14 @@ export const networks = {
       symbol: "WETH"
     }
   },
-  11155111: {
-    name: "Sepolia",
-    rpc: 'https://sepolia.infura.io/v3/',
-    chainId: 11155111,
-    explorer: "https://sepolia.etherscan.io",
+  59140: {
+    name: "Linea Testnet",
+    rpc: 'https://rpc.goerli.linea.build',
+    chainId: 59140,
+    explorer: "https://goerli.lineascan.build",
     color: "#627EEA",
-    storage: "0xF7Dbd865569332dee5ec3d43AC4e9989988cb50e", // Addition Needs to be done on other chains
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e", // Tampering Needed
+    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -76,11 +95,52 @@ export const networks = {
       symbol: "ETH"
     },
     wrappedToken: {
-      address: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
+      address: "0x2C1b868d6596a18e32E61B901E4060C872647b6C",
       name: "Wrapped Etherer",
       symbol: "WETH"
     }
   },
+  534353: {
+    name: "Scroll Alpha Testnet",
+    rpc: 'https://alpha-rpc.scroll.io/l2',
+    chainId: 534353,
+    explorer: "https://alpha-blockscout.scroll.io",
+    color: "#627EEA",
+    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
+    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    fromBlock: 0,
+    baseCurrency: {
+      decimals: 18,
+      name: "ETH",
+      symbol: "ETH"
+    },
+    wrappedToken: {
+      address: "0xa1EA0B2354F5A344110af2b6AD68e75545009a03",
+      name: "Wrapped Etherer",
+      symbol: "WETH"
+    }
+  },
+  // 11155111: {
+  //   name: "Sepolia",
+  //   rpc: 'https://sepolia.infura.io/v3/',
+  //   chainId: 11155111,
+  //   explorer: "https://sepolia.etherscan.io",
+  //   color: "#627EEA",
+  //   storage: "0xF7Dbd865569332dee5ec3d43AC4e9989988cb50e", // Addition Needs to be done on other chains
+  //   multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
+  //   ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e", // Tampering Needed
+  //   fromBlock: 0,
+  //   baseCurrency: {
+  //     decimals: 18,
+  //     name: "ETH",
+  //     symbol: "ETH"
+  //   },
+  //   wrappedToken: {
+  //     address: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
+  //     name: "Wrapped Etherer",
+  //     symbol: "WETH"
+  //   }
+  // },
   5: {
     name: "Görli",
     rpc: "https://rpc.ankr.com/eth_goerli",
