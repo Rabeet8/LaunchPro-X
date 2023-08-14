@@ -6,7 +6,7 @@
 :root {
   --clr-neon: hsl(56, 100%, 52%, 1);
   --clr-bg: hsl(56, 100%, 40%);
-  --primary: #27C498;
+  --primary: #933abc;
   --secondary: #004e38;
   --warning: #ff9c0840;
   --success: #27ae5f54;
@@ -16,11 +16,11 @@
   --upper-card: #151516;
   --unfocus: #6F2232;
   --disable: #6D6E71;
-  --background: #151516;
+  --background: rgb(255, 255, 255);
   /* --background: #006FB9; */
   --blue: #1e90ff;
   --white: #ffffff;
-  --text: #FFFFFF;
+  --text: #000000;
   --secondary-color: #989b9c;
   --text-secondary: #232227;
   --button: #005987;

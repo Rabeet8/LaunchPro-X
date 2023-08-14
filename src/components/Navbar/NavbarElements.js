@@ -6,7 +6,7 @@ export const Nav = styled.nav`
     height: 50px;
     display: flex;
     padding: 10px;
-    align-items: center;
+    align-items: end;
     z-index: 12;
     background: transparent;
 `;
