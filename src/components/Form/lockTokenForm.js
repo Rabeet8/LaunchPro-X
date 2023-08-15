@@ -165,8 +165,11 @@ const LockTokenForm = () => {
           value: fee,
         }
       );
+      //0x9c1A98c96F756B0dA5931d2d62945a94c336DF3f
 
       const receipt = await tx.wait();
+      console.log("txData ==> ",tx);
+      console.log("rcptData ==> ",receipt);
       triggerUpdateAccountData();
       const LockerCreatedIndex = receipt?.events?.findIndex?.((i) => i?.event === "LockerCreated");
       if (LockerCreatedIndex || LockerCreatedIndex === 0){

@@ -37,9 +37,9 @@ export const ApplicationContextProvider = ({ children }) => {
     && domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress
     && domainSettings?.networks?.[chainId]?.webSocketRPC
     && domainSettings?.admin
-    && domainSettings?.ipfsInfuraDedicatedGateway
-    && domainSettings?.ipfsInfuraProjectId
-    && domainSettings?.ipfsInfuraProjectSecret
+    // && domainSettings?.ipfsInfuraDedicatedGateway
+    // && domainSettings?.ipfsInfuraProjectId
+    // && domainSettings?.ipfsInfuraProjectSecret
   ));
 
   useEffect(() => {
@@ -53,9 +53,9 @@ export const ApplicationContextProvider = ({ children }) => {
       && domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress
       && domainSettings?.networks?.[chainId]?.webSocketRPC
       && domainSettings?.admin
-      && domainSettings?.ipfsInfuraDedicatedGateway
-      && domainSettings?.ipfsInfuraProjectId
-      && domainSettings?.ipfsInfuraProjectSecret
+      // && domainSettings?.ipfsInfuraDedicatedGateway
+      // && domainSettings?.ipfsInfuraProjectId
+      // && domainSettings?.ipfsInfuraProjectSecret
     ))
   }, [domainSettings, chainId])
 
