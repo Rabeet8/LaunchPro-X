@@ -171,6 +171,7 @@ const LockTokenForm = () => {
       console.log("txData ==> ",tx);
       console.log("rcptData ==> ",receipt);
       triggerUpdateAccountData();
+      // simple yahan se address record karo aur wahan jahan render horahy wahan get krlo
       const LockerCreatedIndex = receipt?.events?.findIndex?.((i) => i?.event === "LockerCreated");
       if (LockerCreatedIndex || LockerCreatedIndex === 0){
         navigate(`../locker/${receipt.events[LockerCreatedIndex].args.lockerAddress}`)
