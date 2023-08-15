@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -8,6 +8,11 @@ import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
 import TextField from '@mui/material/TextField';
 import { useApplicationContext } from "../context/applicationContext";
+import BigNumber from "bignumber.js";
+import { useWeb3React } from "@web3-react/core";
+import { useTokenContract } from "../hooks/useContract";
+
+
 
 
 const steps = ['Add your Allocation', 'Confirmation'];
@@ -41,8 +46,30 @@ const CustomBox = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const [loading, setLoading] = useState(false);
-  const [tokenAddress, setTokenAddress] = useState('');
+  const [decimals, setDecimals] = useState(0);
+  const [tokenAddress, setTokenAddress] = useState("");
+  const [amountToApprove, setAmountToApprove] = useState(0);
+  const [tokenApproved, setTokenApprove] = useState(false);
+  const [recipients, setReceipients] = useState([]);
+  const [amounts, setAmounts] = useState([]);
+  const tokenContractForChecking = useTokenContract(tokenAddress);
+  const { account } = useWeb3React();
 
+  useEffect(async () => {
+    const tokenDecimals = await tokenContractForChecking?.decimals();
+    console.log(tokenDecimals.toString());
+    if (tokenDecimals) {
+      setDecimals(tokenDecimals.toString());
+    }
+  }, [tokenContractForChecking])
+
+  useEffect(async () => {
+    const tokenAllowance = await tokenContractForChecking?.allowance(account, MultisendAddress);
+    if (tokenAllowance < amountToApprove) {
+      setAmountToApprove(amountToApprove - tokenAllowance);
+      setTokenApprove(true);
+    }
+  }, [amountToApprove])
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -91,16 +118,46 @@ const CustomBox = () => {
     setActiveStep(0);
   };
 
-  const [recipients, setReceipients] = useState([]);
-  const [amounts, setAmounts] = useState([]);
 
-  const multisendFunction = async (tokenAddress) => {
+
+  // let [tokenContractForChecking, setTokenContractForChecking] = useState({});
+
+  if (account == null) {
+    return null;
+  }
+
+  const approveToken = async (amount) => {
+    if (!tokenContractForChecking) {
+      return;
+    }
+    setLoading(true);
+
+    try {
+      const tx = await tokenContractForChecking?.approve(MultisendAddress, amount, {
+        from: account,
+      });
+
+      await tx.wait();
+
+      // setTokenApprove(true);
+      triggerUpdateAccountData();
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const multisendFunction = async () => {
     setLoading(true);
     try {
-      const tx = await MultisendContract.multisend(
+      const tx = await MultisendContract?.functions?.multiSend(
         recipients,
         amounts,
-        tokenAddress
+        tokenAddress,
+        {
+          from: account
+        }
       );
 
       const receipt = await tx.wait();
@@ -117,6 +174,35 @@ const CustomBox = () => {
       setLoading(false);
     }
   };
+  function processInput(input) {
+    const recipients_ = [];
+    const amounts_ = [];
+    let totalAmount = 0;
+    const entries = input.split(',');
+
+    entries.forEach(entry => {
+      const parts = entry.trim().split(" ");
+      if (parts.length >= 2) {
+        recipients_.push(parts[0]);
+        amounts_.push(
+          // parts.slice(1).join(" ") + 10 ** decimals
+          // (parseInt(parts.slice(1).join(" ")) * 10 ** decimals)
+          BigNumber(parseInt(parts.slice(1).join(" ")))
+            .times(10 ** decimals)
+            .toFixed(0)
+        )
+        totalAmount += BigNumber(parseInt(parts.slice(1).join(" ")))
+          .times(10 ** decimals)
+          .toFixed(0)
+      }
+    });
+    // parts.slice(1).join(" ")
+    setAmountToApprove(totalAmount);
+    setReceipients(recipients_);
+    console.log(recipients_)
+    setAmounts(amounts_);
+    console.log(amounts_);
+  }
 
   return (
     <div
@@ -166,6 +252,7 @@ const CustomBox = () => {
             fullWidth
             margin="normal"
             onChange={e => {
+              e.preventDefault();
               setTokenAddress(e.target.value)
             }}
             sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
@@ -176,6 +263,10 @@ const CustomBox = () => {
             variant="outlined"
             fullWidth
             margin="normal"
+            onChange={e => {
+              e.preventDefault();
+              processInput(e.target.value)
+            }}
             sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
           />
 
@@ -191,19 +282,19 @@ const CustomBox = () => {
           >
             Back
           </StyledButton>
-          {/* {isStepOptional(activeStep) && (
+          {tokenApproved && (
             <StyledButton
               style={{ margin: 10 }}
-              onClick={handleSkip}
+              onClick={e => {approveToken(amountToApprove)}}
               secondary
 
             >
-              Skip
+              Approve
             </StyledButton>
-          )} */}
+          )}
           <StyledButton
             style={{ margin: 10 }}
-            onClick={handleNext} secondary>
+            onClick={e => { multisendFunction() }} secondary>
             {/* {activeStep === steps.length - 1 ? 'Finish' : 'Next'} */}
             Finish
           </StyledButton>
