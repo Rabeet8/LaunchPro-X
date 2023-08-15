@@ -12,6 +12,7 @@ import Account from "./pages/account";
 import Home from "./pages/home.js";
 import Multisend from "./pages/Multisend";
 import Launchpad from "./pages/launchpad.js";
+import LockerCreation from "./components/Form/Publish/LockerCreation";
 import LaunchpadCreation from "./components/Form/Publish/LaunchpadCreation"
 import FairLaunch from "./components/Form/Publish/FairLaunch";
 import LaunchpadInfo from "./pages/launchpadInfo";
@@ -86,6 +87,9 @@ function App() {
                       <Route path ="/multisend" element={<Multisend/>}/>
                       <Route path ="/launchpadcreation" element={<LaunchpadCreation/>}/>
                       <Route path ="/fairlaunch" element={<FairLaunch/>}/>
+                      <Route path ="/lockercreation" element={<LockerCreation/>}/>
+                      
+
 
 
                       <Route path="/manage" element={<Manage />} />

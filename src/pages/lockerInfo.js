@@ -12,6 +12,9 @@ const LockerInfo = () => {
       <s.SpacerMedium />
       <s.Container jc="space-around" fd="row">
         {/* TODO: add loader depends on fetching all lockers */}
+
+
+        
         <LockerInfoRenderer lockerAddress={lockerAddress} />
       </s.Container>
     </s.Container>

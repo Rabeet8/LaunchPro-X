@@ -182,15 +182,28 @@ const Navigation = () => {
       </Dropdown.Toggle>
      
     </Dropdown>
-    
-
-
-
+  
 
       {isLockerEnabled && (
+        
+        <Dropdown as={NavItem}>
+        <Dropdown.Toggle as={NavLink}>
         <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/locker">
           <Nav.Link><FaLock /> Locker</Nav.Link>
         </LinkContainer>
+        <Dropdown.Menu>
+          <Dropdown.Item>
+          <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/lockercreation">
+          <Nav.Link>CreateLocker</Nav.Link>
+        </LinkContainer>
+  
+          </Dropdown.Item>
+          
+        </Dropdown.Menu>
+        </Dropdown.Toggle>
+       
+      </Dropdown>
+        
       )}
 
       <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/multisend">
