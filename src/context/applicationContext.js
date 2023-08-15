@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 import { useWeb3React, UnsupportedChainIdError } from "@web3-react/core";
 import { SUPPORTED_CHAIN_IDS } from "../connectors";
-import { useTokenContract, useLockerFactoryContract, useIDOFactoryContract } from "../hooks/useContract";
+import { useTokenContract, useLockerFactoryContract, useIDOFactoryContract , useMultisendContract } from "../hooks/useContract";
 import { networks } from "../constants/networksInfo";
 import useDomainData from "../hooks/useDomainData";
 
@@ -30,6 +30,7 @@ export const ApplicationContextProvider = ({ children }) => {
   const [FeeTokenAddress, setFeeTokenAddress] = useState(domainSettings?.contracts?.[chainId]?.FeeTokenAddress|| '');
   const [IDOFactoryAddress, setIDOFactoryAddress] = useState(domainSettings?.contracts?.[chainId]?.IDOFactoryAddress|| '');
   const [TokenLockerFactoryAddress, setTokenLockerFactoryAddress] = useState(domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress || '');
+  const [MultisendAddress, setMultisendAddress] = useState(networks?.[chainId]?.multiSend || '');
 
   const [isAppConfigured, setIsAppConfigured] = useState(Boolean(
     domainSettings?.contracts?.[chainId]?.FeeTokenAddress
@@ -46,6 +47,7 @@ export const ApplicationContextProvider = ({ children }) => {
     setFeeTokenAddress(domainSettings?.contracts?.[chainId]?.FeeTokenAddress|| '');
     setIDOFactoryAddress(domainSettings?.contracts?.[chainId]?.IDOFactoryAddress|| '');
     setTokenLockerFactoryAddress(domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress || '');
+    setMultisendAddress(networks?.[chainId]?.multiSend || '');
 
     setIsAppConfigured(Boolean(
       domainSettings?.contracts?.[chainId]?.FeeTokenAddress
@@ -156,6 +158,7 @@ export const ApplicationContextProvider = ({ children }) => {
 
   const TokenLockerFactoryContract = useLockerFactoryContract(TokenLockerFactoryAddress, true);
   const IDOFactoryContract = useIDOFactoryContract(IDOFactoryAddress, true);
+  const MultisendContract = useMultisendContract(MultisendAddress, true);
 
   const value = {
     isAppConfigured,
@@ -190,6 +193,9 @@ export const ApplicationContextProvider = ({ children }) => {
 
     TokenLockerFactoryAddress,
     TokenLockerFactoryContract,
+
+    MultisendAddress,
+    MultisendContract,
   };
 
   return (

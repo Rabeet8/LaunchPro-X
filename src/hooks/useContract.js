@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import Web3 from 'web3';
 import TokenLockerFactory from '../contracts/TokenLockerFactory.json';
 import Locker from "../contracts/TokenLocker.json";
+import Multisend from "../contracts/multisend.json";
 import IDOFactory from '../contracts/IDOFactory.json';
 import IDOPool from "../contracts/IDOPool.json";
 import STORAGE from '../contracts/Storage.json';
@@ -45,6 +46,10 @@ function useContract(address, ABI, withSignerIfPossible = true) {
 
 export function useLockerFactoryContract(address, withSignerIfPossible) {
   return useContract(address, TokenLockerFactory.abi, withSignerIfPossible)
+}
+
+export function useMultisendContract(address, withSignerIfPossible) {
+  return useContract(address, Multisend.abi, withSignerIfPossible)
 }
 
 export function useLockerContract(address, withSignerIfPossible) {
