@@ -29,15 +29,11 @@ contract MultiSendERC20 {
         uint256 transferCount;
         IERC20 token = IERC20(tokenAddress);
         for (uint256 i = 0; i < recipients.length; i++) {
-            if (token.balanceOf(msg.sender) < amounts[i]) {
-                transferCount = i == 0 ? i : i - 1;
-                break;
-            }
-            if (recipients[i] == address(0)) {
-                transferCount = i == 0 ? i : i - 1;
-                break;
-            }
-            if (amounts[i] <= 0) {
+            if (
+                token.balanceOf(msg.sender) < amounts[i] ||
+                recipients[i] == address(0) ||
+                amounts[i] <= 0
+            ) {
                 transferCount = i == 0 ? i : i - 1;
                 break;
             }
