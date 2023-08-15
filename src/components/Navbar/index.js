@@ -1,6 +1,9 @@
 import BigNumber from "bignumber.js";
 import React from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import Dropdown from 'react-bootstrap/Dropdown';
+import NavItem from 'react-bootstrap/NavItem';
+import NavLink from 'react-bootstrap/NavLink';
 import { LinkContainer } from "react-router-bootstrap";
 import "../../App.css";
 import { useApplicationContext } from "../../context/applicationContext";
@@ -148,27 +151,59 @@ const Navigation = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <div className="sub-navbar" style={{ width: '50px', position: 'absolute', top: 150, left: 0 
+      <div className="sub-navbar" style={{ width: '50px', position: 'absolute', top: 120, left: 0 
        }}>
          <div >
-         <Nav justify variant="tabs" defaultActiveKey="/home" className="flex-column">
-      <LinkContainer style={{ color: "#933abc",padding: '0px 10px', marginTop: '5px' }} to="/home">
+         <Nav fill defaultActiveKey="/home" className="flex-column">
+      <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/home">
         <Nav.Link><FaHome /> Home</Nav.Link>
       </LinkContainer>
-      <LinkContainer style={{ color: "#933abc",padding: '0px 10px' }} to="/launchpad">
+
+
+      <Dropdown as={NavItem}>
+      <Dropdown.Toggle as={NavLink}>
+      <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/launchpad">
         <Nav.Link><FaRocket /> Launch</Nav.Link>
       </LinkContainer>
+      <Dropdown.Menu>
+        <Dropdown.Item>
+        <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/launchpadcreation">
+        <Nav.Link>CreateLaunchpad</Nav.Link>
+      </LinkContainer>
+
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/fairlaunch">
+        <Nav.Link>FairLaunch</Nav.Link>
+      </LinkContainer>
+
+        </Dropdown.Item>
+      </Dropdown.Menu>
+      </Dropdown.Toggle>
+     
+    </Dropdown>
+    
+
+
+
+
       {isLockerEnabled && (
-        <LinkContainer style={{ color: "#933abc",padding: '0px 10px' }} to="/locker">
+        <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/locker">
           <Nav.Link><FaLock /> Locker</Nav.Link>
         </LinkContainer>
       )}
-      <LinkContainer style={{ color: "#933abc",padding: '0px 10px' }} to="/account">
+
+      <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/multisend">
+        <Nav.Link> Multi Send</Nav.Link>
+
+
+      </LinkContainer>
+      <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/account">
         <Nav.Link><FaUser /> Account</Nav.Link>
       </LinkContainer>
 
       {isAdmin && (
-        <LinkContainer style={{ color: "#933abc",padding: '0px 10px'  }} to="/manage">
+        <LinkContainer style={{ color: "#933abc",padding: '0px 5px'  }} to="/manage">
           <Nav.Link><FaCog /> Manage</Nav.Link>
         </LinkContainer>
       )}

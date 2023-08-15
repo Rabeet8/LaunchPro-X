@@ -10,7 +10,7 @@ import { timeout } from "../../../../utils/utils";
 import { NumberField } from "../../../FormField";
 import { useApplicationContext } from '../../../../context/applicationContext';
 
-export default function IDOInfo() {
+export default function IDOInfo({props}) {
   const context = useStoreContext();
 
   const {
@@ -23,7 +23,7 @@ export default function IDOInfo() {
 
   return (
     <s.Container flex={1}>
-      <s.TextTitle fullWidth>IDO Information</s.TextTitle>
+      <s.TextTitle fullWidth>{props.title}</s.TextTitle>
       <s.SpacerSmall />
       <s.TextID>
         If I pay 1 {baseCurrencySymbol} how much token I will get?

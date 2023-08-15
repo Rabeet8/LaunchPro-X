@@ -12,9 +12,10 @@
   --success: #27ae5f54;
   --error: #dc354570;
   --search: #2D2D2D;
-  --card: #232227;
+  --card: #000000;
+  --card2:#933abc; 
   --upper-card: #151516;
-  --unfocus: #6F2232;
+  --unfocus: #0e0e0e;
   --disable: #6D6E71;
   --background: rgb(255, 255, 255);
   /* --background: #006FB9; */

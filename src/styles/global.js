@@ -334,11 +334,11 @@ export const Textarea = styled.textarea`
 
 export const button = styled.button`
   background-color: ${({ secondary }) => (secondary ? "inherit" : "var(--primary)")};
-  border: ${({ secondary }) => (secondary ? "var(--secondary-color)" : "var(--primary)")} 0.125em solid;
+  border: ${({ secondary }) => (secondary ? "var(--card2)" : "var(--primary)")} 0.125em solid;
   font-weight: 700;
   padding: 5px 20px;
   border-radius: 20px;
-  color: ${({ secondary }) => (secondary ? "var(--secondary-color)" : "var(--card)")};
+  color: ${({ secondary }) => (secondary ? "var(--card2)" : "var(--card)")};
 
   ${({ fullWidth }) =>
     fullWidth ? 'width: 100%;' : ''

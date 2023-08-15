@@ -12,7 +12,7 @@ import ProjectInfo from "./Step/projectInfo";
 import TokenVerify from "./Step/tokenVerify";
 
 function getSteps() {
-  return ["Token verify", "IDO information", "Project information", "Submit"];
+  return ["Token verify", "DeFi Fairlaunch Info", "Add Additional Info", "Finish"];
 }
 
 export default function StepsForm() {
@@ -58,7 +58,7 @@ export default function StepsForm() {
       case 0:
         return <TokenVerify />;
       case 1:
-        return <IDOInfo />;
+        return <IDOInfo title ="DeFi"/>;
       case 2:
         return <ProjectInfo />;
       case 3:
@@ -69,7 +69,7 @@ export default function StepsForm() {
   }
 
   return (
-    <s.Card>
+    <s.Card style={{marginLeft: "4.5rem",marginTop:'2rem'}}>
       <form onSubmit={form.handleSubmit(onSubmit)} style={{ width: "100%" }}>
         <Stepper
           activeStep={activeStep}
@@ -77,6 +77,7 @@ export default function StepsForm() {
           style={{
             width: "100%",
             color: "white",
+            marginTop: '3.5rem',
           }}
         >
           {steps.map((label) => (
@@ -108,7 +109,7 @@ export default function StepsForm() {
                   onClick={handleBack}
                   variant="outlined"
                   type="button"
-                  style={{ margin: 5 }}
+                  style={{ marginTop: 10,marginTop: '1.5rem' }}
                 >
                   Back
                 </s.button>
@@ -117,7 +118,7 @@ export default function StepsForm() {
                     variant="contained"
                     color="primary"
                     type="submit"
-                    style={{ margin: 5 }}
+                    style={{ margin: 10,marginTop: '1.5rem' }}
                   >
                     {activeStep === steps.length - 1 ? "Finish" : "Next"}
                   </s.button>

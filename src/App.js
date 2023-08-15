@@ -10,7 +10,10 @@ import Footer from "./components/Footer/Footer";
 import Navigation from "./components/Navbar";
 import Account from "./pages/account";
 import Home from "./pages/home.js";
+import Multisend from "./pages/Multisend";
 import Launchpad from "./pages/launchpad.js";
+import LaunchpadCreation from "./components/Form/Publish/LaunchpadCreation"
+import FairLaunch from "./components/Form/Publish/FairLaunch";
 import LaunchpadInfo from "./pages/launchpadInfo";
 import Locker from "./pages/locker";
 import LockerInfo from "./pages/lockerInfo";
@@ -80,6 +83,11 @@ function App() {
                         path="/home"
                         element={<Home />}
                       />
+                      <Route path ="/multisend" element={<Multisend/>}/>
+                      <Route path ="/launchpadcreation" element={<LaunchpadCreation/>}/>
+                      <Route path ="/fairlaunch" element={<FairLaunch/>}/>
+
+
                       <Route path="/manage" element={<Manage />} />
                       <Route path="/launchpad/:idoAddress" element={<LaunchpadInfo />} />
                       <Route path="/publish" element={<Publish />} />
