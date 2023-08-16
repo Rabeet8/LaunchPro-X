@@ -222,6 +222,7 @@ export const getBalanceOfERC20 = async (tokenAddress, address, web3) => {
 };
 
 export const getLockerData = async (lockerAddress, web3) => {
+  console.log("maaalikkkk");
   const locker = new web3.eth.Contract(Locker.abi, lockerAddress);
   let token = await locker.methods.token().call();
   let tokenData = await getTokenData(token, web3);

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styled from 'styled-components';
 import TextField from '@mui/material/TextField';
+import { useApplicationContext } from "../context/applicationContext";
+
 
 const steps = ['Add your Allocation', 'Confirmation'];
 
@@ -38,6 +40,9 @@ const StyledButton = styled.button`
 const CustomBox = () => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  const [loading, setLoading] = useState(false);
+  const [tokenAddress, setTokenAddress] = useState('');
+
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -75,8 +80,42 @@ const CustomBox = () => {
     });
   };
 
+  const {
+    triggerUpdateAccountData,
+    baseCurrencySymbol,
+    MultisendAddress,
+    MultisendContract
+  } = useApplicationContext();
+
   const handleReset = () => {
     setActiveStep(0);
+  };
+
+  const [recipients, setReceipients] = useState([]);
+  const [amounts, setAmounts] = useState([]);
+
+  const multisendFunction = async (tokenAddress) => {
+    setLoading(true);
+    try {
+      const tx = await MultisendContract.multisend(
+        recipients,
+        amounts,
+        tokenAddress
+      );
+
+      const receipt = await tx.wait();
+      console.log("txData ==> ", tx);
+      console.log("rcptData ==> ", receipt);
+      triggerUpdateAccountData();
+      const _multisend = receipt?.events?._multisend;
+      // if (LockerCreatedIndex || LockerCreatedIndex === 0){
+      //   navigate(`../locker/${receipt.events[LockerCreatedIndex].args.lockerAddress}`)
+      // }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -85,7 +124,7 @@ const CustomBox = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh', 
+        height: '100vh',
       }}
     >
       <Box
@@ -102,10 +141,10 @@ const CustomBox = () => {
           top: '60%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-       
+
         }}
       >
-        <Box sx={{ width: '100%', flexGrow: 1 , marginTop: '2rem'}}>
+        <Box sx={{ width: '100%', flexGrow: 1, marginTop: '2rem' }}>
           <Stepper alternativeLabel activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};
@@ -120,52 +159,53 @@ const CustomBox = () => {
               );
             })}
           </Stepper>
-          <p style={{color: "white", marginTop:'1.5rem', marginLeft: '4.5rem'}}>Add Token Address</p>
+          <p style={{ color: "white", marginTop: '1.5rem', marginLeft: '4.5rem' }}>Add Token Address</p>
           <TextField
-          label="Ex : 0x....."
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
-        />
-        <p style={{color: "white", marginTop:'1.5rem', marginLeft: '4.5rem'}}>Allocations</p>
+            label="Ex : 0x....."
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            onChange={e => {
+              setTokenAddress(e.target.value)
+            }}
+            sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
+          />
+          <p style={{ color: "white", marginTop: '1.5rem', marginLeft: '4.5rem' }}>Allocations</p>
           <TextField
-          label="Insert allocation:"
-          variant="outlined"
-          fullWidth
-          margin="normal"
-          sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }} 
-        />
+            label="Insert allocation:"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
+          />
 
 
-          </Box>
+        </Box>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
-        <StyledButton
-                style={{ margin: 10 }}
+          <StyledButton
+            style={{ margin: 10 }}
             disabled={activeStep === 0}
             onClick={handleBack}
             secondary
-        
+
           >
             Back
           </StyledButton>
-          {isStepOptional(activeStep) && (
+          {/* {isStepOptional(activeStep) && (
             <StyledButton
-            style={{ margin: 10 }}
+              style={{ margin: 10 }}
               onClick={handleSkip}
               secondary
-           
+
             >
               Skip
             </StyledButton>
-          )}
+          )} */}
           <StyledButton
-           
-          
-          
-           style={{ margin: 10 }}
-          onClick={handleNext} secondary>
-            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+            style={{ margin: 10 }}
+            onClick={handleNext} secondary>
+            {/* {activeStep === steps.length - 1 ? 'Finish' : 'Next'} */}
+            Finish
           </StyledButton>
         </Box>
       </Box>

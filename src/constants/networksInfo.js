@@ -8,6 +8,7 @@ export const networks = {
     // storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     fromBlock: 16669000,
     baseCurrency: {
       decimals: 18,
@@ -27,7 +28,8 @@ export const networks = {
     explorer: "https://basescan.org",
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e", 
+    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -48,6 +50,7 @@ export const networks = {
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -68,6 +71,7 @@ export const networks = {
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -88,6 +92,7 @@ export const networks = {
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -108,6 +113,7 @@ export const networks = {
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -150,6 +156,7 @@ export const networks = {
     storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
     multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
+    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca",
     fromBlock: 8385000,
     baseCurrency: {
       decimals: 18,
