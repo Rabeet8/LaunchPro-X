@@ -5,7 +5,7 @@ import LockerList from "../components/Modal/lockerList";
 import * as s from "../styles/global";
 import { utils } from "../utils";
 
-const Locker = (props) => {
+const  Locker = (props) => {
   const [address, setAddress] = useState("");
   const contract = useSelector((state) => state.contract);
   const [showZero, setShowZero] = useState(0);
