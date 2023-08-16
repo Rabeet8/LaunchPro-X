@@ -30,6 +30,7 @@ export const PoolContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (ipfsInfuraDedicatedGateway) {
+      console.log(ipfsInfuraDedicatedGateway)
       const delayDebounceFn = setTimeout(() => {
         allPoolAddress.map(async (address, index) => {
           await utils.loadPoolData(address, contract.web3, account, ipfsInfuraDedicatedGateway).then((IDOPoolData) => {

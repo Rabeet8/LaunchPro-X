@@ -125,10 +125,13 @@ export default function Preview() {
     setLoading(true);
 
     try {
-      const iconAdded = await ipfs.add(icon);
+      // console.log(icon)
+      // const iconAdded = await ipfs.add(icon);
+      // console.log(iconAdded.path);
 
       const metadata = {
-        imageHash: iconAdded.path,
+        // imageHash: "iconAdded.path",
+        imageHash:"QmWJE7joTt2HMi28mt6DZNozoYxcBNn45uDbooLDLWKY1A",
         description,
         links: {
           website,
@@ -137,6 +140,8 @@ export default function Preview() {
           twitter,
         }
       };
+
+      // 0x1219256015047C2D8f8929621CE3646aE8C921ed first ido created;
 
       const ipfsResonse = await pinJSONToIPFS(metadata);
 
@@ -159,8 +164,12 @@ export default function Preview() {
         listingRateBN.gt(0) ? `0x${oneListingTokeninWei.toString(16)}` : 0,
         parseInt(isAddLiquidityEnabled ? liquidityPercentage : 0),
       ];
+      console.log(start);
+      console.log(end);
+      console.log(unlock);
       const timestamps = [
-        `0x${BigNumber(start.getTime()).div(1000).decimalPlaces(0, 1).toString(16)}`,
+        `0x${BigNumber(start).div(1000).decimalPlaces(0, 1).toString(16)}`,
+        // `0x${BigNumber(start)}`,
         `0x${BigNumber(end.getTime()).div(1000).decimalPlaces(0, 1).toString(16)}`,
         `0x${BigNumber(unlock.getTime()).div(1000).decimalPlaces(0, 1).toString(16)}`,
       ];

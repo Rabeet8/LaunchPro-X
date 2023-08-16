@@ -20,7 +20,10 @@ const LockerInfoRenderer = (props) => {
   const LockerContract = useLockerContract(lockerAddress, true)
 
   const poolContext = usePoolContext();
+  console.log(lockerAddress)
+
   let lockerInfo = poolContext.allLocker[lockerAddress];
+  console.log(lockerInfo)
   // locker info se info nhi arahi
 
   if (!lockerInfo) {

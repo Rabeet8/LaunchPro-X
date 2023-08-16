@@ -11,6 +11,8 @@ export const useIPFS = () => {
       ipfsInfuraProjectSecret,
     }
   } = useApplicationContext();
+  console.log(ipfsInfuraProjectId);
+  console.log(ipfsInfuraProjectSecret);
 
   const projectId = ipfsInfuraProjectId || process.env.REACT_APP_INFURA_IPFS_KEY;
   const projectSecret = ipfsInfuraProjectSecret || process.env.REACT_APP_INFURA_IPFS_SECRET;
@@ -29,6 +31,7 @@ export const useIPFS = () => {
           authorization: auth,
         },
       });
+      // return create("https://ipfs.infura.io:5001/api/v0");
     } catch (error) {
       console.error('Failed to get IFPS', error)
       return null
