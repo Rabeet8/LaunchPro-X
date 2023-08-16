@@ -198,12 +198,7 @@ const Navigation = () => {
         </LinkContainer>
   
           </Dropdown.Item>
-          <Dropdown.Item>
-          <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/fairlaunch">
-          <Nav.Link>FairLaunch</Nav.Link>
-        </LinkContainer>
-  
-          </Dropdown.Item>
+          
         </Dropdown.Menu>
         </Dropdown.Toggle>
        
