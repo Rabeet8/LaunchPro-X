@@ -9,15 +9,17 @@ import LongLocker from "../Card/longLocker";
 const LockerList = (props) => {
   const [limit, setLimit] = useState(5);
   const [loading, setLoading] = useState(false);
-  const [lockersAddresses, setLockersAddresses] = useState([])
+  const [lockersAddresses, setLockersAddresses] = useState([]);
 
   const { tokenAddress, owner, showZero, showUserLockers } = props;
 
-  const { allLocker, allLockerAddress, userLockersAddresses } = usePoolContext();
-
+  const { allLocker, allLockerAddress, userLockersAddresses } =
+    usePoolContext();
 
   useEffect(() => {
-    setLockersAddresses(showUserLockers ? userLockersAddresses : allLockerAddress);
+    setLockersAddresses(
+      showUserLockers ? userLockersAddresses : allLockerAddress
+    );
   }, [showUserLockers, userLockersAddresses, allLockerAddress]);
 
   if (!lockersAddresses.length) {
@@ -30,6 +32,9 @@ const LockerList = (props) => {
   const loadmore = (amount) => {
     setLimit((p) => (p < lockersAddresses.length ? p + amount : p));
   };
+
+  
+ 
 
   return (
     <s.Container ai="center">
@@ -48,7 +53,10 @@ const LockerList = (props) => {
               }
             }
             if (owner && owner !== "") {
-              if (allLocker[lockerAddress]?.owner.toLowerCase() !== owner.toLowerCase()) {
+              if (
+                allLocker[lockerAddress]?.owner.toLowerCase() !==
+                owner.toLowerCase()
+              ) {
                 return null;
               }
             }

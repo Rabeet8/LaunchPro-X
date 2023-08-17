@@ -55,7 +55,7 @@ const LockerInfoRenderer = (props) => {
           flex: 3,
         }}
       >
-        <h1>helelllos</h1>
+    
         {/* IDO Information */}
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Locker name</s.TextID>

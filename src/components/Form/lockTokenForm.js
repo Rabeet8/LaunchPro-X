@@ -12,6 +12,8 @@ import { useApplicationContext } from "../../context/applicationContext";
 import { useWeb3React } from "@web3-react/core";
 import { useTokenContract } from "../../hooks/useContract";
 import Loader from "../Loader";
+import { database } from '../../../src/firebase'
+import { getDatabase, ref,child, set,push } from "firebase/database";
 
 const styles = {
   root: {
@@ -176,12 +178,57 @@ const LockTokenForm = () => {
       if (LockerCreatedIndex || LockerCreatedIndex === 0){
         navigate(`../locker/${receipt.events[LockerCreatedIndex].args.lockerAddress}`)
       }
+      console.log("Locker Locked Details:");
+      console.log("Name:", name);
+      console.log("Token Address:", tokenAddress);
+
+      console.log("Token Name:", tokenName);
+      console.log("Lock Amount:", tokenDistributed);
+      console.log("Withdrawer:", withdrawer);
+      console.log("Withdraw Time:", withdrawTime);
+       writeUserData(name,tokenAddress,tokenDistributed,withdrawer)
+
+
     } catch (error) {
       console.log(error);
     } finally {
       setLoading(false);
     }
   };
+
+  function writeUserData(lockerName, tokenAddress, lockAmount, withdrawalAddress) {
+    const newUsersKey = push(child(ref(database), 'users')).key;
+
+    var flag = true;
+    // const db = getDatabase();
+    if (flag) {
+      set(ref(database, 'users/' + newUsersKey), {
+      
+        name: lockerName,
+        token: tokenAddress,
+        Amount : lockAmount,
+        withdrawer:withdrawalAddress,
+        userId: newUsersKey
+
+      });
+      flag = false;
+
+    }
+
+   
+    //  push(ref(database,'users'),{
+      
+    //   name: lockerName,
+    //   token: tokenAddress,
+    //   Amount : lockAmount,
+    //   withdrawer:withdrawalAddress
+    // });
+    // console.log(keys); 
+    console.log(newUsersKey);
+    console.log("done")
+  }
+
+  
 
   return (
     <s.Card
