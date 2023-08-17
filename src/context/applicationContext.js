@@ -162,7 +162,6 @@ export const ApplicationContextProvider = ({ children }) => {
 
   const value = {
     isAppConfigured,
-
     domain,
     isAdmin,
     domainSettings,
