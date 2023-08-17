@@ -201,6 +201,29 @@ const LockTokenForm = () => {
 
     var flag = true;
     // const db = getDatabase();
+
+    // should be like :
+    // Address (key) : {
+      // chainId (key): [
+        // {
+          //  name: lockerName,
+        // token: tokenAddress,
+        // Amount : lockAmount,
+        // withdrawer:withdrawalAddress,
+        // userId: newUsersKey
+        // }
+      // ],
+      // chainId (key): [
+        // {
+          //  name: lockerName,
+        // token: tokenAddress,
+        // Amount : lockAmount,
+        // withdrawer:withdrawalAddress,
+        // userId: newUsersKey
+        // }
+      // ] 
+    // }
+    
     if (flag) {
       set(ref(database, 'users/' + newUsersKey), {
       
