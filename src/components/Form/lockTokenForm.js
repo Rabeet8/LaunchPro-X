@@ -204,18 +204,26 @@ const LockTokenForm = () => {
 
     // should be like :
     // Address (key) : {
-      // chainId (key): [
+      // chainId (key): [ // this array should be fetched whole, we can then map this array and also add the locker address in this array
+        // {
+          //  name: lockerName,
+          //lockerAddress: "", // this should be added
+        // token: tokenAddress,
+        // Amount : lockAmount,
+        // withdrawer:withdrawalAddress,
+        // userId: newUsersKey
+        // },
         // {
           //  name: lockerName,
         // token: tokenAddress,
         // Amount : lockAmount,
         // withdrawer:withdrawalAddress,
         // userId: newUsersKey
-        // }
+        // },
       // ],
       // chainId (key): [
         // {
-          //  name: lockerName,
+        //  name: lockerName,
         // token: tokenAddress,
         // Amount : lockAmount,
         // withdrawer:withdrawalAddress,
@@ -223,7 +231,7 @@ const LockTokenForm = () => {
         // }
       // ] 
     // }
-    
+
     if (flag) {
       set(ref(database, 'users/' + newUsersKey), {
       
