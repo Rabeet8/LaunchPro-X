@@ -159,9 +159,12 @@ export const ApplicationContextProvider = ({ children }) => {
   const TokenLockerFactoryContract = useLockerFactoryContract(TokenLockerFactoryAddress, true);
   const IDOFactoryContract = useIDOFactoryContract(IDOFactoryAddress, true);
   const MultisendContract = useMultisendContract(MultisendAddress, true);
+  const webSocketRPC = networks?.[chainId]?.webSocketRPC;
+  
 
   const value = {
     isAppConfigured,
+    webSocketRPC,
     domain,
     isAdmin,
     domainSettings,

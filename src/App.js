@@ -37,13 +37,16 @@ function App() {
       contracts,
       isLockerEnabled
     },
+    webSocketRPC,
+    IDOFactoryAddress,
+    TokenLockerFactoryAddress,
     isDomainDataFetching,
     isDomainDataFetched,
   } = useApplicationContext();
 
   useEffect(() => {
     if (chainId && isAppConfigured) {
-      dispatch(fetchContract(chainId, networks, contracts));
+      dispatch(fetchContract(webSocketRPC, IDOFactoryAddress, TokenLockerFactoryAddress));
     }
   }, [dispatch, account, chainId, isAppConfigured, networks, contracts]);
 
