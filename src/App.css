@@ -17,11 +17,11 @@
   --upper-card: #151516;
   --unfocus: #0e0e0e;
   --disable: #6D6E71;
-  --background: rgb(0, 0, 0);
+  --background: rgb(255, 255, 255);
   /* --background: #006FB9; */
   --blue: #1e90ff;
   --white: #ffffff;
-  --text: #ffffff;
+  --text: #000000;
   --secondary-color: #989b9c;
   --text-secondary: #232227;
   --button: #005987;
