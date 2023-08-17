@@ -27,34 +27,34 @@ export const ApplicationContextProvider = ({ children }) => {
   } = useDomainData();
 
 
-  const [FeeTokenAddress, setFeeTokenAddress] = useState(domainSettings?.contracts?.[chainId]?.FeeTokenAddress|| '');
-  const [IDOFactoryAddress, setIDOFactoryAddress] = useState(domainSettings?.contracts?.[chainId]?.IDOFactoryAddress|| '');
-  const [TokenLockerFactoryAddress, setTokenLockerFactoryAddress] = useState(domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress || '');
+  const [FeeTokenAddress, setFeeTokenAddress] = useState(networks?.[chainId]?.FeeTokenAddress|| '');
+  const [IDOFactoryAddress, setIDOFactoryAddress] = useState(networks?.[chainId]?.IDOFactoryAddress|| '');
+  const [TokenLockerFactoryAddress, setTokenLockerFactoryAddress] = useState(networks?.[chainId]?.TokenLockerFactoryAddress || '');
   const [MultisendAddress, setMultisendAddress] = useState(networks?.[chainId]?.multiSend || '');
 
   const [isAppConfigured, setIsAppConfigured] = useState(Boolean(
-    domainSettings?.contracts?.[chainId]?.FeeTokenAddress
-    && domainSettings?.contracts?.[chainId]?.IDOFactoryAddress
-    && domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress
-    && domainSettings?.networks?.[chainId]?.webSocketRPC
-    && domainSettings?.admin
+    networks?.[chainId]?.FeeTokenAddress
+    && networks?.[chainId]?.IDOFactoryAddress
+    && networks?.[chainId]?.TokenLockerFactoryAddress
+    && networks?.[chainId]?.webSocketRPC
+    // && domainSettings?.admin
     // && domainSettings?.ipfsInfuraDedicatedGateway
     // && domainSettings?.ipfsInfuraProjectId
     // && domainSettings?.ipfsInfuraProjectSecret
   ));
 
   useEffect(() => {
-    setFeeTokenAddress(domainSettings?.contracts?.[chainId]?.FeeTokenAddress|| '');
-    setIDOFactoryAddress(domainSettings?.contracts?.[chainId]?.IDOFactoryAddress|| '');
-    setTokenLockerFactoryAddress(domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress || '');
+    setFeeTokenAddress(networks?.[chainId]?.FeeTokenAddress|| '');
+    setIDOFactoryAddress(networks?.[chainId]?.IDOFactoryAddress|| '');
+    setTokenLockerFactoryAddress(networks?.[chainId]?.TokenLockerFactoryAddress || '');
     setMultisendAddress(networks?.[chainId]?.multiSend || '');
 
     setIsAppConfigured(Boolean(
-      domainSettings?.contracts?.[chainId]?.FeeTokenAddress
-      && domainSettings?.contracts?.[chainId]?.IDOFactoryAddress
-      && domainSettings?.contracts?.[chainId]?.TokenLockerFactoryAddress
-      && domainSettings?.networks?.[chainId]?.webSocketRPC
-      && domainSettings?.admin
+      networks?.[chainId]?.FeeTokenAddress
+      && networks?.[chainId]?.IDOFactoryAddress
+      && networks?.[chainId]?.TokenLockerFactoryAddress
+      && networks?.[chainId]?.webSocketRPC
+      // && domainSettings?.admin
       // && domainSettings?.ipfsInfuraDedicatedGateway
       // && domainSettings?.ipfsInfuraProjectId
       // && domainSettings?.ipfsInfuraProjectSecret

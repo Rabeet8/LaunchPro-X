@@ -36,6 +36,7 @@ export const networks = {
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
+    webSocketRPC: "",
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -60,6 +61,7 @@ export const networks = {
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
+    webSocketRPC: "",
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -84,6 +86,7 @@ export const networks = {
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
+    webSocketRPC: "",
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -108,6 +111,7 @@ export const networks = {
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
+    webSocketRPC: "",
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -132,6 +136,7 @@ export const networks = {
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
+    webSocketRPC: "",
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -175,9 +180,10 @@ export const networks = {
     multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     multiSend: "0x0019A5B90308A6f0ccC9fA1Bd113bB8257231a7b",
-    FeeTokenAddress: "",
-    IDOFactoryAddress: "",
-    TokenLockerFactoryAddress: "",
+    FeeTokenAddress: "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
+    IDOFactoryAddress: "0xBdf917b7f06F5436E2981E26A34069B2224964Ac",
+    TokenLockerFactoryAddress: "0xaA4076B21D863dEA2f7862879650dD54061cFe01",
+    webSocketRPC: "https://goerli.infura.io/v3/",
     fromBlock: 8385000,
     baseCurrency: {
       decimals: 18,

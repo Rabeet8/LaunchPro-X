@@ -43,7 +43,7 @@ const LockTokenForm = () => {
   const [tokenLoading, setTokenLoading] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const {account, library } = useWeb3React();
+  const {account, chainId, library } = useWeb3React();
 
   const tokenContract = useTokenContract(tokenAddress);
   const tokenContractForChecking = useTokenContract(tokenAddressForChecking);
