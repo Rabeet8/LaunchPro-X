@@ -1,5 +1,6 @@
 import { Checkbox, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { useWeb3React } from "@web3-react/core";
 import { useSelector } from "react-redux";
 import LockerList from "../components/Modal/lockerList";
 import * as s from "../styles/global";
@@ -11,6 +12,7 @@ const  Locker = (props) => {
   const [address, setAddress] = useState("aasd");
   const contract = useSelector((state) => state.contract);
   const [showZero, setShowZero] = useState(0);
+  const { account, chainId } = useWeb3React();
 
   if (!contract.web3) {
     return null;
@@ -27,20 +29,21 @@ const  Locker = (props) => {
   // console.log(data.id)
   // });
 
-  const starCountRef = ref(database, "users/");
+  const starCountRef = ref(database, `${account}/${chainId}`);
 onValue(starCountRef, (snapshot) => {
   const data = snapshot.val();
+  console.log(data);  
 
   // `data` is an object containing user IDs as keys
   // You can iterate through the user IDs and access their data
-  for (const userId in data) {
-    const user = data[userId];
-    console.log(`User ID: ${userId}`);
-    console.log(`Name: ${user.name}`);
-    console.log(`Amount: ${user.Amount}`);
-    console.log(`Token: ${user.token}`);
-    console.log("-----");
-  }
+  // for (const userId in data) {
+  //   const user = data[userId];
+  //   // console.log(`User ID: ${userId}`);
+  //   console.log(`Name: ${user.name}`);
+  //   console.log(`Amount: ${user.Amount}`);
+  //   console.log(`Token: ${user.token}`);
+  //   console.log("-----");
+  // }
 });
 
   return (

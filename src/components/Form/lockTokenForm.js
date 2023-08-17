@@ -1,7 +1,7 @@
 import { withStyles } from "@material-ui/core/styles";
 import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { TextField, InputAdornment} from "@mui/material";
+import { TextField, InputAdornment } from "@mui/material";
 import BigNumber from "bignumber.js";
 import React, { useEffect, useRef, useState } from "react";
 import { Badge } from "react-bootstrap";
@@ -13,7 +13,7 @@ import { useWeb3React } from "@web3-react/core";
 import { useTokenContract } from "../../hooks/useContract";
 import Loader from "../Loader";
 import { database } from '../../../src/firebase';
-import { getDatabase, ref,child, set,push } from "firebase/database";
+import { getDatabase, ref, onValue, child, set, push } from "firebase/database";
 
 const styles = {
   root: {
@@ -43,7 +43,7 @@ const LockTokenForm = () => {
   const [tokenLoading, setTokenLoading] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const {account, chainId, library } = useWeb3React();
+  const { account, chainId, library } = useWeb3React();
 
   const tokenContract = useTokenContract(tokenAddress);
   const tokenContractForChecking = useTokenContract(tokenAddressForChecking);
@@ -82,7 +82,7 @@ const LockTokenForm = () => {
         } else {
           setDecimals(-1);
           await utils.timeout(100);
-      }
+        }
       } catch (error) {
         console.log('checkAndSetTokensDetails Error: ', error);
         setDecimals(-1);
@@ -99,7 +99,7 @@ const LockTokenForm = () => {
       setTotalSupply("");
       setTokenSymbol("");
       setTokenApprove("0");
-      if(tokenAddressForChecking !== "") {
+      if (tokenAddressForChecking !== "") {
         // TODO: show user Error address is not correct
       }
     }
@@ -170,24 +170,25 @@ const LockTokenForm = () => {
       //0x9c1A98c96F756B0dA5931d2d62945a94c336DF3f
 
       const receipt = await tx.wait();
-      console.log("txData ==> ",tx);
-      console.log("rcptData ==> ",receipt);
+      console.log("txData ==> ", tx);
+      console.log("rcptData ==> ", receipt);
       triggerUpdateAccountData();
       // simple yahan se address record karo aur wahan jahan render horahy wahan get krlo
       const LockerCreatedIndex = receipt?.events?.findIndex?.((i) => i?.event === "LockerCreated");
-      if (LockerCreatedIndex || LockerCreatedIndex === 0){
+      if (LockerCreatedIndex || LockerCreatedIndex === 0) {
         navigate(`../locker/${receipt.events[LockerCreatedIndex].args.lockerAddress}`)
+        console.log("Locker Locked Details:", receipt.events[LockerCreatedIndex].args.lockerAddress);
+        writeUserData(name, tokenAddress, receipt.events[LockerCreatedIndex].args.lockerAddress, withdrawTime, tokenDistributed, withdrawer, account, chainId);
       }
-      console.log("Locker Locked Details:");
-      console.log("Name:", name);
-      console.log("Token Address:", tokenAddress);
 
-      console.log("Token Name:", tokenName);
-      console.log("Lock Amount:", tokenDistributed);
-      console.log("Withdrawer:", withdrawer);
-      console.log("Withdraw Time:", withdrawTime);
+      // console.log("Name:", name);
+      // console.log("Token Address:", tokenAddress);
+
+      // console.log("Token Name:", tokenName);
+      // console.log("Lock Amount:", tokenDistributed);
+      // console.log("Withdrawer:", withdrawer);
+      // console.log("Withdraw Time:", withdrawTime);
       //  writeUserData(name,tokenAddress,tokenDistributed,withdrawer)
-      writeUserData(name, tokenAddress, tokenDistributed, withdrawer, account, chainId,);
 
 
 
@@ -198,62 +199,85 @@ const LockTokenForm = () => {
     }
   };
 
-   // should be like :
-    // Address (key) : {
-      // chainId (key): [ // this array should be fetched whole, we can then map this array and also add the locker address in this array
-        // {
-          //  name: lockerName,
-          //lockerAddress: "", // this should be added
-        // token: tokenAddress,
-        // Amount : lockAmount,
-        // withdrawer:withdrawalAddress,
-        // userId: newUsersKey
-        // },
-        // {
-          //  name: lockerName,
-        // token: tokenAddress,
-        // Amount : lockAmount,
-        // withdrawer:withdrawalAddress,
-        // userId: newUsersKey
-        // },
-      // ],
-      // chainId (key): [
-        // {
-        //  name: lockerName,
-        // token: tokenAddress,
-        // Amount : lockAmount,
-        // withdrawer:withdrawalAddress,
-        // userId: newUsersKey
-        // }
-      // ] 
-    // }
-
- 
+  // should be like :
+  // Address (key) : {
+  // chainId (key): [ // this array should be fetched whole, we can then map this array and also add the locker address in this array
+  // {
+  //  name: lockerName,
+  //lockerAddress: "", // this should be added
+  // token: tokenAddress,
+  // Amount : lockAmount,
+  // withdrawer:withdrawalAddress,
+  // userId: newUsersKey
+  // },
+  // {
+  //  name: lockerName,
+  // token: tokenAddress,
+  // Amount : lockAmount,
+  // withdrawer:withdrawalAddress,
+  // userId: newUsersKey
+  // },
+  // ],
+  // chainId (key): [
+  // {
+  //  name: lockerName,
+  // token: tokenAddress,
+  // Amount : lockAmount,
+  // withdrawer:withdrawalAddress,
+  // userId: newUsersKey
+  // }
+  // ] 
+  // }
 
 
-  function writeUserData(lockerName, tokenAddress, lockAmount, withdrawalAddress, account, chainId) {
-    // Create a reference to the user's data using their account address and chain ID
-    const userRef = ref(database, `${account}/${chainId}`);
-  
-    // Push the new data under the user's reference
-    // const newUserDataRef = set(userRef); 
-   
-  
-    set(userRef, {
-      name: lockerName,
-      token: tokenAddress,
-      Amount: lockAmount,
-      withdrawer: withdrawalAddress,
-      lockerAddress: "", // You can set this later when you have the locker address
-      // userId: newUsersKey, // No need for userId in this structure
-    });
-  
-  
-    console.log("done");
+
+
+  function writeUserData(lockerName, tokenAddress, lockerAddress, unlockTime, lockAmount, withdrawalAddress, account, chainId) {
+    try {
+      // Create a reference to the user's data using their account address and chain ID
+      const userRef = ref(database, `${account}/${chainId}`);
+
+      // Push the new data under the user's reference
+      // const newUserDataRef = set(userRef); 
+      // const starCountRef = ref(database, `${account}/${chainId}`);
+      let data;
+      onValue(userRef, (snapshot) => {
+        data = snapshot.val();
+      })
+      console.log(data);
+      if (data == null) {
+        set(userRef,
+          [
+            {
+              name: lockerName,
+              token: tokenAddress,
+              Amount: lockAmount,
+              unlockTime: unlockTime,
+              withdrawer: withdrawalAddress,
+              lockerAddress: lockerAddress, // You can set this later when you have the locker address
+            }
+          ]
+        );
+      } else {
+        if (Array.isArray(data)) {
+          data.push({
+            name: lockerName,
+            token: tokenAddress,
+            Amount: lockAmount,
+            withdrawer: withdrawalAddress,
+            lockerAddress: lockerAddress,
+          })
+        };
+        set(userRef, data);
+      }
+      console.log("done");
+    } catch (e) {
+      console.log(e)
+    }
   }
-  
 
-  
+
+
 
   return (
     <s.Card
@@ -269,9 +293,9 @@ const LockTokenForm = () => {
         {tokenLoading ? (
           <Badge bg="secondary">Token Address Checking...</Badge>
         ) : (decimals > 0 &&
-        tokenName !== "" &&
-        tokenSymbol !== "" &&
-        totalSupply !== "") ? (
+          tokenName !== "" &&
+          tokenSymbol !== "" &&
+          totalSupply !== "") ? (
           <s.Container fd="row" style={{ flexWrap: "wrap" }}>
             <Badge bg="success">{"Name: " + tokenName}</Badge>
             <s.SpacerXSmall />
@@ -286,7 +310,7 @@ const LockTokenForm = () => {
             <s.SpacerXSmall />
             <Badge bg="success">{"Symbol: " + tokenSymbol}</Badge>
           </s.Container>
-        ) :  (tokenAddress !== "" && (
+        ) : (tokenAddress !== "" && (
           <Badge bg="danger">{"Contract not valid"}</Badge>
         ))
         }
@@ -361,7 +385,7 @@ const LockTokenForm = () => {
 
       <s.Container ai="center">
         {BigNumber(tokenApprove) >= BigNumber(tokenDistributed) &&
-        tokenDistributed !== "0" ? (
+          tokenDistributed !== "0" ? (
           <s.button
             disabled={
               loading ||
