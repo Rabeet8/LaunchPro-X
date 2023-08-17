@@ -23,7 +23,7 @@ export default function IDOInfo({props}) {
 
   return (
     <s.Container flex={1}>
-      <s.TextTitle fullWidth>{props.title}</s.TextTitle>
+      {/* <s.TextTitle fullWidth>{props.title}</s.TextTitle> */}
       <s.SpacerSmall />
       <s.TextID>
         If I pay 1 {baseCurrencySymbol} how much token I will get?
