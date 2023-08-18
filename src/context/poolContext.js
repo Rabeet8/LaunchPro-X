@@ -46,8 +46,9 @@ export const PoolContextProvider = ({ children }) => {
           });
         });
       }, 500);
-
       return () => clearTimeout(delayDebounceFn);
+      console.log("pool info", allPools );
+      console.log("mai bhi chal rha");
     }
   }, [allPoolAddress, ipfsInfuraDedicatedGateway]);
 
@@ -119,33 +120,10 @@ export const PoolContextProvider = ({ children }) => {
         setAllPoolAddress(data);
       }
       console.log(data);
+
     });
   }, [dispatch, chainId]);
 
-  // useEffect(() => {
-  //   if (!contract.TokenLockerFactory) {
-  //     return null;
-  //   }
-
-  //   if (lockerCreatedEvent) {
-  //     lockerCreatedEvent.unsubscribe();
-  //     setAllLockerAddress([]);
-  //     setUserLockersAddresses([]);
-  //   }
-
-  //   setLockerCreatedEvent(
-  //     contract.TokenLockerFactory.events.LockerCreated(
-  //       {
-  //         fromBlock: networks?.[chainId]?.fromBlock || 0,
-  //       },
-  //       function (error, event) {
-  //         if (event) {
-  //           setAllLockerAddress((p) => [...p, event.returnValues.lockerAddress]);
-  //         }
-  //       }
-  //     )
-  //   );
-  // }, [dispatch, contract]);
 
   useEffect(() => {
     setAllLockerAddress([]);

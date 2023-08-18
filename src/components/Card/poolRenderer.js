@@ -42,6 +42,7 @@ const PoolRenderer = (props) => {
   const hasEnded = parseInt(end) < (parseInt(Date.now() / 1000));
 
   useEffect(() => {
+    console.log(start);
     if (idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash) {
       setImage(getValidImageUrl(idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway));
     }
