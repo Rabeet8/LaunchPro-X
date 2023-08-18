@@ -3,7 +3,7 @@ import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { TextField, InputAdornment} from "@mui/material";
 import BigNumber from "bignumber.js";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import * as s from "../../styles/global";
@@ -12,7 +12,7 @@ import { useApplicationContext } from "../../context/applicationContext";
 import { useWeb3React } from "@web3-react/core";
 import { useTokenContract } from "../../hooks/useContract";
 import Loader from "../Loader";
-import { database } from '../../../src/firebase'
+import { database } from '../../../src/firebase';
 import { getDatabase, ref,child, set,push } from "firebase/database";
 
 const styles = {
@@ -186,7 +186,9 @@ const LockTokenForm = () => {
       console.log("Lock Amount:", tokenDistributed);
       console.log("Withdrawer:", withdrawer);
       console.log("Withdraw Time:", withdrawTime);
-       writeUserData(name,tokenAddress,tokenDistributed,withdrawer)
+      //  writeUserData(name,tokenAddress,tokenDistributed,withdrawer)
+      writeUserData(name, tokenAddress, tokenDistributed, withdrawer, account, chainId,);
+
 
 
     } catch (error) {
@@ -196,13 +198,7 @@ const LockTokenForm = () => {
     }
   };
 
-  function writeUserData(lockerName, tokenAddress, lockAmount, withdrawalAddress) {
-    const newUsersKey = push(child(ref(database), 'users')).key;
-
-    var flag = true;
-    // const db = getDatabase();
-
-    // should be like :
+   // should be like :
     // Address (key) : {
       // chainId (key): [ // this array should be fetched whole, we can then map this array and also add the locker address in this array
         // {
@@ -232,32 +228,30 @@ const LockTokenForm = () => {
       // ] 
     // }
 
-    if (flag) {
-      set(ref(database, 'users/' + newUsersKey), {
-      
-        name: lockerName,
-        token: tokenAddress,
-        Amount : lockAmount,
-        withdrawer:withdrawalAddress,
-        userId: newUsersKey
+ 
 
-      });
-      flag = false;
 
-    }
-
+  function writeUserData(lockerName, tokenAddress, lockAmount, withdrawalAddress, account, chainId) {
+    // Create a reference to the user's data using their account address and chain ID
+    const userRef = ref(database, `${account}/${chainId}`);
+  
+    // Push the new data under the user's reference
+    // const newUserDataRef = set(userRef); 
    
-    //  push(ref(database,'users'),{
-      
-    //   name: lockerName,
-    //   token: tokenAddress,
-    //   Amount : lockAmount,
-    //   withdrawer:withdrawalAddress
-    // });
-    // console.log(keys); 
-    console.log(newUsersKey);
-    console.log("done")
+  
+    set(userRef, {
+      name: lockerName,
+      token: tokenAddress,
+      Amount: lockAmount,
+      withdrawer: withdrawalAddress,
+      lockerAddress: "", // You can set this later when you have the locker address
+      // userId: newUsersKey, // No need for userId in this structure
+    });
+  
+  
+    console.log("done");
   }
+  
 
   
 

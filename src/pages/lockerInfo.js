@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import LockerInfoRenderer from "../components/Card/lockerInfoRenderer";
 import * as s from "../styles/global";
+import LockTokenForm from "../components/Form/lockTokenForm";
 
 const LockerInfo = () => {
   const { lockerAddress } = useParams();
@@ -16,6 +17,7 @@ const LockerInfo = () => {
 
         
         <LockerInfoRenderer lockerAddress={lockerAddress} />
+        <LockTokenForm lockerAddress={lockerAddress}/>
       </s.Container>
     </s.Container>
   );

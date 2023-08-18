@@ -24,7 +24,7 @@ const LockerInfoRenderer = (props) => {
 
   let lockerInfo = poolContext.allLocker[lockerAddress];
   console.log(lockerInfo)
-  // locker info se info nhi arahi
+  
 
   if (!lockerInfo) {
     return null;

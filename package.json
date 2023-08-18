@@ -5,8 +5,8 @@
   "homepage": ".",
   "dependencies": {
     "@date-io/date-fns": "^2.13.1",
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@ethersproject/contracts": "^5.7.0",
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
