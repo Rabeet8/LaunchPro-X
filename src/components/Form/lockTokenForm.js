@@ -178,7 +178,7 @@ const LockTokenForm = () => {
       if (LockerCreatedIndex || LockerCreatedIndex === 0) {
         navigate(`../locker/${receipt.events[LockerCreatedIndex].args.lockerAddress}`)
         console.log("Locker Locked Details:", receipt.events[LockerCreatedIndex].args.lockerAddress);
-        writeUserData(name, tokenAddress, receipt.events[LockerCreatedIndex].args.lockerAddress, withdrawTime, tokenDistributed, withdrawer, account, chainId);
+        writeUserData(receipt.events[LockerCreatedIndex].args.lockerAddress, chainId);
       }
 
       // console.log("Name:", name);
@@ -232,10 +232,54 @@ const LockTokenForm = () => {
 
 
 
-  function writeUserData(lockerName, tokenAddress, lockerAddress, unlockTime, lockAmount, withdrawalAddress, account, chainId) {
+  // function writeUserData(lockerName, tokenAddress, lockerAddress, unlockTime, lockAmount, withdrawalAddress, account, chainId) {
+  //   try {
+  //     // Create a reference to the user's data using their account address and chain ID
+  //     const userRef = ref(database, `${account}/${chainId}`);
+
+  //     // Push the new data under the user's reference
+  //     // const newUserDataRef = set(userRef); 
+  //     // const starCountRef = ref(database, `${account}/${chainId}`);
+  //     let data;
+  //     onValue(userRef, (snapshot) => {
+  //       data = snapshot.val();
+  //     })
+  //     console.log(data);
+  //     if (data == null) {
+  //       set(userRef,
+  //         [
+  //           {
+  //             name: lockerName,
+  //             token: tokenAddress,
+  //             Amount: lockAmount,
+  //             unlockTime: unlockTime,
+  //             withdrawer: withdrawalAddress,
+  //             lockerAddress: lockerAddress, // You can set this later when you have the locker address
+  //           }
+  //         ]
+  //       );
+  //     } else {
+  //       if (Array.isArray(data)) {
+  //         data.push({
+  //           name: lockerName,
+  //           token: tokenAddress,
+  //           Amount: lockAmount,
+  //           withdrawer: withdrawalAddress,
+  //           lockerAddress: lockerAddress,
+  //         })
+  //       };
+  //       set(userRef, data);
+  //     }
+  //     console.log("done");
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
+
+  function writeUserData(lockerAddress, chainId) {
     try {
       // Create a reference to the user's data using their account address and chain ID
-      const userRef = ref(database, `${account}/${chainId}`);
+      const userRef = ref(database, `${chainId}`);
 
       // Push the new data under the user's reference
       // const newUserDataRef = set(userRef); 
@@ -248,25 +292,12 @@ const LockTokenForm = () => {
       if (data == null) {
         set(userRef,
           [
-            {
-              name: lockerName,
-              token: tokenAddress,
-              Amount: lockAmount,
-              unlockTime: unlockTime,
-              withdrawer: withdrawalAddress,
-              lockerAddress: lockerAddress, // You can set this later when you have the locker address
-            }
+            lockerAddress
           ]
         );
       } else {
         if (Array.isArray(data)) {
-          data.push({
-            name: lockerName,
-            token: tokenAddress,
-            Amount: lockAmount,
-            withdrawer: withdrawalAddress,
-            lockerAddress: lockerAddress,
-          })
+          data.push(lockerAddress)
         };
         set(userRef, data);
       }

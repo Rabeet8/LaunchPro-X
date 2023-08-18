@@ -9,7 +9,7 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import { database } from "../../src/firebase";
 
 const  Locker = (props) => {
-  const [address, setAddress] = useState("aasd");
+  const [address, setAddress] = useState("");
   const contract = useSelector((state) => state.contract);
   const [showZero, setShowZero] = useState(0);
   const { account, chainId } = useWeb3React();
@@ -21,30 +21,6 @@ const  Locker = (props) => {
   const handleShowZero = (e) => {
     setShowZero(!showZero);
   };
-
-  // const starCountRef = ref(database, "users/" );
-  // onValue(starCountRef, (snapshot) => {
-  //   const data = snapshot.val();
-  // //  console.log(data['-Nc20uo2YnJAcg6zw3nY']);
-  // console.log(data.id)
-  // });
-
-  const starCountRef = ref(database, `${account}/${chainId}`);
-onValue(starCountRef, (snapshot) => {
-  const data = snapshot.val();
-  console.log(data);  
-
-  // `data` is an object containing user IDs as keys
-  // You can iterate through the user IDs and access their data
-  // for (const userId in data) {
-  //   const user = data[userId];
-  //   // console.log(`User ID: ${userId}`);
-  //   console.log(`Name: ${user.name}`);
-  //   console.log(`Amount: ${user.Amount}`);
-  //   console.log(`Token: ${user.token}`);
-  //   console.log("-----");
-  // }
-});
 
   return (
     <s.Container ai="center">
@@ -65,7 +41,7 @@ onValue(starCountRef, (snapshot) => {
           utils.typewatch(setAddress(e.target.value), 2000);
         }}
       />
-      <LockerList showZero={showZero} tokenAddress={address} owner = {'abaasd'} showUserLockers={'asdasd'} />
+      <LockerList showZero={showZero} tokenAddress={address} />
     </s.Container>
   );
 };

@@ -3,6 +3,9 @@ import React, { createContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { networks } from "../constants/networksInfo";
 import { utils } from "../utils";
+import { ref, onValue } from "firebase/database";
+import { database } from '../firebase';
+
 import { useApplicationContext } from "./applicationContext";
 
 export const PoolContext = createContext({});
@@ -39,7 +42,7 @@ export const PoolContextProvider = ({ children }) => {
             if (
               owner?.toLowerCase() === account?.toLowerCase()
               || (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
-            ) setUserPoolAddresses((prevUserPoolAddresses) => [ ...prevUserPoolAddresses, idoAddress ])
+            ) setUserPoolAddresses((prevUserPoolAddresses) => [...prevUserPoolAddresses, idoAddress])
           });
         });
       }, 500);
@@ -60,7 +63,7 @@ export const PoolContextProvider = ({ children }) => {
           if (
             owner?.toLowerCase() === account?.toLowerCase()
             || (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
-          ) setUserPoolAddresses((prevUserPoolAddresses) => [ ...prevUserPoolAddresses, idoAddress ])
+          ) setUserPoolAddresses((prevUserPoolAddresses) => [...prevUserPoolAddresses, idoAddress])
 
         });
       });
@@ -77,6 +80,7 @@ export const PoolContextProvider = ({ children }) => {
         });
       });
     }, 500);
+    console.log("mai chal rha")
 
     return () => clearTimeout(delayDebounceFn);
   }, [allLockerAddress]);
@@ -106,30 +110,40 @@ export const PoolContextProvider = ({ children }) => {
     );
   }, [dispatch, contract]);
 
+  // useEffect(() => {
+  //   if (!contract.TokenLockerFactory) {
+  //     return null;
+  //   }
+
+  //   if (lockerCreatedEvent) {
+  //     lockerCreatedEvent.unsubscribe();
+  //     setAllLockerAddress([]);
+  //     setUserLockersAddresses([]);
+  //   }
+
+  //   setLockerCreatedEvent(
+  //     contract.TokenLockerFactory.events.LockerCreated(
+  //       {
+  //         fromBlock: networks?.[chainId]?.fromBlock || 0,
+  //       },
+  //       function (error, event) {
+  //         if (event) {
+  //           setAllLockerAddress((p) => [...p, event.returnValues.lockerAddress]);
+  //         }
+  //       }
+  //     )
+  //   );
+  // }, [dispatch, contract]);
+
   useEffect(() => {
-    if (!contract.TokenLockerFactory) {
-      return null;
-    }
-
-    if (lockerCreatedEvent) {
-      lockerCreatedEvent.unsubscribe();
-      setAllLockerAddress([]);
-      setUserLockersAddresses([]);
-    }
-
-    setLockerCreatedEvent(
-      contract.TokenLockerFactory.events.LockerCreated(
-        {
-          fromBlock: networks?.[chainId]?.fromBlock || 0,
-        },
-        function (error, event) {
-          if (event) {
-            setAllLockerAddress((p) => [...p, event.returnValues.lockerAddress]);
-          }
-        }
-      )
-    );
-  }, [dispatch, contract]);
+    setAllLockerAddress([]);
+    const starCountRef = ref(database, `${chainId}`);
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      setAllLockerAddress(data);
+      console.log(data);
+    });
+  }, [dispatch, chainId]);
 
   useEffect(() => {
     setUserLockersAddresses([])
@@ -139,7 +153,7 @@ export const PoolContextProvider = ({ children }) => {
         if (
           owner?.toLowerCase() === account?.toLowerCase()
           || withdrawer?.toLowerCase() === account?.toLowerCase()
-        ) setUserLockersAddresses((prevUserLockersAddresses) => [ ...prevUserLockersAddresses, lockerAddress ])
+        ) setUserLockersAddresses((prevUserLockersAddresses) => [...prevUserLockersAddresses, lockerAddress])
 
       });
     }, 500);

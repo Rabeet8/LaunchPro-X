@@ -183,7 +183,7 @@ export const networks = {
     FeeTokenAddress: "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
     IDOFactoryAddress: "0xBdf917b7f06F5436E2981E26A34069B2224964Ac",
     TokenLockerFactoryAddress: "0xaA4076B21D863dEA2f7862879650dD54061cFe01",
-    webSocketRPC: "https://goerli.infura.io/v3/",
+    webSocketRPC: "https://ethereum-goerli.publicnode.com",
     fromBlock: 8385000,
     baseCurrency: {
       decimals: 18,
