@@ -85,30 +85,42 @@ export const PoolContextProvider = ({ children }) => {
     return () => clearTimeout(delayDebounceFn);
   }, [allLockerAddress]);
 
+  // useEffect(() => {
+  //   if (!contract?.IDOFactory) {
+  //     return null;
+  //   }
+
+  //   if (IDOCreatedEvent) {
+  //     IDOCreatedEvent.unsubscribe();
+  //     setAllPools([]);
+  //     setUserPoolAddresses([]);
+  //   }
+
+  //   setIDOCreatedEvent(
+  //     contract.IDOFactory.events.IDOCreated(
+  //       {
+  //         fromBlock: networks?.[chainId]?.fromBlock || 0,
+  //       },
+  //       function (error, event) {
+  //         if (event) {
+  //           setAllPoolAddress((p) => [...p, event.returnValues.idoPool]);
+  //         }
+  //       }
+  //     )
+  //   );
+  // }, [dispatch, contract]);
+
   useEffect(() => {
-    if (!contract?.IDOFactory) {
-      return null;
-    }
-
-    if (IDOCreatedEvent) {
-      IDOCreatedEvent.unsubscribe();
-      setAllPools([]);
-      setUserPoolAddresses([]);
-    }
-
-    setIDOCreatedEvent(
-      contract.IDOFactory.events.IDOCreated(
-        {
-          fromBlock: networks?.[chainId]?.fromBlock || 0,
-        },
-        function (error, event) {
-          if (event) {
-            setAllPoolAddress((p) => [...p, event.returnValues.idoPool]);
-          }
-        }
-      )
-    );
-  }, [dispatch, contract]);
+    setAllPoolAddress([]);
+    const starCountRef = ref(database, `IDOData/${chainId}`);
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data != null) {
+        setAllPoolAddress(data);
+      }
+      console.log(data);
+    });
+  }, [dispatch, chainId]);
 
   // useEffect(() => {
   //   if (!contract.TokenLockerFactory) {
@@ -137,10 +149,12 @@ export const PoolContextProvider = ({ children }) => {
 
   useEffect(() => {
     setAllLockerAddress([]);
-    const starCountRef = ref(database, `${chainId}`);
+    const starCountRef = ref(database, `LockerData/${chainId}`);
     onValue(starCountRef, (snapshot) => {
       const data = snapshot.val();
-      setAllLockerAddress(data);
+      if (data != null) {
+        setAllLockerAddress(data);
+      }
       console.log(data);
     });
   }, [dispatch, chainId]);
