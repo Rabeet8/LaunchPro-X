@@ -181,17 +181,6 @@ const LockTokenForm = () => {
         writeUserData(receipt.events[LockerCreatedIndex].args.lockerAddress, chainId);
       }
 
-      // console.log("Name:", name);
-      // console.log("Token Address:", tokenAddress);
-
-      // console.log("Token Name:", tokenName);
-      // console.log("Lock Amount:", tokenDistributed);
-      // console.log("Withdrawer:", withdrawer);
-      // console.log("Withdraw Time:", withdrawTime);
-      //  writeUserData(name,tokenAddress,tokenDistributed,withdrawer)
-
-
-
     } catch (error) {
       console.log(error);
     } finally {
@@ -199,87 +188,11 @@ const LockTokenForm = () => {
     }
   };
 
-  // should be like :
-  // Address (key) : {
-  // chainId (key): [ // this array should be fetched whole, we can then map this array and also add the locker address in this array
-  // {
-  //  name: lockerName,
-  //lockerAddress: "", // this should be added
-  // token: tokenAddress,
-  // Amount : lockAmount,
-  // withdrawer:withdrawalAddress,
-  // userId: newUsersKey
-  // },
-  // {
-  //  name: lockerName,
-  // token: tokenAddress,
-  // Amount : lockAmount,
-  // withdrawer:withdrawalAddress,
-  // userId: newUsersKey
-  // },
-  // ],
-  // chainId (key): [
-  // {
-  //  name: lockerName,
-  // token: tokenAddress,
-  // Amount : lockAmount,
-  // withdrawer:withdrawalAddress,
-  // userId: newUsersKey
-  // }
-  // ] 
-  // }
-
-
-
-
-  // function writeUserData(lockerName, tokenAddress, lockerAddress, unlockTime, lockAmount, withdrawalAddress, account, chainId) {
-  //   try {
-  //     // Create a reference to the user's data using their account address and chain ID
-  //     const userRef = ref(database, `${account}/${chainId}`);
-
-  //     // Push the new data under the user's reference
-  //     // const newUserDataRef = set(userRef); 
-  //     // const starCountRef = ref(database, `${account}/${chainId}`);
-  //     let data;
-  //     onValue(userRef, (snapshot) => {
-  //       data = snapshot.val();
-  //     })
-  //     console.log(data);
-  //     if (data == null) {
-  //       set(userRef,
-  //         [
-  //           {
-  //             name: lockerName,
-  //             token: tokenAddress,
-  //             Amount: lockAmount,
-  //             unlockTime: unlockTime,
-  //             withdrawer: withdrawalAddress,
-  //             lockerAddress: lockerAddress, // You can set this later when you have the locker address
-  //           }
-  //         ]
-  //       );
-  //     } else {
-  //       if (Array.isArray(data)) {
-  //         data.push({
-  //           name: lockerName,
-  //           token: tokenAddress,
-  //           Amount: lockAmount,
-  //           withdrawer: withdrawalAddress,
-  //           lockerAddress: lockerAddress,
-  //         })
-  //       };
-  //       set(userRef, data);
-  //     }
-  //     console.log("done");
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // }
 
   function writeUserData(lockerAddress, chainId) {
     try {
       // Create a reference to the user's data using their account address and chain ID
-      const userRef = ref(database, `${chainId}`);
+      const userRef = ref(database, `LockerData/${chainId}`);
 
       // Push the new data under the user's reference
       // const newUserDataRef = set(userRef); 
