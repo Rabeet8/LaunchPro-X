@@ -71,9 +71,6 @@ function App() {
             ) : !isAppConfigured ? (
               <Manage />
             ) : (
-          // ) : false ? (
-          //   <Manage />
-          // ) : (
               <>
                 <Navigation />
                 <s.Container ai="center">

@@ -176,7 +176,7 @@ export const networks = {
     chainId: 5,
     explorer: "https://goerli.etherscan.io",
     color: "#f6c343",
-    storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
+    // storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
     multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     multiSend: "0x0019A5B90308A6f0ccC9fA1Bd113bB8257231a7b",
