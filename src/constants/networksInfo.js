@@ -176,14 +176,14 @@ export const networks = {
     chainId: 5,
     explorer: "https://goerli.etherscan.io",
     color: "#f6c343",
-    storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
+    // storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
     multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     multiSend: "0x0019A5B90308A6f0ccC9fA1Bd113bB8257231a7b",
     FeeTokenAddress: "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
     IDOFactoryAddress: "0xBdf917b7f06F5436E2981E26A34069B2224964Ac",
     TokenLockerFactoryAddress: "0xaA4076B21D863dEA2f7862879650dD54061cFe01",
-    webSocketRPC: "https://goerli.infura.io/v3/",
+    webSocketRPC: "https://ethereum-goerli.publicnode.com",
     fromBlock: 8385000,
     baseCurrency: {
       decimals: 18,

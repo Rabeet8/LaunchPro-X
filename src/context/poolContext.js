@@ -3,6 +3,9 @@ import React, { createContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { networks } from "../constants/networksInfo";
 import { utils } from "../utils";
+import { ref, onValue } from "firebase/database";
+import { database } from '../firebase';
+
 import { useApplicationContext } from "./applicationContext";
 
 export const PoolContext = createContext({});
@@ -39,12 +42,13 @@ export const PoolContextProvider = ({ children }) => {
             if (
               owner?.toLowerCase() === account?.toLowerCase()
               || (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
-            ) setUserPoolAddresses((prevUserPoolAddresses) => [ ...prevUserPoolAddresses, idoAddress ])
+            ) setUserPoolAddresses((prevUserPoolAddresses) => [...prevUserPoolAddresses, idoAddress])
           });
         });
       }, 500);
-
       return () => clearTimeout(delayDebounceFn);
+      console.log("pool info", allPools );
+      console.log("mai bhi chal rha");
     }
   }, [allPoolAddress, ipfsInfuraDedicatedGateway]);
 
@@ -60,7 +64,7 @@ export const PoolContextProvider = ({ children }) => {
           if (
             owner?.toLowerCase() === account?.toLowerCase()
             || (userData?.totalInvestedETH && userData?.totalInvestedETH !== "0")
-          ) setUserPoolAddresses((prevUserPoolAddresses) => [ ...prevUserPoolAddresses, idoAddress ])
+          ) setUserPoolAddresses((prevUserPoolAddresses) => [...prevUserPoolAddresses, idoAddress])
 
         });
       });
@@ -77,59 +81,61 @@ export const PoolContextProvider = ({ children }) => {
         });
       });
     }, 500);
+    console.log("mai chal rha")
 
     return () => clearTimeout(delayDebounceFn);
   }, [allLockerAddress]);
 
+  // useEffect(() => {
+  //   if (!contract?.IDOFactory) {
+  //     return null;
+  //   }
+
+  //   if (IDOCreatedEvent) {
+  //     IDOCreatedEvent.unsubscribe();
+  //     setAllPools([]);
+  //     setUserPoolAddresses([]);
+  //   }
+
+  //   setIDOCreatedEvent(
+  //     contract.IDOFactory.events.IDOCreated(
+  //       {
+  //         fromBlock: networks?.[chainId]?.fromBlock || 0,
+  //       },
+  //       function (error, event) {
+  //         if (event) {
+  //           setAllPoolAddress((p) => [...p, event.returnValues.idoPool]);
+  //         }
+  //       }
+  //     )
+  //   );
+  // }, [dispatch, contract]);
+
   useEffect(() => {
-    if (!contract?.IDOFactory) {
-      return null;
-    }
+    setAllPoolAddress([]);
+    const starCountRef = ref(database, `IDOData/${chainId}`);
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data != null) {
+        setAllPoolAddress(data);
+      }
+      console.log(data);
 
-    if (IDOCreatedEvent) {
-      IDOCreatedEvent.unsubscribe();
-      setAllPools([]);
-      setUserPoolAddresses([]);
-    }
+    });
+  }, [dispatch, chainId]);
 
-    setIDOCreatedEvent(
-      contract.IDOFactory.events.IDOCreated(
-        {
-          fromBlock: networks?.[chainId]?.fromBlock || 0,
-        },
-        function (error, event) {
-          if (event) {
-            setAllPoolAddress((p) => [...p, event.returnValues.idoPool]);
-          }
-        }
-      )
-    );
-  }, [dispatch, contract]);
 
   useEffect(() => {
-    if (!contract.TokenLockerFactory) {
-      return null;
-    }
-
-    if (lockerCreatedEvent) {
-      lockerCreatedEvent.unsubscribe();
-      setAllLockerAddress([]);
-      setUserLockersAddresses([]);
-    }
-
-    setLockerCreatedEvent(
-      contract.TokenLockerFactory.events.LockerCreated(
-        {
-          fromBlock: networks?.[chainId]?.fromBlock || 0,
-        },
-        function (error, event) {
-          if (event) {
-            setAllLockerAddress((p) => [...p, event.returnValues.lockerAddress]);
-          }
-        }
-      )
-    );
-  }, [dispatch, contract]);
+    setAllLockerAddress([]);
+    const starCountRef = ref(database, `LockerData/${chainId}`);
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data != null) {
+        setAllLockerAddress(data);
+      }
+      console.log(data);
+    });
+  }, [dispatch, chainId]);
 
   useEffect(() => {
     setUserLockersAddresses([])
@@ -139,7 +145,7 @@ export const PoolContextProvider = ({ children }) => {
         if (
           owner?.toLowerCase() === account?.toLowerCase()
           || withdrawer?.toLowerCase() === account?.toLowerCase()
-        ) setUserLockersAddresses((prevUserLockersAddresses) => [ ...prevUserLockersAddresses, lockerAddress ])
+        ) setUserLockersAddresses((prevUserLockersAddresses) => [...prevUserLockersAddresses, lockerAddress])
 
       });
     }, 500);

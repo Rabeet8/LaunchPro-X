@@ -165,8 +165,8 @@ export const ApplicationContextProvider = ({ children }) => {
   const value = {
     isAppConfigured,
     webSocketRPC,
-    domain,
-    isAdmin,
+    // domain,
+    // isAdmin,
     domainSettings,
     isDomainDataFetching,
     isDomainDataFetched,

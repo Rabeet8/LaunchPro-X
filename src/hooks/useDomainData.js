@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useWeb3React } from "@web3-react/core";
 import { getCurrentDomain } from '../utils/utils';
 import { useStorageContract } from './useContract';
+import { networks } from '../constants/networksInfo';
 import { STORAGE_APP_KEY, ZERO_ADDRESS } from '../constants';
 
 const isValidArray = (arr) => Array.isArray(arr) && !!arr.length
@@ -81,7 +82,7 @@ const parseSettings = (settings) => {
 };
 
 export default function useDomainData() {
-  const { account } = useWeb3React();
+  const { account, chainId } = useWeb3React();
 
   const [isAdmin, setIsAdmin] = useState(false);
   const [domainSettings, setDomainSettings] = useState(initialSettings);
@@ -90,21 +91,69 @@ export default function useDomainData() {
   const [domainDataTrigger, setDomainDataTrigger] = useState(false);
   const triggerDomainData = () => setDomainDataTrigger(!domainDataTrigger);
 
-  const storageContract = useStorageContract();
+  // const storageContract = useStorageContract();
 
   const domain = getCurrentDomain();
+
+  //   {
+  //     "contracts": {
+  //         "5": {
+  //             "FeeTokenAddress": "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
+  //             "IDOFactoryAddress": "0xBdf917b7f06F5436E2981E26A34069B2224964Ac",
+  //             "TokenLockerFactoryAddress": "0xaA4076B21D863dEA2f7862879650dD54061cFe01"
+  //         }
+  //     },
+  //     "networks": {
+  //         "5": {
+  //             "webSocketRPC": "https://goerli.infura.io/v3/"
+  //         }
+  //     },
+  //     "ipfsInfuraDedicatedGateway": "https://swapverse.infura-ipfs.io",
+  //     "ipfsInfuraProjectId": "2U4rGAZxnuSMX5OYGJHKhEZQ8qE",
+  //     "ipfsInfuraProjectSecret": "c87777ed61adfb004878ce266467ca6d",
+  //     "admin": "",
+  //     "projectName": "hello",
+  //     "logoUrl": "",
+  //     "socialLinks": [],
+  //     "disableSourceCopyright": false,
+  //     "isLockerEnabled": true
+  // }
 
   useEffect(() => {
     const fetchDomainData = async () => {
       setIsDomainDataFetching(true);
       try {
-        const { info, owner } = await storageContract.methods.getData(domain).call();
+        // const { info, owner } = await storageContract.methods.getData(domain).call();
 
-        const settings = parseSettings(info || '{}');
+        const settings = {
+          "contracts": {
+            chainId: {
+              "FeeTokenAddress": networks?.[chainId]?.FeeTokenAddress,
+              "IDOFactoryAddress": networks?.[chainId]?.IDOFactoryAddress,
+              "TokenLockerFactoryAddress": networks?.[chainId]?.TokenLockerFactoryAddress
+            }
+          },
+          "networks": {
+            chainId: {
+              "webSocketRPC": networks?.[chainId]?.webSocketRPC
+            }
+          },
+          "ipfsInfuraDedicatedGateway": "https://swapverse.infura-ipfs.io",
+          "ipfsInfuraProjectId": "2U4rGAZxnuSMX5OYGJHKhEZQ8qE",
+          "ipfsInfuraProjectSecret": "c87777ed61adfb004878ce266467ca6d",
+          "admin": "",
+          "projectName": "hello",
+          "logoUrl": "",
+          "socialLinks": [],
+          "disableSourceCopyright": false,
+          "isLockerEnabled": true
+        };
+        console.log(settings);
 
-        const admin = owner === ZERO_ADDRESS ? '' : owner;
+        // const admin = owner === ZERO_ADDRESS ? '' : owner;
 
-        setDomainSettings({ ...settings, admin });
+
+        setDomainSettings(settings);
 
         setIsDomainDataFetched(true);
       } catch (error) {
@@ -114,10 +163,10 @@ export default function useDomainData() {
       }
     }
 
-    if (storageContract && domain) {
+    if (domain && chainId) {
       fetchDomainData();
     }
-  }, [domainDataTrigger, storageContract, domain]);
+  }, [domainDataTrigger, chainId]);
 
   useEffect(() => {
     if (domainSettings?.admin && account) {

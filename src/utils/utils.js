@@ -98,6 +98,7 @@ export const isValidToken = (_tokenInfo) => {
 
 export const loadPoolData = async (idoAddress, web3, account, infuraDedicatedGateway) => {
   try {
+    console.log(idoAddress);
     const idoPool = await new web3.eth.Contract(IDOPool.abi, idoAddress);
     let metadataURL = await idoPool.methods.metadataURL().call();
     let balance = await web3.eth.getBalance(idoAddress);
@@ -172,6 +173,7 @@ export const loadPoolData = async (idoAddress, web3, account, infuraDedicatedGat
       metadataURL,
       userData: userData,
     };
+    console.log(result);
     return result;
   } catch (e) {
     console.log(e);
@@ -222,7 +224,6 @@ export const getBalanceOfERC20 = async (tokenAddress, address, web3) => {
 };
 
 export const getLockerData = async (lockerAddress, web3) => {
-  console.log("maaalikkkk");
   const locker = new web3.eth.Contract(Locker.abi, lockerAddress);
   let token = await locker.methods.token().call();
   let tokenData = await getTokenData(token, web3);
@@ -243,6 +244,7 @@ export const getLockerData = async (lockerAddress, web3) => {
 };
 
 export function getTokenURI(uri, infuraDedicatedGateway) {
+  // only error 
   return fetch(getValidIPFSUrl(uri, infuraDedicatedGateway))
     .then((response) => response.json())
     .then((responseJson) => {

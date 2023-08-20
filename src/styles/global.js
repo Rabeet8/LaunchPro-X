@@ -50,6 +50,7 @@ export const SpacerLarge = styled.div`
 // Used for providing a wrapper around a component
 export const Container = styled.div`
   display: ${({ display }) => (display ? display : "flex")};
+  color: var(--text);
   flex: ${({ flex }) => (flex ? flex : 0)};
   flex-direction: ${({ fd }) => (fd ? fd : "column")};
   justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
@@ -245,7 +246,7 @@ export const TextDescription = styled.p`
 export const TextDescriptionEllipsis = styled.p`
   width: ${({ fullWidth }) => (fullWidth ? "100%" : "none")};
   text-align: center;
-  color: var(--text);
+  color: var(--text2);
   font-size: ${({ fs }) => (fs ? fs : "20px")};
   font-weight: ${({ fw }) => (fw ? fw : "500")};
   overflow: hidden;
@@ -406,7 +407,7 @@ export const BlurTextField = styled.div`
   display: block;
   width: 100%;
   height: 40px;
-  background-image: linear-gradient(to bottom, transparent, var(--card));
+  background-image: linear-gradient(to bottom, transparent);
   overflow: hidden;
   text-overflow: ellipsis;
 `;

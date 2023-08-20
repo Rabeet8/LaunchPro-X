@@ -22,7 +22,7 @@ const LockerList = (props) => {
     );
   }, [showUserLockers, userLockersAddresses, allLockerAddress]);
 
-  if (!lockersAddresses.length) {
+  if (!lockersAddresses == null) {
     return null;
   }
 

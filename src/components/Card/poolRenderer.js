@@ -42,6 +42,7 @@ const PoolRenderer = (props) => {
   const hasEnded = parseInt(end) < (parseInt(Date.now() / 1000));
 
   useEffect(() => {
+    console.log(start);
     if (idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash) {
       setImage(getValidImageUrl(idoInfo?.metadata?.image || idoInfo?.metadata?.imageHash, ipfsInfuraDedicatedGateway));
     }
@@ -136,6 +137,7 @@ const PoolRenderer = (props) => {
                   : "Start in"}
               </s.TextID>
               <Countdown
+             
                 date={
                   isStarted
                     ? parseInt(end) * 1000
@@ -146,7 +148,7 @@ const PoolRenderer = (props) => {
           )
         }
         <s.TextID>Progress</s.TextID>
-        <ProgressBar now={progress} />
+        <ProgressBar  now={progress} />
       </NavLink>
     </s.Card>
   );

@@ -166,74 +166,6 @@ const Navigation = () => {
        }}>
    
 
-{/* <Nav fill defaultActiveKey="/home" className="flex-column">
-      <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/home">
-        <Nav.Link><FaHome /> Home</Nav.Link>
-      </LinkContainer>
-
-
-      <Dropdown as={NavItem}>
-      <Dropdown.Toggle as={NavLink}>
-      <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/launchpad">
-        <Nav.Link><FaRocket /> Launch</Nav.Link>
-      </LinkContainer>
-      <Dropdown.Menu>
-        <Dropdown.Item>
-        <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/launchpadcreation">
-        <Nav.Link>CreateLaunchpad</Nav.Link>
-      </LinkContainer>
-
-        </Dropdown.Item>
-        <Dropdown.Item>
-        <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/fairlaunch">
-        <Nav.Link>FairLaunch</Nav.Link>
-      </LinkContainer>
-
-        </Dropdown.Item>
-      </Dropdown.Menu>
-      </Dropdown.Toggle>
-     
-    </Dropdown>
-  
-
-      {isLockerEnabled && (
-        
-        <Dropdown as={NavItem}>
-        <Dropdown.Toggle as={NavLink}>
-        <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/locker">
-          <Nav.Link><FaLock /> Locker</Nav.Link>
-        </LinkContainer>
-        <Dropdown.Menu>
-          <Dropdown.Item>
-          <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/lockercreation">
-          <Nav.Link>CreateLocker</Nav.Link>
-        </LinkContainer>
-  
-          </Dropdown.Item>
-          
-        </Dropdown.Menu>
-        </Dropdown.Toggle>
-       
-      </Dropdown>
-        
-      )}
-
-      <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/multisend">
-        <Nav.Link> Multi Send</Nav.Link>
-
-
-      </LinkContainer>
-      <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/account">
-        <Nav.Link><FaUser /> Account</Nav.Link>
-      </LinkContainer>
-
-      {isAdmin && (
-        <LinkContainer style={{ color: "#933abc",padding: '0px 5px'  }} to="/manage">
-          <Nav.Link><FaCog /> Manage</Nav.Link>
-        </LinkContainer>
-      )}
-    </Nav> 
-       */}
 
 <div id="app" style={({ height: "70vh" })}>
       <Sidebar  width={collapsed ? '50px' : '173px'}  collapsed={collapsed}
@@ -304,6 +236,74 @@ export default Navigation;
 
 
 
+{/* <Nav fill defaultActiveKey="/home" className="flex-column">
+      <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/home">
+        <Nav.Link><FaHome /> Home</Nav.Link>
+      </LinkContainer>
+
+
+      <Dropdown as={NavItem}>
+      <Dropdown.Toggle as={NavLink}>
+      <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/launchpad">
+        <Nav.Link><FaRocket /> Launch</Nav.Link>
+      </LinkContainer>
+      <Dropdown.Menu>
+        <Dropdown.Item>
+        <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/launchpadcreation">
+        <Nav.Link>CreateLaunchpad</Nav.Link>
+      </LinkContainer>
+
+        </Dropdown.Item>
+        <Dropdown.Item>
+        <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/fairlaunch">
+        <Nav.Link>FairLaunch</Nav.Link>
+      </LinkContainer>
+
+        </Dropdown.Item>
+      </Dropdown.Menu>
+      </Dropdown.Toggle>
+     
+    </Dropdown>
+  
+
+      {isLockerEnabled && (
+        
+        <Dropdown as={NavItem}>
+        <Dropdown.Toggle as={NavLink}>
+        <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/locker">
+          <Nav.Link><FaLock /> Locker</Nav.Link>
+        </LinkContainer>
+        <Dropdown.Menu>
+          <Dropdown.Item>
+          <LinkContainer style={{ color: "#933abc",padding: '0px 2px' }} to="/lockercreation">
+          <Nav.Link>CreateLocker</Nav.Link>
+        </LinkContainer>
+  
+          </Dropdown.Item>
+          
+        </Dropdown.Menu>
+        </Dropdown.Toggle>
+       
+      </Dropdown>
+        
+      )}
+
+      <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/multisend">
+        <Nav.Link> Multi Send</Nav.Link>
+
+
+      </LinkContainer>
+      <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/account">
+        <Nav.Link><FaUser /> Account</Nav.Link>
+      </LinkContainer>
+
+      {isAdmin && (
+        <LinkContainer style={{ color: "#933abc",padding: '0px 5px'  }} to="/manage">
+          <Nav.Link><FaCog /> Manage</Nav.Link>
+        </LinkContainer>
+      )}
+    </Nav> 
+       */}
 
 
 

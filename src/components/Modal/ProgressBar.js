@@ -7,7 +7,7 @@ const ProgressBar = (props) => {
     display: "flex",
     height: 30,
     width: "100%",
-    backgroundColor: "var(--card)",
+    backgroundColor: "var(--primary)",
     borderRadius: 20,
   };
 
@@ -21,7 +21,7 @@ const ProgressBar = (props) => {
   };
 
   const labelStyles = {
-    color: "var(--card)",
+    color: "var(--card2)",
     fontWeight: "bold",
     fontSize: 16,
     paddingLeft: 5,

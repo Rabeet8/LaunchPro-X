@@ -13,6 +13,8 @@ import ReadMore from "../../readMore";
 import { isAddress } from "../../../../utils/utils";
 import { useIPFS } from "../../../../hooks/useIPFS";
 import { ETHER } from "../../../../constants";
+import { database } from '../../../../firebase';
+import { getDatabase, ref, onValue, child, set, push } from "firebase/database";
 
 export default function Preview() {
   const { account, chainId, library } = useWeb3React();
@@ -131,7 +133,7 @@ export default function Preview() {
 
       const metadata = {
         // imageHash: "iconAdded.path",
-        imageHash:"QmWJE7joTt2HMi28mt6DZNozoYxcBNn45uDbooLDLWKY1A",
+        imageHash: "QmWJE7joTt2HMi28mt6DZNozoYxcBNn45uDbooLDLWKY1A",
         description,
         links: {
           website,
@@ -198,8 +200,10 @@ export default function Preview() {
 
       triggerUpdateAccountData();
       const IDOCreatedIndex = receipt?.events?.findIndex?.((i) => i?.event === "IDOCreated");
-      if (IDOCreatedIndex || IDOCreatedIndex === 0){
+      if (IDOCreatedIndex || IDOCreatedIndex === 0) {
         navigate(`../launchpad/${receipt.events[IDOCreatedIndex].args.idoPool}`)
+        console.log("IDO DETAILS",receipt.events[IDOCreatedIndex].args.idoPool);
+        writeUserData(receipt.events[IDOCreatedIndex].args.idoPool, chainId);
       }
     } catch (error) {
       console.log("createIDO Error: ", error);
@@ -207,6 +211,37 @@ export default function Preview() {
       setLoading(false);
     }
   };
+
+  function writeUserData(idoAddress, chainId) {
+    try {
+      // Create a reference to the user's data using their account address and chain ID
+      const userRef = ref(database, `IDOData/${chainId}`);
+
+      // Push the new data under the user's reference
+      // const newUserDataRef = set(userRef); 
+      // const starCountRef = ref(database, `${account}/${chainId}`);
+      let data;
+      onValue(userRef, (snapshot) => {
+        data = snapshot.val();
+      })
+      console.log(data);
+      if (data == null) {
+        set(userRef,
+          [
+            idoAddress
+          ]
+        );
+      } else {
+        if (Array.isArray(data)) {
+          data.push(idoAddress)
+        };
+        set(userRef, data);
+      }
+      console.log("done");
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
   const approveToken = async (amount, tokenContract) => {
     if (!tokenContract) {

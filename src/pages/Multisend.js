@@ -65,10 +65,12 @@ const CustomBox = () => {
   const { account } = useWeb3React();
 
   useEffect(async () => {
-    const tokenDecimals = await tokenContractForChecking?.decimals();
-    console.log(tokenDecimals.toString());
-    if (tokenDecimals) {
-      setDecimals(tokenDecimals.toString());
+    if (tokenContractForChecking) {
+      const tokenDecimals = await tokenContractForChecking?.decimals();
+      console.log(tokenDecimals.toString());
+      if (tokenDecimals) {
+        setDecimals(tokenDecimals.toString());
+      }
     }
   }, [tokenContractForChecking]);
 
