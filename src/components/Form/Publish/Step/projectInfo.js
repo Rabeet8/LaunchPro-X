@@ -53,6 +53,15 @@ export default function ProjectInfo() {
           e.preventDefault();
           context.description[1](e.target.value);
         }}
+        InputLabelProps={{
+          style: { color: "black" }
+        }}
+        InputProps={{
+          style: {
+             color:'black',
+            border: "1px solid black" 
+          }
+        }}
       ></TextField>
       <s.SpacerSmall />
       <TextField
@@ -75,6 +84,15 @@ export default function ProjectInfo() {
           e.preventDefault();
           context.discord[1](e.target.value);
         }}
+        InputLabelProps={{
+          style: { color: "black" }
+        }}
+        InputProps={{
+          style: {
+             color:'black',
+            border: "1px solid black" 
+          }
+        }}
       ></TextField>
       <s.SpacerSmall />
       <TextField
@@ -96,6 +114,15 @@ export default function ProjectInfo() {
         onChange={(e) => {
           e.preventDefault();
           context.twitter[1](e.target.value);
+        }}
+        InputLabelProps={{
+          style: { color: "black" }
+        }}
+        InputProps={{
+          style: {
+             color:'black',
+            border: "1px solid black" 
+          }
         }}
       ></TextField>
     </s.Container>

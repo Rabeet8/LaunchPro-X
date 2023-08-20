@@ -263,7 +263,7 @@ const LockTokenForm = () => {
         maxWidth: 1000,
       }}
     >
-      <s.TextTitle>Lock token</s.TextTitle>
+      {/* <s.TextTitle>Lock token</s.TextTitle> */}
       <s.SpacerSmall />
       <s.Container style={{ marginBottom: 20 }}>
         {tokenLoading ? (
@@ -299,6 +299,15 @@ const LockTokenForm = () => {
           e.preventDefault();
           setName(e.target.value);
         }}
+        InputLabelProps={{
+          style: { color: "black" }
+        }}
+        InputProps={{
+          style: {
+             color:'black',
+            border: "1px solid black" 
+          }
+        }}
       ></TextField>
       <s.SpacerSmall />
       <TextField
@@ -309,6 +318,15 @@ const LockTokenForm = () => {
           e.preventDefault();
           setTokenAddressForChecking(e.target.value);
         }}
+        InputLabelProps={{
+          style: { color: "black" }
+        }}
+        InputProps={{
+          style: {
+             color:'black',
+            border: "1px solid black" 
+          }
+        }}
       ></TextField>
       <s.SpacerSmall />
       <TextField
@@ -316,11 +334,19 @@ const LockTokenForm = () => {
         id="amount"
         label="Lock amount"
         InputProps={{
+          style: {
+            color:'black',
+           border: "1px solid black" 
+         },
           endAdornment: <InputAdornment position="end">{tokenSymbol || ''}</InputAdornment>,
         }}
         onWheel={(e) => {
           e.target.blur();
         }}
+        InputLabelProps={{
+          style: { color: "black" }
+        }}
+        
         type={"number"}
         onChange={async (e) => {
           e.preventDefault();
@@ -345,6 +371,15 @@ const LockTokenForm = () => {
           e.preventDefault();
           setWithdrawer(e.target.value);
         }}
+        InputLabelProps={{
+          style: { color: "black" }
+        }}
+        InputProps={{
+          style: {
+             color:'black',
+            border: "1px solid black" 
+          }
+        }}
       />
       <s.SpacerMedium />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -355,6 +390,15 @@ const LockTokenForm = () => {
           value={new Date(withdrawTime * 1000)}
           onChange={(e) => {
             setWithdrawTime(Math.floor(new Date(e).getTime() / 1000));
+          }}
+          InputLabelProps={{
+            style: { color: "black" }
+          }}
+          InputProps={{
+            style: {
+               color:'black',
+              border: "1px solid black" 
+            }
           }}
         />
       </LocalizationProvider>

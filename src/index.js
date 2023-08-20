@@ -12,6 +12,7 @@ import { StoreContextProvider } from "./context/store";
 import { ApplicationContextProvider } from "./context/applicationContext";
 import "./index.css";
 import store from "./redux/store";
+import { ProSidebarProvider } from "react-pro-sidebar";
 import reportWebVitals from "./reportWebVitals";
 
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName);
@@ -54,7 +55,9 @@ ReactDOM.render(
               <PoolContextProvider>
                 <ThemeProvider theme={theme}>
                   <Router>
-                    <App />
+                  <ProSidebarProvider>
+                  <App />
+               </ProSidebarProvider>
                   </Router>
                 </ThemeProvider>
               </PoolContextProvider>

@@ -1,29 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import styled from 'styled-components';
-import TextField from '@mui/material/TextField';
+import React, { useState, useEffect } from "react";
+import Box from "@mui/material/Box";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import styled from "styled-components";
+import TextField from "@mui/material/TextField";
 import { useApplicationContext } from "../context/applicationContext";
 import BigNumber from "bignumber.js";
 import { useWeb3React } from "@web3-react/core";
 import { useTokenContract } from "../hooks/useContract";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
+const steps = ["Add your Allocation", "Confirmation"];
 
 
-const steps = ['Add your Allocation', 'Confirmation'];
+const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#933abc', // Set your desired black color
+      },
+    },
+  });
+
 
 const StyledButton = styled.button`
-  background-color: ${({ secondary }) => (secondary ? "inherit" : "var(--primary)")};
+   background-color: ${({ secondary }) => (secondary ? "var(--primary)" : "var(--primary)")};
   border: ${({ secondary }) => (secondary ? "var(--secondary-color)" : "var(--primary)")} 0.125em solid;
   font-weight: 700;
   padding: 5px 20px;
   border-radius: 20px;
-  color: ${({ secondary }) => (secondary ? "var(--secondary-color)" : "var(--card)")};
+  color: ${({ secondary }) => (secondary ? "var(--card)" : "var(--card)")};
   
   ${({ fullWidth }) =>
     fullWidth ? 'width: 100%;' : ''
@@ -32,8 +41,8 @@ const StyledButton = styled.button`
   :disabled {
     background-color: transparent;
     box-shadow: none;
-    color: var(--disable);
-    border: var(--disable) 0.125em solid;
+    color: var(--primary);
+    border: var(--primary) 0.125em solid;
     text-shadow: none;
   }
   :hover {
@@ -61,15 +70,18 @@ const CustomBox = () => {
     if (tokenDecimals) {
       setDecimals(tokenDecimals.toString());
     }
-  }, [tokenContractForChecking])
+  }, [tokenContractForChecking]);
 
   useEffect(async () => {
-    const tokenAllowance = await tokenContractForChecking?.allowance(account, MultisendAddress);
+    const tokenAllowance = await tokenContractForChecking?.allowance(
+      account,
+      MultisendAddress
+    );
     if (tokenAllowance < amountToApprove) {
       setAmountToApprove(amountToApprove - tokenAllowance);
       setTokenApprove(true);
     }
-  }, [amountToApprove])
+  }, [amountToApprove]);
 
   const isStepOptional = (step) => {
     return step === 1;
@@ -111,14 +123,12 @@ const CustomBox = () => {
     triggerUpdateAccountData,
     baseCurrencySymbol,
     MultisendAddress,
-    MultisendContract
+    MultisendContract,
   } = useApplicationContext();
 
   const handleReset = () => {
     setActiveStep(0);
   };
-
-
 
   // let [tokenContractForChecking, setTokenContractForChecking] = useState({});
 
@@ -133,9 +143,13 @@ const CustomBox = () => {
     setLoading(true);
 
     try {
-      const tx = await tokenContractForChecking?.approve(MultisendAddress, amount, {
-        from: account,
-      });
+      const tx = await tokenContractForChecking?.approve(
+        MultisendAddress,
+        amount,
+        {
+          from: account,
+        }
+      );
 
       await tx.wait();
 
@@ -156,7 +170,7 @@ const CustomBox = () => {
         amounts,
         tokenAddress,
         {
-          from: account
+          from: account,
         }
       );
 
@@ -178,9 +192,9 @@ const CustomBox = () => {
     const recipients_ = [];
     const amounts_ = [];
     let totalAmount = 0;
-    const entries = input.split(',');
+    const entries = input.split(",");
 
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       const parts = entry.trim().split(" ");
       if (parts.length >= 2) {
         recipients_.push(parts[0]);
@@ -190,16 +204,16 @@ const CustomBox = () => {
           BigNumber(parseInt(parts.slice(1).join(" ")))
             .times(10 ** decimals)
             .toFixed(0)
-        )
+        );
         totalAmount += BigNumber(parseInt(parts.slice(1).join(" ")))
           .times(10 ** decimals)
-          .toFixed(0)
+          .toFixed(0);
       }
     });
     // parts.slice(1).join(" ")
     setAmountToApprove(totalAmount);
     setReceipients(recipients_);
-    console.log(recipients_)
+    console.log(recipients_);
     setAmounts(amounts_);
     console.log(amounts_);
   }
@@ -207,30 +221,30 @@ const CustomBox = () => {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
       }}
     >
       <Box
         sx={{
-          backgroundColor: 'black',
-          borderRadius: '20px',
-          width: '45rem',
-          height: '25rem',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          position: 'absolute',
-          top: '60%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-
+          backgroundColor: '#faf9fa',
+          borderRadius: "20px",
+          width: "45rem",
+          height: "25rem",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "absolute",
+          top: "60%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
         }}
       >
-        <Box sx={{ width: '100%', flexGrow: 1, marginTop: '2rem' }}>
+        <Box sx={{ width: "100%", flexGrow: 1, marginTop: "2rem" }}>
+        <ThemeProvider theme={theme}>
           <Stepper alternativeLabel activeStep={activeStep}>
             {steps.map((label, index) => {
               const stepProps = {};
@@ -245,57 +259,88 @@ const CustomBox = () => {
               );
             })}
           </Stepper>
-          <p style={{ color: "white", marginTop: '1.5rem', marginLeft: '4.5rem' }}>Add Token Address</p>
-          <TextField
-            label="Ex : 0x....."
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            onChange={e => {
-              e.preventDefault();
-              setTokenAddress(e.target.value)
+          </ThemeProvider>
+          <p
+            style={{
+              color: "black",
+              marginTop: "1.5rem",
+              marginLeft: "4.5rem",
             }}
-            sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
-          />
-          <p style={{ color: "white", marginTop: '1.5rem', marginLeft: '4.5rem' }}>Allocations</p>
+          >
+            Add Token Address
+          </p>
           <TextField
-            label="Insert allocation:"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            onChange={e => {
-              e.preventDefault();
-              processInput(e.target.value)
-            }}
-            sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
-          />
-
-
+  label="Ex : 0x....."
+  variant="outlined"
+  fullWidth
+  margin="normal"
+  InputLabelProps={{
+    style: { color: "black" }
+  }}
+  InputProps={{
+    style: {
+            color:'black',
+        border: "1px solid black" 
+        // Adding the border color property
+    }
+  }}
+  onChange={e => {
+    e.preventDefault();
+    setTokenAddress(e.target.value);
+  }}
+  sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
+/>
+<p style={{ color: "black", marginTop: '1.5rem', marginLeft: '4.5rem' }}>Allocations</p>
+<TextField
+  label="Insert allocation:"
+  variant="outlined"
+  fullWidth
+  margin="normal"
+  InputLabelProps={{
+    style: { color: "black" }
+  }}
+  InputProps={{
+    style: {
+       color:'black',
+      border: "1px solid black" 
+    }
+  }}
+  onChange={e => {
+    e.preventDefault();
+    processInput(e.target.value);
+  }}
+  sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
+/>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+        <Box
+          sx={{ display: "flex", justifyContent: "flex-end", width: "100%" }}
+        >
           <StyledButton
             style={{ margin: 10 }}
             disabled={activeStep === 0}
             onClick={handleBack}
             secondary
-
           >
             Back
           </StyledButton>
           {tokenApproved && (
             <StyledButton
               style={{ margin: 10 }}
-              onClick={e => {approveToken(amountToApprove)}}
+              onClick={(e) => {
+                approveToken(amountToApprove);
+              }}
               secondary
-
             >
               Approve
             </StyledButton>
           )}
           <StyledButton
             style={{ margin: 10 }}
-            onClick={e => { multisendFunction() }} secondary>
-            {/* {activeStep === steps.length - 1 ? 'Finish' : 'Next'} */}
+            onClick={(e) => {
+              multisendFunction();
+            }}
+            secondary
+          >
             Finish
           </StyledButton>
         </Box>

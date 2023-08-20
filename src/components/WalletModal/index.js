@@ -501,7 +501,7 @@ export default function WalletModal(props) {
 
                 <AccountGroupingRow>
                   <AccountControl>
-                    <p>{account}</p>
+                  <p style={{ color: 'white' }}>{account}</p>
                   </AccountControl>
                 </AccountGroupingRow>
 

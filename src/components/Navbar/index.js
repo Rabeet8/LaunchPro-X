@@ -1,12 +1,14 @@
 import BigNumber from "bignumber.js";
-import React from "react";
+import React,{useState} from "react";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import NavItem from 'react-bootstrap/NavItem';
 import NavLink from 'react-bootstrap/NavLink';
 import { LinkContainer } from "react-router-bootstrap";
 import "../../App.css";
 import { useApplicationContext } from "../../context/applicationContext";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import * as s from "../../styles/global";
 import { Web3Status } from "../Web3Status";
@@ -14,7 +16,22 @@ import Loader from "../Loader";
 import { useWeb3React } from "@web3-react/core";
 import { CURRENCY } from "../../assets/images";
 import { Paper } from "@mui/material";
-import { FaHome, FaRocket, FaLock, FaUser, FaCog } from 'react-icons/fa';
+import { Sidebar, Menu, MenuItem, useProSidebar,SubMenu } from "react-pro-sidebar";
+
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import logo from './logoUrl';
+// import {logo} from "../../assets/2.png"
+// import {Sidebar} from "./sidebar"
+
+import { FaHome, FaRocket, FaLock, FaUser, FaLayerGroup ,FaCog} from 'react-icons/fa';
+
+
+
+
+
+
+
+
 const NetworkCard = styled(Paper)`
   display: flex;
   justify-content: center;
@@ -52,8 +69,15 @@ const Navigation = () => {
 
   const { chainId } = useWeb3React();
 
-  const mockCompanyLogo =
-    "https://wallet.wpmix.net/wp-content/uploads/2020/07/yourlogohere.png";
+  const [collapsed, setCollapsed] = useState(true);
+  const { setToggled } = useProSidebar();
+
+  const handleToggleSidebar = () => {
+    setCollapsed(!collapsed);
+    setToggled(!collapsed);
+  };
+
+  const mockCompanyLogo =  logo ;
 
   const hasFeeToken =
     !isFeeTokenDataFetching && FeeTokenSymbol && FeeTokenAddress;
@@ -82,79 +106,67 @@ const Navigation = () => {
 
   return (
     <div className="main-navbar">
-      <Navbar
-        collapseOnSelect
-        expand="lg"
-        variant="dark"
-        style={{ margin: 15 }}
-      >
-        <Container style={{ maxWidth: "100%" }}>
-          <s.LogoTitle src={logoUrl || mockCompanyLogo} />
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto"></Nav>
-            <Nav>
-              <Nav.Link>{getNetworkInfo()}</Nav.Link>
+      <Navbar expand="lg" variant="dark" style={{ margin: 15 }}>
+  <Container style={{ maxWidth: "100%" }}>
+  <s.LogoTitle src={logoUrl || mockCompanyLogo} />
+    <div className="d-flex align-items-center justify-content-between w-100">
+      <h5 style={{ fontWeight: 'bold', margin: '0' }}>Swap Base</h5>
+      <div className="d-flex align-items-center">
+        <div className="mr-3">
+          {getNetworkInfo()}
+        </div>
+        <div className="d-flex align-items-center">
+          {!hasFeeToken && !isNativeCoinBalanceFetching && (
+            <span style={{ color: "#933abc", fontWeight: "bold", marginRight: '15px' }}>
+              {`$${baseCurrencySymbol} ` +
+                BigNumber(ETHamount)
+                  .dividedBy(10 ** 18)
+                  .toFormat(2)}
+            </span>
+          )}
+          {hasFeeToken && !isNativeCoinBalanceFetching && (
+            <NavDropdown
+              title={
+                <span style={{ color: "#933abc", fontWeight: "bold", marginRight: '15px' }}>
+                  {`$${baseCurrencySymbol} ` +
+                    BigNumber(ETHamount)
+                      .dividedBy(10 ** 18)
+                      .toFormat(2)}
+                </span>
+              }
+              id="collasible-nav-dropdown"
+            >
+              <Nav.Link
+                style={{ color: "#933abc" }}
+                href={`${networkExplorer}/address/${FeeTokenAddress}`}
+                target="_blank"
+              >
+                {isFeeTokenDataFetching ? (
+                  <Loader />
+                ) : (
+                  `$${FeeTokenSymbol} ` +
+                  BigNumber(FeeTokenamount)
+                    .dividedBy(10 ** 18)
+                    .toFormat(0)
+                )}
+              </Nav.Link>
+            </NavDropdown>
+          )}
+          <Web3Status />
+        </div>
+      </div>
+    </div>
+  </Container>
+</Navbar>
 
-              {!hasFeeToken ? (
-                <Nav.Link 
-              
-                >
-                  {isNativeCoinBalanceFetching ? (
-                    <Loader />
-                  ) : (
-                    <span style={{ color: "#933abc",fontWeight: "bold" }}>
-                    {`$${baseCurrencySymbol} ` +
-                      BigNumber(ETHamount)
-                        .dividedBy(10 ** 18)
-                        .toFormat(2)}
-                  </span>
-                  )}
-                </Nav.Link>
-              ) : (
-                <NavDropdown
-                
-                  title={
-                    isNativeCoinBalanceFetching ? (
-                      <Loader />
-                    ) : (
-                      <span style={{ color: "#933abc",fontWeight: "bold" }}>
-                      {`$${baseCurrencySymbol} ` +
-                        BigNumber(ETHamount)
-                          .dividedBy(10 ** 18)
-                          .toFormat(2)}
-                    </span>
-                    )
-                  }
-                  id="collasible-nav-dropdown"
-                >
-                  <Nav.Link 
-                  style={{ color: "#933abc" }}
-                    href={`${networkExplorer}/address/${FeeTokenAddress}`}
-                    target="_blank"
-                  >
-                    {isFeeTokenDataFetching ? (
-                      <Loader />
-                    ) : (
-                      `$${FeeTokenSymbol} ` +
-                      BigNumber(FeeTokenamount)
-                        .dividedBy(10 ** 18)
-                        .toFormat(0)
-                    )}
-                  </Nav.Link>
-                  {/* <NavDropdown.Item href="#action/3.3"></NavDropdown.Item> */}
-                  <NavDropdown.Divider />
-                </NavDropdown>
-              )}
-            </Nav>
-            <Web3Status />
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      <div className="sub-navbar" style={{ width: '50px', position: 'absolute', top: 120, left: 0 
+ 
+      <div className="sub-navbar" style={{ width: '50px', position: 'absolute', top: 100,left: 0 
+
+      
        }}>
-         <div >
-         <Nav fill defaultActiveKey="/home" className="flex-column">
+   
+
+{/* <Nav fill defaultActiveKey="/home" className="flex-column">
       <LinkContainer style={{ color: "#933abc",padding: '0px 5px' }} to="/home">
         <Nav.Link><FaHome /> Home</Nav.Link>
       </LinkContainer>
@@ -220,13 +232,80 @@ const Navigation = () => {
           <Nav.Link><FaCog /> Manage</Nav.Link>
         </LinkContainer>
       )}
-    </Nav>
+    </Nav> 
+       */}
+
+<div id="app" style={({ height: "70vh" })}>
+      <Sidebar  width={collapsed ? '50px' : '173px'}  collapsed={collapsed}
+        onToggle={handleToggleSidebar}  style={{   height: "70vh" }}>
+        <Menu >
+          <MenuItem
+            icon={<MenuOutlinedIcon />}
+            onClick={handleToggleSidebar}
+            style={{ textAlign: "center", color: "black", transition: "color 0.3s ease" }}
+          >
+  
+
+          </MenuItem>
+          <LinkContainer to="/home">
+          <MenuItem  className="Menu" icon={<FaHome />}>Home</MenuItem>
+          </LinkContainer>
+
+
+          {isLockerEnabled && (
+              <div>
+          
+            <SubMenu className="Menu" label={"Launch"} icon={<FaRocket />} iconExpanded={<ChevronRightIcon />}  >
+           
+            
+            <LinkContainer to="/launchpad"><MenuItem >Available Launchpad</MenuItem></LinkContainer>
+        
+            <LinkContainer to="/launchpadcreation"><MenuItem >Create Launchpad</MenuItem></LinkContainer>
+            <LinkContainer to="/fairlaunch"><MenuItem>Fair Launch</MenuItem></LinkContainer>
+
+      
+        </SubMenu>
+   
       </div>
+            )}
+       
+
+            <SubMenu className="Menu" label={"Locker"} icon={<FaLock />} iconExpanded={<ChevronRightIcon />}  >
+            <LinkContainer to="/lockercreation"><MenuItem >Create Locker</MenuItem></LinkContainer>
+            
+            </SubMenu>
+
+
+            <LinkContainer to="/multisend">
+          <MenuItem className="Menu" icon={<FaLayerGroup  />}>Multisend</MenuItem>
+          </LinkContainer>
+          <LinkContainer to="/account">
+          <MenuItem className="Menu" icon={<FaUser/>}>Account</MenuItem>
+          </LinkContainer>
+
+          {isAdmin && (
+          <LinkContainer to="/manage">
+
+          <MenuItem className="Menu" icon={<FaCog />}>Manage</MenuItem>
+          </LinkContainer>
+
+          )}
+        </Menu>
+      </Sidebar>
+     
+    </div>
       </div>
     </div>
   );
 };
 export default Navigation;
+
+
+
+
+
+
+
 
 {
   /* <LinkContainer to="/home">

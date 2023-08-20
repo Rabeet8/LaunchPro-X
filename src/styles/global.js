@@ -54,7 +54,7 @@ export const Container = styled.div`
   flex-direction: ${({ fd }) => (fd ? fd : "column")};
   justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
   align-items: ${({ ai }) => (ai ? ai : "flex-start")};
-  background-color: ${({ test }) => (test ? test : "none")};
+  /* background-color: ${({ test }) => (test ? test : "none")}; */
   width: ${({ w }) => (w ? w : "100%")};
   background-image: ${({ image }) => (image ? `url(${image})` : "none")};
   background-size: cover;
@@ -136,7 +136,7 @@ export const Card = styled.div`
   flex-direction: ${({ fd }) => (fd ? fd : "column")};
   justify-content: ${({ jc }) => (jc ? jc : "flex-start")};
   align-items: ${({ ai }) => (ai ? ai : "flex-start")};
-  background-color: ${({ test }) => (test ? test : "var(--card)")};
+  background-color: ${({ test }) => (test ? test : "var(--card2)")};
   width: ${({ w }) => (w ? w : "100%")};
   background-image: ${({ image }) => (image ? `url(${image})` : "none")};
   background-size: cover;
@@ -384,7 +384,7 @@ export const TextField = styled.div`
   width: 100%;
   position: relative;
   font-size: 16px;
-  color: var(--text);
+  color: var(--text2);
   height: 80px;
   border-radius: 20px;
   overflow: hidden;

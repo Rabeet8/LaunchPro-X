@@ -13,16 +13,20 @@
   --error: #dc354570;
   --search: #2D2D2D;
   --card: #000000;
-  --card2:#933abc; 
+  --card2:#ffffff; 
   --upper-card: #151516;
-  --unfocus: #0e0e0e;
+  --unfocus: #e8ebf1;
   --disable: #6D6E71;
-  --background: rgb(255, 255, 255);
+  --background: rgb(253, 253, 253);
   /* --background: #006FB9; */
   --blue: #1e90ff;
+  --white2: #eee2e2;
+
   --white: #ffffff;
   --text: #000000;
+  --text2:#ffffff;
   --secondary-color: #989b9c;
+  
   --text-secondary: #232227;
   --button: #005987;
 
@@ -34,6 +38,11 @@
 }
 .alignLeft{
   float: right;
+}
+
+.menu-item:hover {
+  color: white !important;
+  background-color: purple;
 }
 
 .m-5{
@@ -77,6 +86,9 @@
 }
 
 
+.Menu:hover{
+color: #933abc;
+}
 .home::before{
   content: " ";
   z-index: -1;
@@ -176,7 +188,7 @@ body {
   font-family: 'Poppins', sans-serif;
   /* font-family: 'Barlow', sans-serif; */
   letter-spacing: 0em;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 2;
 }
 

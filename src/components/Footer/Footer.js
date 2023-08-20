@@ -43,8 +43,8 @@ const Footer = () => {
   const SourceCopyright = (
     <>
       Powered by{' '}
-      <a href="https://onout.org/launchpad" target="_blank" rel="noopener noreferrer">
-        OnOut - no-code tool for creating Launchpad
+      <a target="_blank" rel="noopener noreferrer">
+        ABC
       </a>
     </>
   );
@@ -60,33 +60,25 @@ const Footer = () => {
         }}
       />
       <Container style={{ padding: 30 }}>
-        <Row fd="column" ai="center">
-          <Heading>Contract Addresses</Heading>
-          <FooterLink
-            target="_blank"
-            href={
-              networkExplorer +
-              "/address/" +
-              IDOFactoryAddress
-            }
-          >
-            IDO Factory: {shortenAddress(IDOFactoryAddress)} <FaExternalLinkAlt size=".75em" />
-          </FooterLink>
-          {
-            isLockerEnabled && (
-              <FooterLink
-                target="_blank"
-                href={
-                  networkExplorer +
-                  "/address/" +
-                  TokenLockerFactoryAddress
-                }
-              >
-                Locker Factory: {shortenAddress(TokenLockerFactoryAddress)} <FaExternalLinkAlt size=".75em" />
-              </FooterLink>
-            )
-          }
-        </Row>
+      <Row fd="column" ai="center">
+  <Heading style={{ color: 'purple' }}>Contract Addresses</Heading>
+  <FooterLink
+    target="_blank"
+    href={networkExplorer + "/address/" + IDOFactoryAddress}
+    style={{ color: 'purple' }}
+  >
+    IDO Factory: {shortenAddress(IDOFactoryAddress)} <FaExternalLinkAlt size=".75em" />
+  </FooterLink>
+  {isLockerEnabled && (
+    <FooterLink
+      target="_blank"
+      href={networkExplorer + "/address/" + TokenLockerFactoryAddress}
+      style={{ color: 'purple' }}
+    >
+      Locker Factory: {shortenAddress(TokenLockerFactoryAddress)} <FaExternalLinkAlt size=".75em" />
+    </FooterLink>
+  )}
+</Row>
 
         <s.SpacerMedium />
 

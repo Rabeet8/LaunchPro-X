@@ -199,7 +199,15 @@ export default function IDOInfo({props}) {
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DateTimePicker
-              renderInput={(props) => <TextField fullWidth {...props} />}
+              renderInput={(props) => <TextField fullWidth {...props} InputLabelProps={{
+                style: { color: "black" }
+              }}
+              InputProps={{
+                style: {
+                   color:'black',
+                  border: "1px solid black" 
+                }
+              }} />}
               label="End date"
               displayEmpty
               value={context.end[0]}

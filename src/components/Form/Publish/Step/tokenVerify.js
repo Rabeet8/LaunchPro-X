@@ -37,10 +37,20 @@ export default function TokenVerify() {
       <s.TextTitle>Token Verify</s.TextTitle>
       <s.SpacerSmall />
       <TextField
+      
         id="tokenAddress"
         onChange={(e) => {
           e.preventDefault();
           address[1](e.target.value);
+        }}
+        InputLabelProps={{
+          style: { color: "black" }
+        }}
+        InputProps={{
+          style: {
+             color:'black',
+            border: "1px solid black" 
+          }
         }}
         value={tokenInformation?.[0]?.tokenAddress || address[0] || ""}
         name={"tokenAddress"}

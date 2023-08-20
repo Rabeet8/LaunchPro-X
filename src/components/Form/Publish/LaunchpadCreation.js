@@ -10,6 +10,7 @@ import IDOInfo from "./Step/idoInformation";
 import Preview from "./Step/preview";
 import ProjectInfo from "./Step/projectInfo";
 import TokenVerify from "./Step/tokenVerify";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 function getSteps() {
   return ["Token verify", "DeFi Launchpad Info", "Add Additional Info", "Finish"];
@@ -68,10 +69,17 @@ export default function StepsForm() {
         return "Unknown stepIndex";
     }
   }
-
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#933abc', // Set your desired black color
+      },
+    },
+  });
   return (
-    <s.Card style={{marginLeft: "4.5rem",marginTop:'2rem'}}>
+    <s.Card style={{marginLeft: "4.5rem"}}>
       <form onSubmit={form.handleSubmit(onSubmit)} style={{ width: "100%" }}>
+      <ThemeProvider theme={theme}>
         <Stepper
           activeStep={activeStep}
           alternativeLabel
@@ -87,6 +95,7 @@ export default function StepsForm() {
             </Step>
           ))}
         </Stepper>
+        </ThemeProvider>
         <s.SpacerMedium />
         <s.Container flex={1}>
           {activeStep === steps.length ? (
@@ -112,7 +121,7 @@ export default function StepsForm() {
                   type="button"
                   style={{ marginTop: 10,marginTop: '1.5rem' }}
                 >
-                  Back
+                  Back 
                 </s.button>
                 {activeStep !== steps.length - 1 ? (
                   <s.button

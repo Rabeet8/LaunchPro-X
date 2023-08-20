@@ -1,5 +1,6 @@
 import { useWeb3React } from "@web3-react/core";
 import { NavLink } from "react-router-dom";
+import * as s from "../../styles/global";
 
 const CreateLocker = (props) => {
   const { library } = useWeb3React();
