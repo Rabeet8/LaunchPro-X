@@ -126,18 +126,8 @@ export default function useDomainData() {
         // const { info, owner } = await storageContract.methods.getData(domain).call();
 
         const settings = {
-          "contracts": {
-            chainId: {
-              "FeeTokenAddress": networks?.[chainId]?.FeeTokenAddress,
-              "IDOFactoryAddress": networks?.[chainId]?.IDOFactoryAddress,
-              "TokenLockerFactoryAddress": networks?.[chainId]?.TokenLockerFactoryAddress
-            }
-          },
-          "networks": {
-            chainId: {
-              "webSocketRPC": networks?.[chainId]?.webSocketRPC
-            }
-          },
+          "contracts": {},
+          "networks": {},
           "ipfsInfuraDedicatedGateway": "https://swapverse.infura-ipfs.io",
           "ipfsInfuraProjectId": "2U4rGAZxnuSMX5OYGJHKhEZQ8qE",
           "ipfsInfuraProjectSecret": "c87777ed61adfb004878ce266467ca6d",
@@ -148,8 +138,16 @@ export default function useDomainData() {
           "disableSourceCopyright": false,
           "isLockerEnabled": true
         };
-        console.log(settings);
+        settings.contracts[chainId] = {
+          "FeeTokenAddress": networks?.[chainId]?.FeeTokenAddress,
+          "IDOFactoryAddress": networks?.[chainId]?.IDOFactoryAddress,
+          "TokenLockerFactoryAddress": networks?.[chainId]?.TokenLockerFactoryAddress
+        }
+        settings.networks[chainId] = {
+          "webSocketRPC": networks?.[chainId]?.webSocketRPC
+        }
 
+        console.log(settings);
         // const admin = owner === ZERO_ADDRESS ? '' : owner;
 
 
