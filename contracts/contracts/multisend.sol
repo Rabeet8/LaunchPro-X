@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.18;
 
 interface IERC20 {
-    function transfer(address recipient, uint256 amount)
-        external
-        returns (bool);
+    function transferFrom(
+        address from,
+        address to,
+        uint256 value
+    ) external returns (bool);
 
     function balanceOf(address account) external view returns (uint256);
 }
@@ -38,7 +40,7 @@ contract MultiSendERC20 {
                 break;
             }
 
-            token.transfer(recipients[i], amounts[i]);
+            token.transferFrom( msg.sender,recipients[i], amounts[i]);
             if (i == recipients.length) {
                 transferCount = i;
             }
@@ -52,3 +54,7 @@ contract MultiSendERC20 {
 
     receive() external payable {}
 }
+
+// ["0xa6146758E21AAF4a9f8406807a3C74451B06f7BA"]
+// ["900000000"]
+// 0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca

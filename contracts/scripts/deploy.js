@@ -7,22 +7,37 @@
 const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  // const currentTimestampInSeconds = Math.round(Date.now() / 1000);
+  // const unlockTime = currentTimestampInSeconds + 60;
 
-  const lockedAmount = hre.ethers.parseEther("0.001");
+  // const lockedAmount = hre.ethers.parseEther("0.001");
 
-  const lock = await hre.ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
+  // const lock = await hre.ethers.deployContract("Lock", [unlockTime], {
+  //   value: lockedAmount,
+  // });
 
-  await lock.waitForDeployment();
+  const FeeToken = await hre.ethers.deployContract("FeeToken");
+  const IDOFactory = await hre.ethers.deployContract("IDOFactory", [FeeToken.target, "0", "0"]);
+  const tokenLockerFactory = await hre.ethers.deployContract("TokenLockerFactory");
+  const mutliSend = await hre.ethers.deployContract("MultiSendERC20");
+  await FeeToken.waitForDeployment();
+  await IDOFactory.waitForDeployment();
+  await tokenLockerFactory.waitForDeployment();
+  await mutliSend.waitForDeployment();
 
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
-  );
+
+  // await lock.waitForDeployment();
+
+  // console.log(
+  //   `Lock with ${ethers.formatEther(
+  //     lockedAmount
+  //   )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
+  // );
+  console.log("FeeToken", FeeToken.target);
+  console.log("IDOFactory", IDOFactory.target);
+  console.log("tokenLockerFactory", tokenLockerFactory.target);
+  console.log("mutliSend", mutliSend.target);
+  console.log("done")
 }
 
 // We recommend this pattern to be able to use async/await everywhere
