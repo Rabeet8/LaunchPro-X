@@ -353,7 +353,7 @@ const LockTokenForm = () => {
 
       />
       <s.SpacerMedium />
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <LocalizationProvider style={{color:'black'}} dateAdapter={AdapterDateFns}>
         <DateTimePicker
           renderInput={(props) => <TextField fullWidth {...props}  InputLabelProps={{
             style: { color: "black" }

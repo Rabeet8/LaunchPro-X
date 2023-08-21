@@ -88,9 +88,9 @@ const TokenInfo = (props) => {
       <s.SpacerSmall />
       <s.Container fd="row" jc="space-between">
         <s.TextID fw="700">Token address</s.TextID>
-        <s.TextDescriptionEllipsis>
+        <s.TextDescription>
           {idoInfo.tokenAddress}
-        </s.TextDescriptionEllipsis>
+        </s.TextDescription>
       </s.Container>
       <s.SpacerSmall />
       <s.Container fd="row" jc="space-between">

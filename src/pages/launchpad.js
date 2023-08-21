@@ -28,7 +28,7 @@ const Launchpad = (props) => {
       <TextField
         fullWidth
         color='secondary'
-        // label = 'as'
+        label = 'Search By Address'
         onChange={async (e) => {
           e.preventDefault();
           await utils.typewatch(2000);
@@ -41,10 +41,11 @@ const Launchpad = (props) => {
         }}
         InputProps={{
           style: {
-            marginLeft: '5rem',
-            width: '50rem',
-                  color:'black',
-              border: "1px solid black" 
+            // marginLeft: '5rem',
+            // width: '50rem',
+            // textAlign: 'center' 
+              //     color:'black',
+              // border: "1px solid black" 
               // Adding the border color property
           }
         }}

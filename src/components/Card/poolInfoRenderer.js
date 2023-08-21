@@ -52,7 +52,7 @@ const PoolInfoRenderer = (props) => {
         )}
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID fw="700">IDO pool address</s.TextID>
-          <s.TextDescriptionEllipsis>{idoAddress}</s.TextDescriptionEllipsis>
+          <s.TextDescription>{idoAddress}</s.TextDescription>
         </s.Container>
         <s.SpacerSmall />
         <s.Container fd="row" jc="space-between">
