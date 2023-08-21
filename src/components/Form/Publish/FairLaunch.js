@@ -6,7 +6,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useStoreContext } from "../../../context/store";
 import * as s from "../../../styles/global";
-import IDOInfo from "./Step/idoInformation";
+import FairLaunchIDOInfo from "./Step/fairLaunchidoInformation";
 import Preview from "./Step/preview";
 import ProjectInfo from "./Step/projectInfo";
 import TokenVerify from "./Step/tokenVerify";
@@ -65,7 +65,7 @@ export default function StepsForm() {
       case 0:
         return <TokenVerify />;
       case 1:
-        return <IDOInfo title ="DeFi"/>;
+        return <FairLaunchIDOInfo />;
       case 2:
         return <ProjectInfo />;
       case 3:
