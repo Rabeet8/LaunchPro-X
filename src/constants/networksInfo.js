@@ -31,7 +31,6 @@ export const networks = {
     explorer: "https://basescan.org",
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e", 
     MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
@@ -56,7 +55,6 @@ export const networks = {
     explorer: "https://goerli.base.org",
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     MultisendAddress: "0x456D271Ea93841D4D4Cdea1acb1b93b9e2D73135",
     FeeTokenAddress: "0xF7Dbd865569332dee5ec3d43AC4e9989988cb50e",
     IDOFactoryAddress: "0x97dB0CC659BE255f08a8C00891c6e616a1696687",
@@ -81,7 +79,6 @@ export const networks = {
     explorer: "https://lineascan.build",
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
@@ -106,7 +103,6 @@ export const networks = {
     explorer: "https://goerli.lineascan.build",
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
@@ -131,7 +127,6 @@ export const networks = {
     explorer: "https://alpha-blockscout.scroll.io",
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
@@ -178,7 +173,6 @@ export const networks = {
     color: "#f6c343",
     // storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
     multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
     MultisendAddress: "0x0019A5B90308A6f0ccC9fA1Bd113bB8257231a7b",
     FeeTokenAddress: "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
     IDOFactoryAddress: "0xBdf917b7f06F5436E2981E26A34069B2224964Ac",
@@ -262,22 +256,22 @@ export const chainRouter = {
       ROUTER: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
     },
   ],
-  56: [
-    {
-      name: "PancakeSwap",
-      FACTORY: "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73",
-      WETH: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-      ROUTER: "0x10ED43C718714eb63d5aA57B78B54704E256024E",
-    },
-  ],
-  97: [
-    {
-      name: "PancakeSwap",
-      FACTORY: "0x6725F303b657a9451d8BA641348b6761A6CC7a17",
-      WETH: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
-      ROUTER: "0xD99D1c33F9fC3444f8101754aBC46c52416550D1",
-    },
-  ],
+  // 56: [
+  //   {
+  //     name: "PancakeSwap",
+  //     FACTORY: "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73",
+  //     WETH: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+  //     ROUTER: "0x10ED43C718714eb63d5aA57B78B54704E256024E",
+  //   },
+  // ],
+  // 97: [
+  //   {
+  //     name: "PancakeSwap",
+  //     FACTORY: "0x6725F303b657a9451d8BA641348b6761A6CC7a17",
+  //     WETH: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+  //     ROUTER: "0xD99D1c33F9fC3444f8101754aBC46c52416550D1",
+  //   },
+  // ],
 };
 
 
