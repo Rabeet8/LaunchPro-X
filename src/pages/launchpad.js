@@ -27,7 +27,8 @@ const Launchpad = (props) => {
       <s.SpacerMedium />
       <TextField
         fullWidth
-        
+        color='secondary'
+        // label = 'as'
         onChange={async (e) => {
           e.preventDefault();
           await utils.typewatch(2000);

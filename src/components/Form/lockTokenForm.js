@@ -274,7 +274,10 @@ const LockTokenForm = () => {
         InputLabelProps={{
           style: { color: "black" }
         }}
-        
+        InputProps={{
+          style: {
+                  color:'black',}
+        }}
       ></TextField>
       <s.SpacerSmall />
       <TextField
@@ -290,6 +293,10 @@ const LockTokenForm = () => {
         InputLabelProps={{
           style: { color: "black" }
         }}
+        InputProps={{
+          style: {
+                  color:'black',}
+        }}
       
       ></TextField>
       <s.SpacerSmall />
@@ -300,7 +307,7 @@ const LockTokenForm = () => {
         color="secondary"
 
         InputProps={{
-  
+          style: {color:'black'},
           endAdornment: <InputAdornment position="end">{tokenSymbol || ''}</InputAdornment>,
         }}
         onWheel={(e) => {
@@ -338,6 +345,10 @@ const LockTokenForm = () => {
         }}
         InputLabelProps={{
           style: { color: "black" }
+        }}
+        InputProps={{
+          style: {
+                  color:'black'}
         }}
 
       />

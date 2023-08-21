@@ -280,6 +280,13 @@ const CustomBox = () => {
   InputLabelProps={{
     style: { color: "black" }
   }}
+  InputProps={{
+    style: {
+      
+            color:'black',
+      
+    }
+  }}
  
   onChange={e => {
     e.preventDefault();
@@ -297,6 +304,13 @@ const CustomBox = () => {
 
   InputLabelProps={{
     style: { color: "black" }
+  }}
+  InputProps={{
+    style: {
+      
+            color:'black',
+      
+    }
   }}
 
   onChange={e => {

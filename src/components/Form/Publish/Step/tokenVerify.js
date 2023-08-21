@@ -64,7 +64,9 @@ export default function TokenVerify() {
         InputLabelProps={{
           style: { color: "black" }
         }}
-
+     InputProps={{
+      style: {color: "black"}
+     }}
   
   onChange={(e) => {
     e.preventDefault();

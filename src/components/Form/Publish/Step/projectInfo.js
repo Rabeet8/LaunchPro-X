@@ -62,7 +62,9 @@ ProjectInfo() {
         InputLabelProps={{
           style: { color: "black" }
         }}
-        
+        InputProps={{
+          style:{color:"black"}
+        }}
       ></TextField>
       <s.SpacerSmall />
       <TextField
@@ -77,6 +79,9 @@ ProjectInfo() {
         }}
         InputLabelProps={{
           style: { color: "black" }
+        }}
+        InputProps={{
+          style:{color:"black"}
         }}
       ></TextField>
       <s.SpacerSmall />
@@ -93,6 +98,9 @@ ProjectInfo() {
         }}
         InputLabelProps={{
           style: { color: "black" }
+        }}
+        InputProps={{
+          style:{color:"black"}
         }}
         
       ></TextField>
@@ -113,6 +121,9 @@ onChange={(e) => {
 InputLabelProps={{
   style: { color: "black" }
 }}
+InputProps={{
+  style:{color:"black"}
+}}
 ></TextField>
       <s.SpacerSmall />
       <TextField
@@ -128,7 +139,9 @@ InputLabelProps={{
         InputLabelProps={{
           style: { color: "black" }
         }}
-       
+        InputProps={{
+          style:{color:"black"}
+        }}
       ></TextField>
     </s.Container>
   );

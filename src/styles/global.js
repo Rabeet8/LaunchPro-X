@@ -17,6 +17,7 @@ export const Screen = styled.div`
 
 export const iconUpload = styled.input`
   opacity: 0;
+  color:'white';
   display: block;
   position: absolute;
   width: 100px;
