@@ -62,9 +62,9 @@ const LockerInfoRenderer = (props) => {
         {/* IDO Information */}
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Locker name</s.TextID>
-          <s.TextDescriptionEllipsis>
+          <s.TextDescription >
             {lockerInfo.name}
-          </s.TextDescriptionEllipsis>
+          </s.TextDescription >
         </s.Container>
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Locker address</s.TextID>
@@ -76,9 +76,9 @@ const LockerInfoRenderer = (props) => {
         </s.Container>
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Token address</s.TextID>
-          <s.TextDescriptionEllipsis>
+          <s.TextDescription >
             {lockerInfo.token.tokenAddress}
-          </s.TextDescriptionEllipsis>
+          </s.TextDescription >
         </s.Container>
         <s.Container style={{ marginTop: 15 }} fd="row" jc="space-between">
           <s.TextID>Locker balance</s.TextID>

@@ -28,9 +28,19 @@ export default function IDOInfo({props}) {
       <s.TextID>
         If I pay 1 {baseCurrencySymbol} how much token I will get?
       </s.TextID>
+      <s.SpacerMedium/> 
       <NumberField
+      label="Token rate"
+      color = "secondary"
+      
+      InputLabelProps={{
+        style: { color: "black" }
+      }}
+      InputProps={{
+        style:{color:"black"}
+      }}
         value={BigNumber(context.tokenRate[0]).toFixed()}
-        label={"Token rate"}
+        
         adornment={context.tokenInformation?.[0]?.tokenSymbol}
         onChange={async (e) => {
           e.preventDefault();
@@ -47,6 +57,13 @@ export default function IDOInfo({props}) {
       <s.Container fd={"row"} jc="space-between">
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <NumberField
+           color = "secondary"
+           InputProps={{
+            style:{color:"black"}
+          }}
+           InputLabelProps={{
+             style: { color: "black" }
+           }}
             value={BigNumber(context.softCap[0]).toFixed()}
             label={"Soft Cap"}
             adornment={baseCurrencySymbol}
@@ -63,6 +80,13 @@ export default function IDOInfo({props}) {
           <s.TextIDWarning>{context.idoError["softCap"]}</s.TextIDWarning>
           <s.SpacerSmall />
           <NumberField
+           color = "secondary"
+           InputProps={{
+            style:{color:"black"}
+          }}
+           InputLabelProps={{
+             style: { color: "black" }
+           }}
             value={BigNumber(context.hardCap[0]).toFixed()}
             label={"Hard Cap"}
             adornment={baseCurrencySymbol}
@@ -104,6 +128,13 @@ export default function IDOInfo({props}) {
         </s.Container>
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <NumberField
+           color = "secondary"
+           InputProps={{
+            style:{color:"black"}
+          }}
+           InputLabelProps={{
+             style: { color: "black" }
+           }}
             value={BigNumber(context.minETH[0]).toFixed()}
             label={"Minimum Buy"}
             adornment={baseCurrencySymbol}
@@ -120,6 +151,13 @@ export default function IDOInfo({props}) {
           <s.TextIDWarning>{context.idoError["minETH"]}</s.TextIDWarning>
           <s.SpacerSmall />
           <NumberField
+            color = "secondary"
+            InputProps={{
+              style:{color:"black"}
+            }}
+    InputLabelProps={{
+      style: { color: "black" }
+    }}
             value={BigNumber(context.maxETH[0]).toFixed()}
             label={"Maximum Buy"}
             adornment={baseCurrencySymbol}
@@ -138,6 +176,13 @@ export default function IDOInfo({props}) {
           {
             isAddLiquidityEnabled && <>
               <NumberField
+               color = "secondary"
+               InputProps={{
+                style:{color:"black"}
+              }}
+               InputLabelProps={{
+                 style: { color: "black" }
+               }}
                 value={BigNumber(context.liquidityPercentage[0]).toFixed()}
                 label={"Liquidity % (51% - 100%)"}
                 onChange={(e) => {
@@ -165,6 +210,13 @@ export default function IDOInfo({props}) {
             after presale?
           </s.TextID>
           <NumberField
+           color = "secondary"
+           InputProps={{
+            style:{color:"black"}
+          }}
+           InputLabelProps={{
+             style: { color: "black" }
+           }}
             value={BigNumber(context.listingRate[0]).toFixed()}
             label={"Listing Rate"}
             adornment={context.tokenInformation?.[0]?.tokenSymbol}
@@ -185,27 +237,47 @@ export default function IDOInfo({props}) {
       <s.Container fd={"row"} jc="space-between">
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateTimePicker
-              renderInput={(props) => <TextField fullWidth {...props} />}
+          <DateTimePicker
+                
+                renderInput={(props) =>
+                  
+                  <TextField fullWidth 
+                  color='secondary'
+                  {...props} InputLabelProps={{
+                style: { color: "black" }
+              }}
+              InputProps={{
+                style: {
+                   color:'black',
+                  // border: "1px solid black" 
+                }
+              }} />}
               label="Start date"
               displayEmpty
               value={context.start[0]}
               onChange={(e) => {
                 context.start[1](e);
+                
               }}
+              
             />
           </LocalizationProvider>
         </s.Container>
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DateTimePicker
-              renderInput={(props) => <TextField fullWidth {...props} InputLabelProps={{
+                color='secondary'
+                renderInput={(props) => 
+                
+                <TextField fullWidth
+                color='secondary'
+                {...props} InputLabelProps={{
                 style: { color: "black" }
               }}
               InputProps={{
                 style: {
                    color:'black',
-                  border: "1px solid black" 
+                  // border: "1px solid black" 
                 }
               }} />}
               label="End date"
@@ -221,8 +293,19 @@ export default function IDOInfo({props}) {
       <s.TextIDWarning>{context.idoError["start-end"]}</s.TextIDWarning>
       <s.SpacerMedium />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DateTimePicker
-          renderInput={(props) => <TextField fullWidth {...props} />}
+      <DateTimePicker
+                renderInput={(props) => <TextField
+                color='secondary'
+                  
+                  fullWidth {...props} InputLabelProps={{
+                style: { color: "black" }
+              }}
+              InputProps={{
+                style: {
+                   color:'black',
+                  // border: "1px solid black" 
+                }
+              }} />}
           label="Unlock date"
           displayEmpty
           value={context.unlock[0]}

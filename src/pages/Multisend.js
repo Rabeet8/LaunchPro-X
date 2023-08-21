@@ -272,20 +272,15 @@ const CustomBox = () => {
             Add Token Address
           </p>
           <TextField
-  label="Ex : 0x....."
+  label="Insert here Ex : 0x....."
   variant="outlined"
   fullWidth
   margin="normal"
+  color = "secondary"
   InputLabelProps={{
     style: { color: "black" }
   }}
-  InputProps={{
-    style: {
-            color:'black',
-        border: "1px solid black" 
-        // Adding the border color property
-    }
-  }}
+ 
   onChange={e => {
     e.preventDefault();
     setTokenAddress(e.target.value);
@@ -294,19 +289,16 @@ const CustomBox = () => {
 />
 <p style={{ color: "black", marginTop: '1.5rem', marginLeft: '4.5rem' }}>Allocations</p>
 <TextField
-  label="Insert allocation:"
+  label="Insert allocation here:"
   variant="outlined"
   fullWidth
   margin="normal"
+  color = "secondary"
+
   InputLabelProps={{
     style: { color: "black" }
   }}
-  InputProps={{
-    style: {
-       color:'black',
-      border: "1px solid black" 
-    }
-  }}
+
   onChange={e => {
     e.preventDefault();
     processInput(e.target.value);

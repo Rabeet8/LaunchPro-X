@@ -3,7 +3,12 @@ import React from "react";
 import { FaImage } from "react-icons/fa";
 import { useStoreContext } from "../../../../context/store";
 import * as s from "../../../../styles/global";
-export default function ProjectInfo() {
+export default function 
+
+
+
+
+ProjectInfo() {
   const context = useStoreContext();
 
   return (
@@ -43,6 +48,7 @@ export default function ProjectInfo() {
       </s.Container>
       <TextField
         fullWidth
+        color="secondary"
         id="text"
         label="Description"
         multiline
@@ -56,16 +62,12 @@ export default function ProjectInfo() {
         InputLabelProps={{
           style: { color: "black" }
         }}
-        InputProps={{
-          style: {
-             color:'black',
-            border: "1px solid black" 
-          }
-        }}
+        
       ></TextField>
       <s.SpacerSmall />
       <TextField
         fullWidth
+        color = "secondary"
         id="website"
         label="Website"
         value={context.website[0]}
@@ -73,13 +75,18 @@ export default function ProjectInfo() {
           e.preventDefault();
           context.website[1](e.target.value);
         }}
+        InputLabelProps={{
+          style: { color: "black" }
+        }}
       ></TextField>
       <s.SpacerSmall />
       <TextField
+
         fullWidth
-        value={context.discord[0]}
+        color="secondary"
         id="discord"
         label="Discord"
+        value={context.discord[0]}
         onChange={(e) => {
           e.preventDefault();
           context.discord[1](e.target.value);
@@ -87,27 +94,30 @@ export default function ProjectInfo() {
         InputLabelProps={{
           style: { color: "black" }
         }}
-        InputProps={{
-          style: {
-             color:'black',
-            border: "1px solid black" 
-          }
-        }}
+        
       ></TextField>
+      <s.SpacerSmall />
+     
+
+        <TextField
+
+fullWidth
+color="secondary"
+id="telegram"
+label="Telegram"
+value={context.telegram[0]}
+onChange={(e) => {
+  e.preventDefault();
+  context.telegram[1](e.target.value);
+}}
+InputLabelProps={{
+  style: { color: "black" }
+}}
+></TextField>
       <s.SpacerSmall />
       <TextField
         fullWidth
-        value={context.telegram[0]}
-        id="telegram"
-        label="Telegram"
-        onChange={(e) => {
-          e.preventDefault();
-          context.telegram[1](e.target.value);
-        }}
-      ></TextField>
-      <s.SpacerSmall />
-      <TextField
-        fullWidth
+        color = 'secondary'
         id="twitter"
         label="Twitter"
         value={context.twitter[0]}
@@ -118,12 +128,7 @@ export default function ProjectInfo() {
         InputLabelProps={{
           style: { color: "black" }
         }}
-        InputProps={{
-          style: {
-             color:'black',
-            border: "1px solid black" 
-          }
-        }}
+       
       ></TextField>
     </s.Container>
   );

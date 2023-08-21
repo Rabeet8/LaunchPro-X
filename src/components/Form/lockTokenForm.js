@@ -13,6 +13,9 @@ import { useWeb3React } from "@web3-react/core";
 import { useTokenContract } from "../../hooks/useContract";
 import Loader from "../Loader";
 import { database } from '../../../src/firebase';
+import { IconButton } from "@mui/material";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+
 import { getDatabase, ref, onValue, child, set, push } from "firebase/database";
 
 const styles = {
@@ -263,6 +266,7 @@ const LockTokenForm = () => {
         fullWidth
         id="name"
         label={"Locker name"}
+        color="secondary"
         onChange={(e) => {
           e.preventDefault();
           setName(e.target.value);
@@ -270,19 +274,14 @@ const LockTokenForm = () => {
         InputLabelProps={{
           style: { color: "black" }
         }}
-        InputProps={{
-          style: {
-            color: 'black',
-            border: "1px solid black",
-            // Additional style for focused state
-           
-          }
-        }}
+        
       ></TextField>
       <s.SpacerSmall />
       <TextField
         fullWidth
         id="address"
+        color="secondary"
+
         label={"Token address"}
         onChange={(e) => {
           e.preventDefault();
@@ -291,23 +290,17 @@ const LockTokenForm = () => {
         InputLabelProps={{
           style: { color: "black" }
         }}
-        InputProps={{
-          style: {
-             color:'black',
-            border: "1px solid black" 
-          }
-        }}
+      
       ></TextField>
       <s.SpacerSmall />
       <TextField
         fullWidth
         id="amount"
         label="Lock amount"
+        color="secondary"
+
         InputProps={{
-          style: {
-            color:'black',
-           border: "1px solid black" 
-         },
+  
           endAdornment: <InputAdornment position="end">{tokenSymbol || ''}</InputAdornment>,
         }}
         onWheel={(e) => {
@@ -334,6 +327,8 @@ const LockTokenForm = () => {
         fullWidth
         id="contract-address"
         label="Withdrawer"
+        color="secondary"
+
         onWheel={(e) => {
           e.target.blur();
         }}
@@ -344,33 +339,31 @@ const LockTokenForm = () => {
         InputLabelProps={{
           style: { color: "black" }
         }}
-        InputProps={{
-          style: {
-             color:'black',
-            border: "1px solid black" 
-          }
-        }}
+
       />
       <s.SpacerMedium />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DateTimePicker
-          renderInput={(props) => <TextField fullWidth {...props} />}
+          renderInput={(props) => <TextField fullWidth {...props}  InputLabelProps={{
+            style: { color: "black" }
+          }} color="secondary"/>}
+          InputProps={{
+            className: "MuiInputBase-root", // Apply styles to the input text
+            style: { color: "black" }, // Set text color to black
+           
+          }}
           id={"address"}
           label="Withdraw Date"
+         
+          style={{color:'black'}}
           value={new Date(withdrawTime * 1000)}
           onChange={(e) => {
             setWithdrawTime(Math.floor(new Date(e).getTime() / 1000));
           }}
-          InputLabelProps={{
-            style: { color: "black" }
-          }}
-          InputProps={{
-            style: {
-               color:'black',
-              border: "1px solid black" 
-            }
-          }}
+         
+          
         />
+
       </LocalizationProvider>
 
       <s.Container ai="center">

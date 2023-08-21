@@ -65,6 +65,10 @@ export const Container = styled.div`
   flex-wrap: wrap;
 `;
 
+
+
+
+
 export const Wrapper = styled.section`
   width: 100%;
   padding: 6vh 0 3rem;
@@ -180,7 +184,7 @@ export const Slideshow = styled.div`
 export const LogoTitle = styled.img`
   width: 40px;
   height: 50px;
-  margin-right: 5px;
+  /* margin-right: 5px; */
 `;
 
 export const Text = styled.div`

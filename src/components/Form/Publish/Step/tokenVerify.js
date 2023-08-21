@@ -35,28 +35,46 @@ export default function TokenVerify() {
   return (
     <s.Container flex={1} ai="center">
       <s.TextTitle>Token Verify</s.TextTitle>
-      <s.SpacerSmall />
-      <TextField
+      <s.SpacerLarge />
       
-        id="tokenAddress"
-        onChange={(e) => {
-          e.preventDefault();
-          address[1](e.target.value);
-        }}
+
+      {/* <TextField
+        // id="tokenAddress"
+        
+        
+        color="secondary"
+        
+        value={tokenInformation?.[0]?.tokenAddress || address[0] || ""}
+        // name={"tokenAddress"}
+        label={"Token address"}
+        fullWidth
         InputLabelProps={{
           style: { color: "black" }
         }}
-        InputProps={{
-          style: {
-             color:'black',
-            border: "1px solid black" 
-          }
+      /> */}
+
+<TextField
+  label="Insert Token Address:"
+  variant="outlined"
+  fullWidth
+  
+        color="secondary"
+
+       
+        InputLabelProps={{
+          style: { color: "black" }
         }}
-        value={tokenInformation?.[0]?.tokenAddress || address[0] || ""}
-        name={"tokenAddress"}
-        label={"Token address"}
-        fullWidth
-      />
+
+  
+  onChange={(e) => {
+    e.preventDefault();
+    address[1](e.target.value);
+  }}
+  value={tokenInformation?.[0]?.tokenAddress || address[0] || ""}
+
+  
+  // sx={{ marginTop: '0.5rem', marginLeft: '4rem', width: '80%' }}
+/>
       {loading ? (
           <s.Container>
             <s.SpacerSmall />

@@ -311,9 +311,9 @@ export default function Preview() {
       <ReadMore max={2000}>{description}</ReadMore>
 
       <s.TextID>Token address</s.TextID>
-      <s.TextDescriptionEllipsis>
+      <s.TextDescription>
         {tokenInfo.tokenAddress}
-      </s.TextDescriptionEllipsis>
+      </s.TextDescription>
       <s.TextID>Token name</s.TextID>
       <s.TextDescription>{tokenInfo.tokenName}</s.TextDescription>
       <s.TextID>Total supply</s.TextID>

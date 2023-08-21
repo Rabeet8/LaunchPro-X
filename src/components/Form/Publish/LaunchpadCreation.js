@@ -77,7 +77,9 @@ export default function StepsForm() {
     },
   });
   return (
+    
     <s.Card style={{marginLeft: "4.5rem"}}>
+      
       <form onSubmit={form.handleSubmit(onSubmit)} style={{ width: "100%" }}>
       <ThemeProvider theme={theme}>
         <Stepper
