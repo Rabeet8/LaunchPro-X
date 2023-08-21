@@ -235,24 +235,24 @@ const LockTokenForm = () => {
       <s.SpacerSmall />
       <s.Container style={{ marginBottom: 20 }}>
         {tokenLoading ? (
-          <Badge bg="secondary">Token Address Checking...</Badge>
+          <Badge bg="dark">Token Address Checking...</Badge>
         ) : (decimals > 0 &&
           tokenName !== "" &&
           tokenSymbol !== "" &&
           totalSupply !== "") ? (
           <s.Container fd="row" style={{ flexWrap: "wrap" }}>
-            <Badge bg="success">{"Name: " + tokenName}</Badge>
+            <Badge bg="dark">{"Name: " + tokenName}</Badge>
             <s.SpacerXSmall />
-            <Badge bg="success">{"Decimal: " + decimals}</Badge>
+            <Badge bg="dark">{"Decimal: " + decimals}</Badge>
             <s.SpacerXSmall />
-            <Badge bg="success">
+            <Badge bg="dark">
               {"Total supply: " +
                 BigNumber(totalSupply)
                   .dividedBy(10 ** decimals)
                   .toFormat()}
             </Badge>
             <s.SpacerXSmall />
-            <Badge bg="success">{"Symbol: " + tokenSymbol}</Badge>
+            <Badge bg="dark">{"Symbol: " + tokenSymbol}</Badge>
           </s.Container>
         ) : (tokenAddress !== "" && (
           <Badge bg="danger">{"Contract not valid"}</Badge>
@@ -272,8 +272,10 @@ const LockTokenForm = () => {
         }}
         InputProps={{
           style: {
-             color:'black',
-            border: "1px solid black" 
+            color: 'black',
+            border: "1px solid black",
+            // Additional style for focused state
+           
           }
         }}
       ></TextField>

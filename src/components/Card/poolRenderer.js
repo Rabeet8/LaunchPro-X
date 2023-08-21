@@ -67,8 +67,9 @@ const PoolRenderer = (props) => {
         to={"/launchpad/" + idoAddress}
         style={{
           textDecoration: "none",
-          color: "white",
+          color: "black",
           width: "100%",
+          marginLeft: '0.2rem'
         }}
       >
         <s.UpperCard fd="row" jc="space-between" ai="center">
@@ -97,7 +98,7 @@ const PoolRenderer = (props) => {
           {hasEnded ? (
             <Badge bg="secondary">Ended</Badge>
           ) : isStarted ? (
-            <Badge bg="success">Started</Badge>
+            <Badge bg="dark">Started</Badge>
           ) : (
             <Badge bg="secondary">Not started</Badge>
           )}
@@ -136,14 +137,15 @@ const PoolRenderer = (props) => {
                   ? "End in"
                   : "Start in"}
               </s.TextID>
-              <Countdown
-             
-                date={
-                  isStarted
-                    ? parseInt(end) * 1000
-                    : parseInt(start) * 1000
-                }
-              />
+              <div style={{ textAlign: "center" }}> {/* Add this container */}
+      <Countdown
+        date={
+          isStarted
+            ? parseInt(end) * 1000
+            : parseInt(start) * 1000
+        }
+      />
+    </div>
             </>
           )
         }

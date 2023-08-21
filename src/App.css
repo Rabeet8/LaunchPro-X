@@ -6,7 +6,7 @@
 :root {
   --clr-neon: hsl(56, 100%, 52%, 1);
   --clr-bg: hsl(56, 100%, 40%);
-  --primary: #933abc;
+  --primary: #9f80fb;
   --secondary: #004e38;
   --warning: #ff9c0840;
   --success: #27ae5f54;
@@ -26,6 +26,7 @@
   --text: #000000;
   --text2:#ffffff;
   --secondary-color: #989b9c;
+  
   
   --text-secondary: #232227;
   --button: #005987;
@@ -86,8 +87,10 @@
 }
 
 
+
+
 .Menu:hover{
-color: #933abc;
+color: #9f80fb;
 }
 .home::before{
   content: " ";

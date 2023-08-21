@@ -38,8 +38,7 @@ export default function StepsForm() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#933abc', // Set your desired black color
-      },
+        main: '#9f80fb',       },
     },
   });
   

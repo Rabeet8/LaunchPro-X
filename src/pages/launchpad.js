@@ -27,11 +27,25 @@ const Launchpad = (props) => {
       <s.SpacerMedium />
       <TextField
         fullWidth
-        label={"Search by token address "}
+        
         onChange={async (e) => {
           e.preventDefault();
           await utils.typewatch(2000);
           setAddress(e.target.value);
+        }}
+        InputLabelProps={{
+          style: { color: "black" },
+           // Adjust the label width as needed
+      marginLeft: '5rem'
+        }}
+        InputProps={{
+          style: {
+            marginLeft: '5rem',
+            width: '50rem',
+                  color:'black',
+              border: "1px solid black" 
+              // Adding the border color property
+          }
         }}
       />
       <IDOList tokenAddress={address} />

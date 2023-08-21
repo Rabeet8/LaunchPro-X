@@ -46,7 +46,7 @@ const PoolInfoRenderer = (props) => {
         {parseInt(idoInfo.end) < parseInt(Date.now() / 1000) ? (
           <Badge bg="secondary">Ended</Badge>
         ) : parseInt(idoInfo.start) < parseInt(Date.now() / 1000) ? (
-          <Badge bg="success">Started</Badge>
+          <Badge pill bg="dark" >Started</Badge>
         ) : (
           <Badge bg="secondary">Not started</Badge>
         )}

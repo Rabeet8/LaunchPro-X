@@ -178,9 +178,9 @@ export const Slideshow = styled.div`
 `;
 
 export const LogoTitle = styled.img`
-  width: auto;
+  width: 40px;
   height: 50px;
-  margin-right: 1rem;
+  margin-right: 5px;
 `;
 
 export const Text = styled.div`
