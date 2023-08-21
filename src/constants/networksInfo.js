@@ -30,7 +30,7 @@ export const networks = {
     chainId: 8453,
     explorer: "https://basescan.org",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
     MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
@@ -54,7 +54,7 @@ export const networks = {
     chainId: 84531,
     explorer: "https://goerli.base.org",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
     MultisendAddress: "0x456D271Ea93841D4D4Cdea1acb1b93b9e2D73135",
     FeeTokenAddress: "0xF7Dbd865569332dee5ec3d43AC4e9989988cb50e",
     IDOFactoryAddress: "0x97dB0CC659BE255f08a8C00891c6e616a1696687",
@@ -78,7 +78,7 @@ export const networks = {
     chainId: 59144,
     explorer: "https://lineascan.build",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
     MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
@@ -102,7 +102,7 @@ export const networks = {
     chainId: 59140,
     explorer: "https://goerli.lineascan.build",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
     MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
@@ -126,7 +126,7 @@ export const networks = {
     chainId: 534353,
     explorer: "https://alpha-blockscout.scroll.io",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
     MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
@@ -172,7 +172,7 @@ export const networks = {
     explorer: "https://goerli.etherscan.io",
     color: "#f6c343",
     // storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
-    multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
+    // multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
     MultisendAddress: "0x0019A5B90308A6f0ccC9fA1Bd113bB8257231a7b",
     FeeTokenAddress: "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
     IDOFactoryAddress: "0xBdf917b7f06F5436E2981E26A34069B2224964Ac",
