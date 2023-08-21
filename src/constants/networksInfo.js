@@ -248,22 +248,22 @@ export const chainRouter = {
       ROUTER: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
     },
   ],
-  11155111: [
-    {
-      name: "Uniswap",
-      FACTORY: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
-      WETH: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
-      ROUTER: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-    },
-  ],
-  // 56: [
+  // 11155111: [
   //   {
-  //     name: "PancakeSwap",
-  //     FACTORY: "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73",
-  //     WETH: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-  //     ROUTER: "0x10ED43C718714eb63d5aA57B78B54704E256024E",
+  //     name: "Uniswap",
+  //     FACTORY: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+  //     WETH: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
+  //     ROUTER: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
   //   },
   // ],
+  84531: [
+    {
+      name: "Uniswap",
+      FACTORY: "0x174526059540e2a968AB6be53DB046E390900875",
+      WETH: "0x4200000000000000000000000000000000000006",
+      ROUTER: "0x309f9f51026f36468f96f4Cf668afd9c474d6eca",
+    },
+  ],
   // 97: [
   //   {
   //     name: "PancakeSwap",
