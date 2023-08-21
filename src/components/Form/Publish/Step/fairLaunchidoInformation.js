@@ -10,8 +10,9 @@ import { timeout } from "../../../../utils/utils";
 import { NumberField } from "../../../FormField";
 import { useApplicationContext } from '../../../../context/applicationContext';
 
-export default function IDOInfo({ props }) {
+export default function FairLaunchIDOInfo() {
   const context = useStoreContext();
+
 
   const {
     baseCurrencySymbol,
@@ -22,8 +23,9 @@ export default function IDOInfo({ props }) {
   } = context;
 
   useEffect(() => {
-    setIsAddLiquidityEnabled(false);
+    setIsAddLiquidityEnabled(true);
   }, [])
+
 
   return (
     <s.Container flex={1}>
@@ -177,16 +179,16 @@ export default function IDOInfo({ props }) {
           />
           <s.TextIDWarning>{context.idoError["maxETH"]}</s.TextIDWarning>
           <s.SpacerSmall />
-          {/* {
+          {
             isAddLiquidityEnabled && <>
               <NumberField
-               color = "secondary"
-               InputProps={{
-                style:{color:"black"}
-              }}
-               InputLabelProps={{
-                 style: { color: "black" }
-               }}
+                color="secondary"
+                InputProps={{
+                  style: { color: "black" }
+                }}
+                InputLabelProps={{
+                  style: { color: "black" }
+                }}
                 value={BigNumber(context.liquidityPercentage[0]).toFixed()}
                 label={"Liquidity % (51% - 100%)"}
                 onChange={(e) => {
@@ -203,24 +205,24 @@ export default function IDOInfo({ props }) {
                 {context.idoError["liquidityPercentage"]}
               </s.TextIDWarning>
             </>
-          } */}
+          }
         </s.Container>
       </s.Container>
       <s.SpacerSmall />
-      {/* {
+      {
         isAddLiquidityEnabled && <>
           <s.TextID>
             If I pay 1 {baseCurrencySymbol} how much token I will get
             after presale?
           </s.TextID>
           <NumberField
-           color = "secondary"
-           InputProps={{
-            style:{color:"black"}
-          }}
-           InputLabelProps={{
-             style: { color: "black" }
-           }}
+            color="secondary"
+            InputProps={{
+              style: { color: "black" }
+            }}
+            InputLabelProps={{
+              style: { color: "black" }
+            }}
             value={BigNumber(context.listingRate[0]).toFixed()}
             label={"Listing Rate"}
             adornment={context.tokenInformation?.[0]?.tokenSymbol}
@@ -237,7 +239,7 @@ export default function IDOInfo({ props }) {
           <s.TextIDWarning>{context.idoError["listingRate"]}</s.TextIDWarning>
           <s.SpacerMedium />
         </>
-      } */}
+      }
       <s.Container fd={"row"} jc="space-between">
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
