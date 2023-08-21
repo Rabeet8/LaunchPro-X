@@ -8,7 +8,7 @@ export const networks = {
   //   // storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
   //   multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
   //   ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-  //   multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+  //   MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
   //   FeeTokenAddress: "",
   //   IDOFactoryAddress: "",
   //   TokenLockerFactoryAddress: "",
@@ -32,7 +32,7 @@ export const networks = {
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e", 
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+    MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
@@ -45,7 +45,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -57,11 +57,11 @@ export const networks = {
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
-    FeeTokenAddress: "",
-    IDOFactoryAddress: "",
-    TokenLockerFactoryAddress: "",
-    webSocketRPC: "",
+    MultisendAddress: "0x456D271Ea93841D4D4Cdea1acb1b93b9e2D73135",
+    FeeTokenAddress: "0xF7Dbd865569332dee5ec3d43AC4e9989988cb50e",
+    IDOFactoryAddress: "0x97dB0CC659BE255f08a8C00891c6e616a1696687",
+    TokenLockerFactoryAddress: "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
+    webSocketRPC: "https://1rpc.io/base-goerli",
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -70,7 +70,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0x4200000000000000000000000000000000000006",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -82,7 +82,7 @@ export const networks = {
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+    MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
@@ -95,7 +95,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -107,7 +107,7 @@ export const networks = {
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+    MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
@@ -120,7 +120,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0x2C1b868d6596a18e32E61B901E4060C872647b6C",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -132,7 +132,7 @@ export const networks = {
     color: "#627EEA",
     multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+    MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
@@ -145,7 +145,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0xa1EA0B2354F5A344110af2b6AD68e75545009a03",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -179,7 +179,7 @@ export const networks = {
     // storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
     multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
     ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0x0019A5B90308A6f0ccC9fA1Bd113bB8257231a7b",
+    MultisendAddress: "0x0019A5B90308A6f0ccC9fA1Bd113bB8257231a7b",
     FeeTokenAddress: "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
     IDOFactoryAddress: "0xBdf917b7f06F5436E2981E26A34069B2224964Ac",
     TokenLockerFactoryAddress: "0xaA4076B21D863dEA2f7862879650dD54061cFe01",

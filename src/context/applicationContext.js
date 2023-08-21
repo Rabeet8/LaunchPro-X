@@ -30,13 +30,14 @@ export const ApplicationContextProvider = ({ children }) => {
   const [FeeTokenAddress, setFeeTokenAddress] = useState(networks?.[chainId]?.FeeTokenAddress|| '');
   const [IDOFactoryAddress, setIDOFactoryAddress] = useState(networks?.[chainId]?.IDOFactoryAddress|| '');
   const [TokenLockerFactoryAddress, setTokenLockerFactoryAddress] = useState(networks?.[chainId]?.TokenLockerFactoryAddress || '');
-  const [MultisendAddress, setMultisendAddress] = useState(networks?.[chainId]?.multiSend || '');
+  const [MultisendAddress, setMultisendAddress] = useState(networks?.[chainId]?.MultisendAddress || '');
 
   const [isAppConfigured, setIsAppConfigured] = useState(Boolean(
     networks?.[chainId]?.FeeTokenAddress
     && networks?.[chainId]?.IDOFactoryAddress
     && networks?.[chainId]?.TokenLockerFactoryAddress
     && networks?.[chainId]?.webSocketRPC
+    && networks?.[chainId]?.MultisendAddress
     // && domainSettings?.admin
     // && domainSettings?.ipfsInfuraDedicatedGateway
     // && domainSettings?.ipfsInfuraProjectId
@@ -47,7 +48,7 @@ export const ApplicationContextProvider = ({ children }) => {
     setFeeTokenAddress(networks?.[chainId]?.FeeTokenAddress|| '');
     setIDOFactoryAddress(networks?.[chainId]?.IDOFactoryAddress|| '');
     setTokenLockerFactoryAddress(networks?.[chainId]?.TokenLockerFactoryAddress || '');
-    setMultisendAddress(networks?.[chainId]?.multiSend || '');
+    setMultisendAddress(networks?.[chainId]?.MultisendAddress || '');
 
     setIsAppConfigured(Boolean(
       networks?.[chainId]?.FeeTokenAddress
