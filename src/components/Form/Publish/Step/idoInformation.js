@@ -1,5 +1,5 @@
-import { DateTimePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { DateTimePicker, LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 
 import { MenuItem, TextField, Checkbox } from "@mui/material";
 import BigNumber from "bignumber.js";
@@ -8,14 +8,12 @@ import { useStoreContext } from "../../../../context/store";
 import * as s from "../../../../styles/global";
 import { timeout } from "../../../../utils/utils";
 import { NumberField } from "../../../FormField";
-import { useApplicationContext } from '../../../../context/applicationContext';
+import { useApplicationContext } from "../../../../context/applicationContext";
 
 export default function IDOInfo({ props }) {
   const context = useStoreContext();
 
-  const {
-    baseCurrencySymbol,
-  } = useApplicationContext();
+  const { baseCurrencySymbol } = useApplicationContext();
 
   const {
     isAddLiquidityEnabled: [isAddLiquidityEnabled, setIsAddLiquidityEnabled],
@@ -23,7 +21,7 @@ export default function IDOInfo({ props }) {
 
   useEffect(() => {
     setIsAddLiquidityEnabled(false);
-  }, [])
+  }, []);
 
   return (
     <s.Container flex={1}>
@@ -36,15 +34,13 @@ export default function IDOInfo({ props }) {
       <NumberField
         label="Token rate"
         color="secondary"
-
         InputLabelProps={{
-          style: { color: "black" }
+          style: { color: "black" },
         }}
         InputProps={{
-          style: { color: "black" }
+          style: { color: "black" },
         }}
         value={BigNumber(context.tokenRate[0]).toFixed()}
-
         adornment={context.tokenInformation?.[0]?.tokenSymbol}
         onChange={async (e) => {
           e.preventDefault();
@@ -63,10 +59,10 @@ export default function IDOInfo({ props }) {
           <NumberField
             color="secondary"
             InputProps={{
-              style: { color: "black" }
+              style: { color: "black" },
             }}
             InputLabelProps={{
-              style: { color: "black" }
+              style: { color: "black" },
             }}
             value={BigNumber(context.softCap[0]).toFixed()}
             label={"Soft Cap"}
@@ -86,10 +82,10 @@ export default function IDOInfo({ props }) {
           <NumberField
             color="secondary"
             InputProps={{
-              style: { color: "black" }
+              style: { color: "black" },
             }}
             InputLabelProps={{
-              style: { color: "black" }
+              style: { color: "black" },
             }}
             value={BigNumber(context.hardCap[0]).toFixed()}
             label={"Hard Cap"}
@@ -134,10 +130,10 @@ export default function IDOInfo({ props }) {
           <NumberField
             color="secondary"
             InputProps={{
-              style: { color: "black" }
+              style: { color: "black" },
             }}
             InputLabelProps={{
-              style: { color: "black" }
+              style: { color: "black" },
             }}
             value={BigNumber(context.minETH[0]).toFixed()}
             label={"Minimum Buy"}
@@ -157,10 +153,10 @@ export default function IDOInfo({ props }) {
           <NumberField
             color="secondary"
             InputProps={{
-              style: { color: "black" }
+              style: { color: "black" },
             }}
             InputLabelProps={{
-              style: { color: "black" }
+              style: { color: "black" },
             }}
             value={BigNumber(context.maxETH[0]).toFixed()}
             label={"Maximum Buy"}
@@ -241,81 +237,93 @@ export default function IDOInfo({ props }) {
       <s.Container fd={"row"} jc="space-between">
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateTimePicker
+          <DateTimePicker
+          renderInput={(props) => <TextField 
+            sx={{
+              svg: { color: '#000000' },
+             
+            }}
+            fullWidth {...props}  InputLabelProps={{
+            style: { color: "black" }
+          }} color="secondary"/>}
+          InputProps={{
+            className: "MuiInputBase-root", // Apply styles to the input text
+            style: { color: "black" }, // Set text color to black
+           
+          }}
+          id={"address"}
+          label="Start"
+         
+          style={{color:'black'}}
+          displayEmpty
+          value={context.start[0]}
+          onChange={(e) => {
+            context.start[1](e);
 
-              renderInput={(props) =>
-
-                <TextField fullWidth
-                  color='secondary'
-                  {...props} InputLabelProps={{
-                    style: { color: "black" }
-                  }}
-                  InputProps={{
-                    style: {
-                      color: 'black',
-                      // border: "1px solid black" 
-                    }
-                  }} />}
-              label="Start date"
-              displayEmpty
-              value={context.start[0]}
-              onChange={(e) => {
-                context.start[1](e);
-
-              }}
-
-            />
+          }}
+         
+          
+        />
           </LocalizationProvider>
         </s.Container>
         <s.Container flex={1} style={{ marginLeft: 10, marginRight: 10 }}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <DateTimePicker
-              color='secondary'
-              renderInput={(props) =>
+          <DateTimePicker
+          renderInput={(props) => <TextField 
+            sx={{
+              svg: { color: '#000000' },
+             
+            }}
+            fullWidth {...props}  InputLabelProps={{
+            style: { color: "black" }
+          }} color="secondary"/>}
+          InputProps={{
+            className: "MuiInputBase-root", // Apply styles to the input text
+            style: { color: "black" }, // Set text color to black
+           
+          }}
+          id={"address"}
+          displayEmpty
+          value={context.end[0]}
+          onChange={(e) => {
+            context.end[1](e);
 
-                <TextField fullWidth
-                  color='secondary'
-                  {...props} InputLabelProps={{
-                    style: { color: "black" }
-                  }}
-                  InputProps={{
-                    style: {
-                      color: 'black',
-                      // border: "1px solid black" 
-                    }
-                  }} />}
-              label="End date"
-              displayEmpty
-              value={context.end[0]}
-              onChange={(e) => {
-                context.end[1](e);
-              }}
-            />
+          }}
+          
+        />
           </LocalizationProvider>
         </s.Container>
       </s.Container>
       <s.TextIDWarning>{context.idoError["start-end"]}</s.TextIDWarning>
       <s.SpacerMedium />
       <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DateTimePicker
-          renderInput={(props) => <TextField
-            color='secondary'
-
-            fullWidth {...props} InputLabelProps={{
-              style: { color: "black" }
+      <DateTimePicker
+          renderInput={(props) => <TextField 
+            sx={{
+              svg: { color: '#000000' },
+             
             }}
-            InputProps={{
-              style: {
-                color: 'black',
-                // border: "1px solid black" 
-              }
-            }} />}
-          label="Unlock date"
-          displayEmpty
-          value={context.unlock[0]}
-          onChange={(e) => {
-            context.unlock[1](e);
+            fullWidth {...props}  InputLabelProps={{
+            style: { color: "black" }
+          }} color="secondary"/>}
+          InputProps={{
+            className: "MuiInputBase-root", // Apply styles to the input text
+            style: { color: "black" }, // Set text color to black
+           
           }}
+          id={"address"}
+          label="Withdraw Date"
+         
+    
+          displayEmpty
+          value={context.end[0]}
+          onChange={(e) => {
+            context.end[1](e);
+
+          }}
+          
+         
+          
         />
       </LocalizationProvider>
       <s.TextIDWarning>{context.idoError["unlock"]}</s.TextIDWarning>

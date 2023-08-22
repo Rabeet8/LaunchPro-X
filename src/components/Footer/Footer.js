@@ -60,7 +60,7 @@ const Footer = () => {
         }}
       />
       <Container style={{ padding: 30 }}>
-      <Row fd="column" ai="center">
+      {/* <Row fd="column" ai="center">
   <Heading style={{ color: '#9f80fb' }}>Contract Addresses</Heading>
   <FooterLink
     target="_blank"
@@ -78,7 +78,7 @@ const Footer = () => {
       Locker Factory: {shortenAddress(TokenLockerFactoryAddress)} <FaExternalLinkAlt size=".75em" />
     </FooterLink>
   )}
-</Row>
+</Row> */}
 
         <s.SpacerMedium />
 

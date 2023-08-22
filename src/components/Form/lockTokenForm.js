@@ -355,7 +355,12 @@ const LockTokenForm = () => {
       <s.SpacerMedium />
       <LocalizationProvider style={{color:'black'}} dateAdapter={AdapterDateFns}>
         <DateTimePicker
-          renderInput={(props) => <TextField fullWidth {...props}  InputLabelProps={{
+          renderInput={(props) => <TextField fullWidth {...props}
+          sx={{
+            svg: { color: '#000000' },
+           
+          }}
+          InputLabelProps={{
             style: { color: "black" }
           }} color="secondary"/>}
           InputProps={{
@@ -366,7 +371,7 @@ const LockTokenForm = () => {
           id={"address"}
           label="Withdraw Date"
          
-          style={{color:'black'}}
+         
           value={new Date(withdrawTime * 1000)}
           onChange={(e) => {
             setWithdrawTime(Math.floor(new Date(e).getTime() / 1000));
