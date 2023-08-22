@@ -8,11 +8,10 @@ import { networks } from '../constants/networksInfo';
 export const EVM_ADDRESS_REGEXP = /^0x[A-Fa-f0-9]{40}$/;
 
 export const SUPPORTED_NETWORKS = Object.values(networks).reduce((acc, network) => {
-  const { multicall, wrappedToken, chainId, rpc, baseCurrency } = network;
+  const { wrappedToken, chainId, rpc, baseCurrency } = network;
 
   if (
     Boolean(
-      multicall?.match(EVM_ADDRESS_REGEXP) &&
         wrappedToken?.address?.match(EVM_ADDRESS_REGEXP) &&
         wrappedToken?.name &&
         wrappedToken?.symbol &&

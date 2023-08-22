@@ -8,7 +8,7 @@ export const networks = {
   //   // storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
   //   multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
   //   ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-  //   multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+  //   MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
   //   FeeTokenAddress: "",
   //   IDOFactoryAddress: "",
   //   TokenLockerFactoryAddress: "",
@@ -30,9 +30,8 @@ export const networks = {
     chainId: 8453,
     explorer: "https://basescan.org",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e", 
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
+    MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
@@ -45,7 +44,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -55,13 +54,12 @@ export const networks = {
     chainId: 84531,
     explorer: "https://goerli.base.org",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
-    FeeTokenAddress: "",
-    IDOFactoryAddress: "",
-    TokenLockerFactoryAddress: "",
-    webSocketRPC: "",
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441",
+    MultisendAddress: "0x456D271Ea93841D4D4Cdea1acb1b93b9e2D73135",
+    FeeTokenAddress: "0xF7Dbd865569332dee5ec3d43AC4e9989988cb50e",
+    IDOFactoryAddress: "0x97dB0CC659BE255f08a8C00891c6e616a1696687",
+    TokenLockerFactoryAddress: "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
+    webSocketRPC: "https://1rpc.io/base-goerli",
     fromBlock: 0,
     baseCurrency: {
       decimals: 18,
@@ -70,7 +68,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0x4200000000000000000000000000000000000006",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -80,9 +78,8 @@ export const networks = {
     chainId: 59144,
     explorer: "https://lineascan.build",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
+    MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
@@ -95,7 +92,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -105,9 +102,8 @@ export const networks = {
     chainId: 59140,
     explorer: "https://goerli.lineascan.build",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
+    MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
@@ -120,7 +116,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0x2C1b868d6596a18e32E61B901E4060C872647b6C",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -130,9 +126,8 @@ export const networks = {
     chainId: 534353,
     explorer: "https://alpha-blockscout.scroll.io",
     color: "#627EEA",
-    multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
+    // multicall: "0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441", // Tampering Needed
+    MultisendAddress: "0xB8906491dba9DFc9fC52758d16C1a70d6A8F71ca", // dummy Address
     FeeTokenAddress: "",
     IDOFactoryAddress: "",
     TokenLockerFactoryAddress: "",
@@ -145,7 +140,7 @@ export const networks = {
     },
     wrappedToken: {
       address: "0xa1EA0B2354F5A344110af2b6AD68e75545009a03",
-      name: "Wrapped Etherer",
+      name: "Wrapped Ether",
       symbol: "WETH"
     }
   },
@@ -177,9 +172,8 @@ export const networks = {
     explorer: "https://goerli.etherscan.io",
     color: "#f6c343",
     // storage: "0x5Ae9C7682d42807b01959E52C61CCB8E513a2eaD", // Addition Needs to be done on other chains
-    multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
-    ENSRegistry: "0x00000000000C2E074eC69A0dFb2997BA6C7d2e1e",
-    multiSend: "0x0019A5B90308A6f0ccC9fA1Bd113bB8257231a7b",
+    // multicall: "0xFD4e092227e876dD8F2d036FA8fEB23F8A7F94ca",
+    MultisendAddress: "0x0019A5B90308A6f0ccC9fA1Bd113bB8257231a7b",
     FeeTokenAddress: "0x550E526e0787ddB7F64C0E0354ABE1d4F0efb73B",
     IDOFactoryAddress: "0xBdf917b7f06F5436E2981E26A34069B2224964Ac",
     TokenLockerFactoryAddress: "0xaA4076B21D863dEA2f7862879650dD54061cFe01",
@@ -254,30 +248,30 @@ export const chainRouter = {
       ROUTER: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
     },
   ],
-  11155111: [
+  // 11155111: [
+  //   {
+  //     name: "Uniswap",
+  //     FACTORY: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
+  //     WETH: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
+  //     ROUTER: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+  //   },
+  // ],
+  84531: [
     {
       name: "Uniswap",
-      FACTORY: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
-      WETH: "0x7b79995e5f793A07Bc00c21412e50Ecae098E7f9",
-      ROUTER: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+      FACTORY: "0x174526059540e2a968AB6be53DB046E390900875",
+      WETH: "0x4200000000000000000000000000000000000006",
+      ROUTER: "0x309f9f51026f36468f96f4Cf668afd9c474d6eca",
     },
   ],
-  56: [
-    {
-      name: "PancakeSwap",
-      FACTORY: "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73",
-      WETH: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
-      ROUTER: "0x10ED43C718714eb63d5aA57B78B54704E256024E",
-    },
-  ],
-  97: [
-    {
-      name: "PancakeSwap",
-      FACTORY: "0x6725F303b657a9451d8BA641348b6761A6CC7a17",
-      WETH: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
-      ROUTER: "0xD99D1c33F9fC3444f8101754aBC46c52416550D1",
-    },
-  ],
+  // 97: [
+  //   {
+  //     name: "PancakeSwap",
+  //     FACTORY: "0x6725F303b657a9451d8BA641348b6761A6CC7a17",
+  //     WETH: "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
+  //     ROUTER: "0xD99D1c33F9fC3444f8101754aBC46c52416550D1",
+  //   },
+  // ],
 };
 
 

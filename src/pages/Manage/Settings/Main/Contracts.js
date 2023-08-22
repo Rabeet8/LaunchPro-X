@@ -198,7 +198,6 @@ export default function Contracts() {
     );
 
     setCanSaveNetworksSettings(
-      isStorageNetwork &&
       SUPPORTED_CHAIN_IDS.includes(chainIdToSetUp) &&
       isAddress(FeeTokenAddress) &&
       isAddress(IDOFactoryAddress) &&
@@ -206,7 +205,7 @@ export default function Contracts() {
       isDifferentContracts &&
       !isSameContractAddresses
     );
-  }, [contracts, FeeTokenAddress, IDOFactoryAddress, TokenLockerFactoryAddress, chainIdToSetUp, isStorageNetwork]);
+  }, [contracts, FeeTokenAddress, IDOFactoryAddress, TokenLockerFactoryAddress, chainIdToSetUp]);
 
   const [isChainIdForDeploying, setIsChainIdForDeploying] = useState(chainId === chainIdToSetUp);
   const [isDeployingContracts, setIsDeployingContracts] = useState(false);
@@ -344,7 +343,7 @@ export default function Contracts() {
 
       <s.SpacerSmall />
 
-      { chainIdToSetUp ? (
+      {chainIdToSetUp ? (
         <Accordion>
           <AccordionSummary
             expandIcon={<FaAngleDown />}
@@ -409,7 +408,7 @@ export default function Contracts() {
                   onClick={onContractsDeployment}
                   disabled={!canDeploySwapContracts}
                 >
-                  { isDeployingContracts ? <Loader /> : 'Deploy contracts' }
+                  {isDeployingContracts ? <Loader /> : 'Deploy contracts'}
                 </s.button>
               ) : (
                 <s.button
@@ -417,7 +416,7 @@ export default function Contracts() {
                   onClick={() => switchToInjectedNetwork(chainIdToSetUp)}
                   disabled={!canChangeNetwork}
                 >
-                  { isLoading ? <Loader /> : `Switch to ${SUPPORTED_NETWORKS[chainIdToSetUp].name}` }
+                  {isLoading ? <Loader /> : `Switch to ${SUPPORTED_NETWORKS[chainIdToSetUp].name}`}
                 </s.button>
               )
             }
@@ -477,8 +476,13 @@ export default function Contracts() {
       />
 
       <s.SpacerSmall />
-
-      {
+      <s.button
+        onClick={saveContractsData}
+        disabled={!canSaveNetworksSettings}
+      >
+        {isLoading ? <Loader /> : 'Save Contracts Settings'}
+      </s.button>
+      {/* {
         isStorageNetwork ? (
           <s.button
             onClick={saveContractsData}
@@ -495,7 +499,7 @@ export default function Contracts() {
           </s.button>
         )
 
-      }
+      } */}
 
     </ContentWrapper>
   )
