@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
 import { useWeb3React } from '@web3-react/core';
+import { Typography  } from '@mui/material';
+
 import * as s from "../../../styles/global";
 import { FaWrench } from 'react-icons/fa';
 import { useApplicationContext } from '../../../context/applicationContext';
@@ -14,7 +16,14 @@ const Row = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  color: white;
 `;
+
+const styles = {
+  whiteText: {
+    color: 'white',
+  },
+};
 
 const Tabs = styled.div`
   display: flex;
@@ -78,7 +87,7 @@ export default function Settings() {
         <FaWrench size="2.4rem" className="icon" />
       </s.IconWrapper>
 
-      <s.Title>Manage Page</s.Title>
+      <Typography variant="h5" style={styles.whiteText}>Manage Page</Typography>
 
       {account && (
         <>

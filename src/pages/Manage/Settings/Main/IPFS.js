@@ -24,6 +24,11 @@ const ContentWrapper = styled.div`
   )};
 `
 
+const styles = {
+  whiteText: {
+    color: 'white',
+  },
+};
 export default function IPFS() {
   const { library, chainId, account, connector } = useWeb3React();
   const {
@@ -130,7 +135,7 @@ export default function IPFS() {
 
   return (
     <ContentWrapper disabled={isLoading}>
-      <Typography variant="h6">Infura IPFS</Typography>
+     <Typography variant="h6" style={styles.whiteText}>Infura IPFS</Typography>
 
       <s.SpacerSmall />
 

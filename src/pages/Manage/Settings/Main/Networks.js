@@ -23,6 +23,11 @@ const ContentWrapper = styled.div`
     ` : ''
   )};
 `
+const styles = {
+  whiteText: {
+    color: 'white',
+  },
+};
 
 export default function Networks() {
   const { library, chainId, account, connector } = useWeb3React();
@@ -106,7 +111,7 @@ export default function Networks() {
 
   return (
     <ContentWrapper disabled={isLoading}>
-      <Typography variant="h6">Networks</Typography>
+      <Typography variant="h6" style={styles.whiteText}>Networks</Typography>
 
       <s.SpacerSmall />
 

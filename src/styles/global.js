@@ -133,6 +133,7 @@ export const Title = styled.h1`
   line-height: 1.6rem;
   font-size: 1.4rem;
   text-align: center;
+  
 `;
 
 

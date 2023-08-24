@@ -48,6 +48,13 @@ const Accordion = styled(AccordionMUI)`
 
 `;
 
+
+const styles = {
+  whiteText: {
+    color: 'white',
+  },
+};
+
 export default function Contracts() {
   const { library, chainId, account, connector } = useWeb3React();
   const {
@@ -322,7 +329,7 @@ export default function Contracts() {
 
   return (
     <ContentWrapper disabled={isLoading || isDeployingContracts}>
-      <Typography variant="h6">Contracts</Typography>
+      <Typography variant="h6" style={styles.whiteText}>Contracts</Typography>
 
       <s.SpacerSmall />
 
