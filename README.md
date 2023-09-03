@@ -16,7 +16,7 @@ White-label Decentralized IDO Launchpad Platform
     npm start
     ```
 
-3. Connect your wallet to either Goerli and Base Testnet
+3. Connect your wallet to either Goerli or Base Testnet
 
 ## Home page
 
