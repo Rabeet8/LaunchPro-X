@@ -16,6 +16,8 @@ White-label Decentralized IDO Launchpad Platform
     npm start
     ```
 
+3. Connect your wallet to either Goerli and Base Testnet
+
 ## Home page
 
 ![Screenshot (63)](https://github.com/Rabeet8/LaunchPro-X/assets/92630941/66f7d3c3-ed7e-4dcc-a7d5-42cd14f22b53)
