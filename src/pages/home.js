@@ -6,7 +6,7 @@ const Home = () => {
     <s.Container ai="center">
       <s.Container ai="center">
         <s.SpacerLarge />
-        <s.TextDescription fs={"89px"}>SwapVerse</s.TextDescription>
+        <s.TextDescription fs={"89px"}>LaunchPro X</s.TextDescription>
         <s.TextDescription style={{ textAlign: "center" }}>
           Decentralize IDO launchpad platform
         </s.TextDescription>

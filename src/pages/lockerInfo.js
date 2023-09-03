@@ -17,7 +17,7 @@ const LockerInfo = () => {
 
         
         <LockerInfoRenderer lockerAddress={lockerAddress} />
-        <LockTokenForm lockerAddress={lockerAddress}/>
+        {/* <LockTokenForm lockerAddress={lockerAddress}/> */}
       </s.Container>
     </s.Container>
   );

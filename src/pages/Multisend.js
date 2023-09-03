@@ -20,7 +20,7 @@ const steps = ["Add your Allocation", "Confirmation"];
 const theme = createTheme({
     palette: {
       primary: {
-        main: '#9f80fb', // Set your desired black color
+        main: '#31a6a6', 
       },
     },
   });

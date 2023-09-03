@@ -26,6 +26,7 @@ const Title = styled.h3`
   margin: 1.6rem 0;
   text-align: center;
   font-weight: 500;
+
 `;
 
 const NetworkStatus = styled.div`
@@ -125,7 +126,9 @@ export default function Connection() {
             <WalletIconWrapper>
               <FaWallet size="2.4rem" className="icon" />
             </WalletIconWrapper>
-            <Title>Connect your wallet to get started</Title>
+            <Title style={{ color: 'white' }}>Connect your wallet to get started</Title>
+
+
             <NetworkStatus>
               <Web3Status />
             </NetworkStatus>

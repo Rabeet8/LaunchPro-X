@@ -110,14 +110,14 @@ const Navigation = () => {
   <Container style={{ maxWidth: "100%" }}>
   <s.LogoTitle  src={logoUrl || mockCompanyLogo} />
     <div className="d-flex align-items-center justify-content-between w-100">
-      <h5 style={{ fontWeight: 'bold', margin: '0' }}>SwapVerse</h5>
+      <h5 style={{ fontWeight: 'bold', marginLeft: '10px' }}>LaunchPro X</h5>
       <div className="d-flex align-items-center">
         <div className="mr-3">
           {getNetworkInfo()}
         </div>
         <div className="d-flex align-items-center">
           {!hasFeeToken && !isNativeCoinBalanceFetching && (
-            <span style={{ color: "#9f80fb", fontWeight: "bold", marginRight: '15px' }}>
+            <span style={{ color: "#31a6a6", fontWeight: "bold", marginRight: '15px' }}>
               {`$${baseCurrencySymbol} ` +
                 BigNumber(ETHamount)
                   .dividedBy(10 ** 18)
@@ -127,7 +127,7 @@ const Navigation = () => {
           {hasFeeToken && !isNativeCoinBalanceFetching && (
             <NavDropdown
               title={
-                <span style={{ color: "#9f80fb", fontWeight: "bold", marginRight: '15px' }}>
+                <span style={{ color: "#31a6a6", fontWeight: "bold", marginRight: '15px' }}>
                   {`$${baseCurrencySymbol} ` +
                     BigNumber(ETHamount)
                       .dividedBy(10 ** 18)
@@ -137,7 +137,7 @@ const Navigation = () => {
               id="collasible-nav-dropdown"
             >
               <Nav.Link
-                style={{ color: "#9f80fb" }}
+                style={{ color: "#31a6a6" }}
                 href={`${networkExplorer}/address/${FeeTokenAddress}`}
                 target="_blank"
               >

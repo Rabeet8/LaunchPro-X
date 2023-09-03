@@ -60,12 +60,12 @@ const Footer = () => {
         }}
       />
       <Container style={{ padding: 30 }}>
-      {/* <Row fd="column" ai="center">
-  <Heading style={{ color: '#9f80fb' }}>Contract Addresses</Heading>
+      <Row fd="column" ai="center">
+  <Heading style={{ color: '#31a6a6' }}>Contract Addresses</Heading>
   <FooterLink
     target="_blank"
     href={networkExplorer + "/address/" + IDOFactoryAddress}
-    style={{ color: '#9f80fb' }}
+    style={{ color: '#31a6a6' }}
   >
     IDO Factory: {shortenAddress(IDOFactoryAddress)} <FaExternalLinkAlt size=".75em" />
   </FooterLink>
@@ -73,12 +73,12 @@ const Footer = () => {
     <FooterLink
       target="_blank"
       href={networkExplorer + "/address/" + TokenLockerFactoryAddress}
-      style={{ color: '#9f80fb' }}
+      style={{ color: '#31a6a6' }}
     >
       Locker Factory: {shortenAddress(TokenLockerFactoryAddress)} <FaExternalLinkAlt size=".75em" />
     </FooterLink>
   )}
-</Row> */}
+</Row>
 
         <s.SpacerMedium />
 
