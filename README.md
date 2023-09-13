@@ -2,7 +2,7 @@
 
 White-label Decentralized IDO Launchpad Platform
 
-## Installation
+## Installation Guide
 
 1. Install dependencies
 
